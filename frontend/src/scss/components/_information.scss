@@ -1,0 +1,163 @@
+@use "../abstracts" as *;
+.information{
+    margin-top: 10rem;
+    &__cart{
+        background-color: #FAFAFA;
+        height: 100%;
+        width:100%;
+        &__item{
+            position: relative;
+            @include align(flex,null,center,null);
+            &__image{
+               
+                padding: 1rem;
+                img{
+                    border-radius: 1rem;
+                    width: 7rem;
+                    height:auto;
+                    object-fit: cover;
+                    cursor: pointer;
+                }
+           }
+           &__qty{
+               position: absolute;
+               top:0rem;
+               left:6.5rem;
+               font-size:1.4rem;
+               border-style: solid;
+               border-radius: 5rem;
+               border-color:$silverDark;
+               background:$silverDark;
+               padding:.3rem .6rem;
+               color:$silverLight-50;
+           }
+           &__name{
+               margin-left:1rem;
+               font-size:1.7rem;
+           }
+           &__total{
+               position: absolute;
+               right:2rem;
+               font-size:1.7rem;
+               &__dollor{
+                   font-size:1.3rem;
+               }
+           }
+        }
+        &__fee{
+            margin:1rem;
+            padding:1.5rem 1rem;
+            border-bottom: dotted .1rem black;
+            
+            border-top: dotted .1rem black;
+            &__total{
+                @include align(flex,space-between,null,null);
+                &__text{
+                    font-size:1.7rem;
+                }
+                &__price{
+                    font-size:1.7rem;
+                    
+                }
+            }
+            &__ship{
+                @include align(flex,space-between,null,null);
+                margin-top:1rem;
+                &__text{
+                    font-size:1.7rem;
+                }
+                &__price{
+                    font-size:1.7rem;
+                    
+                }
+            }
+        }
+        &__total{
+            margin-top:1rem;
+            padding:1.5rem;
+            @include align(flex,space-between,null,null);
+            &__text{
+                font-size:1.8rem;
+            }
+            &__price{
+                font-size:2rem;
+                font-weight: 600;
+            }
+        }
+    }
+    &__heading{
+        @include align(flex,space-between,null,null);
+        margin:2rem 0;
+        &__text{
+            font-size:2rem;
+        }
+        &__link{
+            font-size:1.7rem;
+            a{
+                text-decoration: none;
+                color:rgb(109, 139, 221) ;
+            }
+        }
+        &__user{
+            font-size:1.7rem;
+            width: 40rem;
+            
+            &__name{
+                @include align(flex,space-between,null,null);
+                margin-top:1rem;
+            }
+           
+        }
+        &__form{
+            width: 40rem;
+            position: static;
+            &__input{
+                height: 5rem;
+                font-size:1.7rem;
+                font-weight: 300!important;
+                padding-top: 1.2rem;
+                width: 100%;
+                padding-left:.5rem;
+                box-shadow: none;
+                border-radius: .5rem;
+                &:focus{
+                    outline-color:rgb(64, 104, 233);
+                }
+            }
+            &__text{
+                position: relative;
+                top:-4.5rem;
+                left:.8rem;
+                font-size: 1.2rem;
+                color:$silverDark;
+                
+            }
+            &__COD{
+                height: 5rem;
+                @include align(flex,center,center,null);
+                background: $main1;
+                border-radius: .5rem;
+                font-size:1.7rem;
+                font-weight: 600;
+                margin-bottom: 1rem;
+                div{
+                    color:white;
+                    text-decoration: none;
+                    width:100%;
+                    height:100%;
+                    @include align(flex,center,center,null);
+                }
+            }
+            &__momo{
+                height: 5rem;
+                @include align(flex,center,center,null);
+                background:#A80069;
+                border-radius: .5rem;
+                font-size:2.6rem;
+                font-weight: 600;
+                margin-bottom: 1rem;
+                color:$white;
+            }
+        }
+    }
+}

@@ -5,6 +5,7 @@ import ProductContents from "../components/Product/ProductContents";
 import Footer from "../components/Footer/Footer";
 import { useDispatch, useSelector } from "react-redux";
 import { listProducts } from "../actions/productActions";
+import { Link } from "react-router-dom";
 const ProductsPage = () => {
     const dispatch = useDispatch();
     const productList = useSelector((state) => state.productList);
@@ -29,7 +30,9 @@ const ProductsPage = () => {
                                         {products.length > 0 ? products.map((product) => (
                                             <div className="col-4 p-15" key={product._id}>
                                                 <div className="cities__body">
-                                                    <ProductImage img={product.image} />
+                                                    <Link to={`/product/${product._id}`}>
+                                                        <ProductImage img={product.image} />
+                                                    </Link>
                                                     <ProductContents name={product.name} price={product.price} />
 
 
