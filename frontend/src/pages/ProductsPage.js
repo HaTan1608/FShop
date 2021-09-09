@@ -19,6 +19,8 @@ const ProductsPage = () => {
                 if (cartItems[i].product === productId) {
                     dispatch(addToCart(productId, cartItems[i].qty + 1))
                     break;
+                } else {
+                    dispatch(addToCart(productId, 1));
                 }
             }
         }
