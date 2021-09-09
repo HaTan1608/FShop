@@ -2,9 +2,10 @@
   "name": "fshop",
   "type": "module",
   "version": "1.0.0",
-  "description": "1. Introduction to this course\r    1. what you will build\r    2. what you will learn\r    3. who are audiences\r 2. Install Tools\r    1. Code Editor\r    2. Web Browser\r    3. VS Code Extension\r 3. Website Template\r    1. Create amazona folder\r    2. create template folder\r    3. create index.html\r    4. add default HTML code\r    5. link to style.css\r    6. create header, main and footer\r    7. style elements\r 4. Display Products\r    1. create products div\r    2. add product attributes\r    3. add link, image, name and price\r 5. Create React App\r    1. npx create-react-app frontend\r    2. npm start\r    3. Remove unused files\r    4. copy index.html content to App.js\r    5. copy style.css content to index.css\r    6. replace class with className",
+  "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "cd frontend && npm install && npm run build",
     "start": "nodemon --watch backend --exec node --experimental-modules backend/server.js"
   },
   "repository": {
@@ -30,5 +31,9 @@
     "eslint": "^7.32.0",
     "eslint-plugin-react": "^7.25.1",
     "nodemon": "^2.0.12"
+  },
+  "engines": {
+    "node": "12.4.0",
+    "npm": "6.9.0"
   }
 }
