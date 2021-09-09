@@ -11,7 +11,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 const HomePage = () => {
     const [imageBitis] = useState({
         image1: 'images/bitis1.png',
-        image2: 'images/bitis2.png',
+        image2: 'images/bitis2.PNG',
     })
     const dispatch = useDispatch();
     const productList = useSelector((state) => state.productList);
