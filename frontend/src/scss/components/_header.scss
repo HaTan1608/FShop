@@ -15,6 +15,16 @@
             cursor: pointer;
         }
     }
+    &__cart__count{
+        position: absolute;
+        left:2.2rem;
+        bottom:2.5rem;
+        font-size:1.7rem;
+        padding:.1rem .3rem;
+        border-radius: 1rem;
+        color:$main1;
+        background: $white;
+    }
     &__right{
         @include align(flex,space-between,center,10vh);
         font-weight:900 ;
@@ -41,6 +51,18 @@
         &__cart__icon{
             margin-right:6rem;
         }
+        &__user{
+            color:$silverDark;
+            font-size:1.7rem;
+            &__heading{
+                padding-bottom:1rem;
+            }
+            &__child{
+                padding-top:1rem;
+                border-top: dotted 1px $silverDark;
+                margin:1rem 0rem;
+            }
+        }
     }
     &__cart__items{
         width:100%;
@@ -50,6 +72,14 @@
         @include align(flex,space-between,center,null);
         img{
             width: 5rem;
+        }
+        &__empty{
+            width:100%;
+            img{
+                
+            border-radius: 2rem;
+                width: 100%;
+            }
         }
         &__name{
             @include align(flex,space-between,center,null);

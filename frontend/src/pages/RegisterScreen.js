@@ -14,7 +14,7 @@ const RegisterScreen = (props) => {
         : '/';
 
     const userRegister = useSelector((state) => state.userRegister);
-    const { userInfo, loading, error } = userRegister;
+    const { userInfo } = userRegister;
     const submitHandler = (e) => {
         e.preventDefault();
         dispatch(register('tan', email, password));
@@ -26,6 +26,7 @@ const RegisterScreen = (props) => {
     }, [props.history, redirect, userInfo]);
     return (
         <>
+
             <Header />
             <div className="signin">
                 <div className="container">
@@ -58,6 +59,7 @@ const RegisterScreen = (props) => {
                     </div>
                 </div>
             </div>
+
             <Footer />
         </>
     )

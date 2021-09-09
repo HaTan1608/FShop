@@ -4,6 +4,9 @@ import userRouter from './routers/userRouter.js';
 import productRouter from './routers/productRouter.js';
 
 import orderRouter from './routers/orderRouter.js';
+
+import path from 'path';
+import uploadRouter from './routers/uploadRouter.js';
 import dotenv from 'dotenv';
 dotenv.config();
 const app = express();
@@ -16,12 +19,16 @@ mongoose.connect(url, function (err) {
   console.log("Database created!");
 });
 
+app.use('/api/uploads', uploadRouter);
 app.use('/api/users', userRouter);
 app.use('/api/products', productRouter)
 app.use('/api/orders', orderRouter);
 app.get('/api/config/paypal', (req, res) => {
   res.send(process.env.PAYPAL_CILENT_ID || 'sb')
 })
+
+const __dirname = path.resolve();
+app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 app.get('/', (req, res) => {
   res.send('Server is ready');
 });

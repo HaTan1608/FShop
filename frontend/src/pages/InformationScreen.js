@@ -9,6 +9,9 @@ const InformationScreen = (props) => {
     const cart = useSelector((state) => state.cart);
     const { cartItems } = cart;
     const { shippingAddress } = cart;
+    if (cartItems.length < 1) {
+        props.history.push('/cart');
+    }
     const [fullName, setFullName] = useState(shippingAddress.fullName);
     const [address, setAddress] = useState(shippingAddress.address);
     const [phone, setPhone] = useState(shippingAddress.phone);
@@ -17,6 +20,7 @@ const InformationScreen = (props) => {
     const formate = (price) => {
         return `${price}.000`;
     }
+
 
     const submitHandler = (e) => {
         e.preventDefault();
@@ -71,7 +75,7 @@ const InformationScreen = (props) => {
                     <div className="col-5">
                         <div className="information__cart">
                             {cartItems.length > 0 ? cartItems.map((item) => (
-                                <div className="information__cart__item" key={item.name}>
+                                <div className="information__cart__item" key={item.product}>
                                     <div className="information__cart__item__image">
                                         <LazyLoadImage src={item.image} alt={item.image} />
                                     </div>

@@ -8,7 +8,10 @@ import { signout } from '../actions/signinActions';
 const Header = () => {
     const [state] = useState({
         logo: '/assets/images/logo.png',
+        logoEmpty: '/assets/images/emptycartsmall.png',
+
     })
+
     const formate = (price) => {
         return `${price}.000`;
     }
@@ -30,64 +33,105 @@ const Header = () => {
                         <div className="header__right__cart__icon">
                             <div className="wrapper">
                                 <div className="icon">
-                                    <div className="tooltip mt-1  w-30">
-                                        <div className="header__cart__heading">
-                                            <div>Sản phẩm</div>
-                                            <div>Số lượng</div>
-                                        </div>
+                                    <div className="tooltip mt-1  w-30 r-3">
+
                                         {cartItems.length > 0 ? (
-                                            cartItems.map(item => (
-                                                <div className="header__cart__items" key={item.name}>
-                                                    <div className="header__cart__items__name">
-                                                        <LazyLoadImage src={item.image} alt={item.image} />
-                                                        <div className="header__cart__items__name--name">{item.name}</div>
-                                                    </div>
-                                                    <div>x{item.qty}</div>
+                                            <>
+                                                <div className="header__cart__heading">
+                                                    <div>Sản phẩm</div>
+                                                    <div>Số lượng</div>
                                                 </div>
-                                            ))
-                                        ) :
+                                                {cartItems.map(item => (
+                                                    <div className="header__cart__items" key={item.product}>
+                                                        <div className="header__cart__items__name">
+                                                            <LazyLoadImage src={item.image} alt={item.image} />
+                                                            <div className="header__cart__items__name--name">{item.name}</div>
+                                                        </div>
+                                                        <div>x{item.qty}</div>
+                                                    </div>
+                                                ))}
+                                                <div className="header__cart__total">
+                                                    <div className="header__cart__total__text">Tổng tiền:</div>
+                                                    <div className="header__cart__total__price">
+                                                        {formate(cartItems.reduce((a, c) => a + c.price * c.qty, 0))}<span className="header__cart__total__price__dollor "> VNĐ</span></div>
+                                                </div>
+                                            </>) :
                                             (
-                                                <div>không</div>
+                                                <div className="header__cart__items__empty">
+                                                    <LazyLoadImage src={state.logoEmpty} alt={state.logoEmpty} />
+                                                </div>
                                             )
 
                                         }
-                                        <div className="header__cart__total">
-                                            <div className="header__cart__total__text">Tổng tiền:</div>
-                                            <div className="header__cart__total__price">
-                                                {formate(cartItems.reduce((a, c) => a + c.price * c.qty, 0))}<span className="header__cart__total__price__dollor "> VNĐ</span></div>
-                                        </div>
+
                                     </div>
+                                    <div className="header__cart__count">{cartItems.reduce((a, c) => a + c.qty, 0)}</div>
                                     <Link to='/cart'><MdShoppingCart size={30} /></Link>
                                 </div>
                             </div>
                         </div>
-                        {userInfo ? (
+                        {userInfo ? userInfo.isAdmin ? (
+
                             <div className="wrapper">
                                 <div className="icon">
                                     <div className="tooltip mt-5">
-                                        <Link to="/" className="header__right__heading">
-                                            Thông tin tài khoản
-                                        </Link>
-                                        <div className="header__right__text" onClick={() => dispatch(signout())}>
-                                            Đăng xuất
+                                        <div className="header__right__user">
+                                            <div className="header__right__user__heading">
+                                                <Link to="/dashboard">Dashboard</Link>
+                                            </div>
+                                            <div className="header__right__user__heading">
+                                                <Link to="/productlist">Products</Link>
+                                            </div>
+                                            <div className="header__right__user__heading">
+                                                <Link to="/orderlist">Orders</Link>
+                                            </div>
+                                            <div className="header__right__user__heading">
+                                                <Link to="/userlist">Users</Link>
+                                            </div>
+
+                                            <div className="header__right__user__child" onClick={() => dispatch(signout())}>
+                                                Đăng xuất
+                                            </div>
                                         </div>
+
                                     </div>
                                     <div className="header__right__name">
                                         {userInfo.name}
                                     </div>
-                                </div>
-                            </div>
+                                </div >
+                            </div >
+
+
 
                         ) : (
+                            <div className="wrapper">
+                                <div className="icon">
+                                    <div className="tooltip mt-5">
+                                        <div className="header__right__user">
+                                            <div className="header__right__user__heading">
+                                                <Link to="/profile" >
+                                                    Thông tin tài khoản
+                                                </Link>
+                                            </div>
 
-                            <Link to="/signin">Đăng nhập</Link>
-                        )}
+                                            <div className="header__right__user__child" onClick={() => dispatch(signout())}>
+                                                Đăng xuất
+                                            </div>
+                                        </div>
 
-                    </div>
-                </div>
+                                    </div>
+                                    <div className="header__right__name">
+                                        {userInfo.name}
+                                    </div>
+                                </div >
+                            </div >
+                        ) : (<Link to="/signin">Đăng nhập</Link>)}
 
-            </div>
-        </div>
+                    </div >
+                </div >
+
+            </div >
+        </div >
     )
 }
 export default Header;

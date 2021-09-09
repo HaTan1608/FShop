@@ -15,7 +15,7 @@ const SigninScreen = (props) => {
         : '/';
 
     const userSignin = useSelector((state) => state.userSignin);
-    const { userInfo, loading, error } = userSignin;
+    const { userInfo } = userSignin;
     const submitHandler = (e) => {
         e.preventDefault();
         dispatch(signin(email, password));
@@ -27,6 +27,7 @@ const SigninScreen = (props) => {
     }, [props.history, redirect, userInfo]);
     return (
         <>
+
             <Header />
             <div className="signin">
                 <div className="container">

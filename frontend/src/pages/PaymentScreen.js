@@ -15,6 +15,9 @@ const PaymentScreen = (props) => {
     const formate = (price) => {
         return `${price}.000`;
     }
+    if (!shippingAddress.address) {
+        props.history.push('/checkout');
+    }
     const orderCreate = useSelector(state => state.orderCreate);
     const { success, order } = orderCreate;
     const [sdkReady, setSdkReady] = useState(false);
@@ -102,7 +105,7 @@ const PaymentScreen = (props) => {
                     <div className="col-5">
                         <div className="information__cart">
                             {cartItems.length > 0 ? cartItems.map((item) => (
-                                <div className="information__cart__item" key={item.name}>
+                                <div className="information__cart__item" key={item.product}>
                                     <div className="information__cart__item__image">
                                         <LazyLoadImage src={item.image} alt={item.image} />
                                     </div>

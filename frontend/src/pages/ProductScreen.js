@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { detailsProduct } from '../actions/productActions';
 import { BsFillStarFill, BsStar } from 'react-icons/bs';
 import Header from '../components/Header';
 import Footer from '../components/Footer/Footer';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { Stepper } from 'react-stepper-primitive';
+import { addToCart } from '../actions/cartActions';
 export default function ProductScreen(props) {
     const dispatch = useDispatch();
     const productId = props.match.params.id;
     const productDetails = useSelector((state) => state.productDetails);
-    const { loading, error, product } = productDetails;
+    const { loading, product } = productDetails;
     const [qty, setQty] = useState(1);
+    const cart = useSelector((state) => state.cart);
+    const { cartItems } = cart;
     const formate = (price) => {
         return `${price}.000`;
     }
@@ -34,8 +35,14 @@ export default function ProductScreen(props) {
         return container;
     }
 
-    const addToCartHandler = () => {
-        props.history.push(`/cart/${productId}?qty=${qty}`);
+    const addToCartHandler = (id, qty) => {
+        let a = cartItems.find(item => item.product === id);
+        if (a) {
+            console.log(a);
+            dispatch(addToCart(id, a.qty + qty));
+        } else {
+            dispatch(addToCart(id, qty));
+        }
     }
     useEffect(() => {
         dispatch(detailsProduct(productId));
@@ -43,6 +50,7 @@ export default function ProductScreen(props) {
 
     return (
         <>
+
             <Header />
             {loading ? (
                 ''
@@ -53,7 +61,6 @@ export default function ProductScreen(props) {
                             <div className="col-6">
                                 <div className="row">
                                     <div className="col-3">
-
                                     </div>
                                     <div className="col-9">
                                         <div className="product__details__image">
@@ -64,8 +71,6 @@ export default function ProductScreen(props) {
                                         </div>
                                     </div>
                                 </div>
-
-
                             </div>
                             <div className="col-6">
                                 <div className="product__details__contents">
@@ -86,41 +91,28 @@ export default function ProductScreen(props) {
                                     </div>
                                     {product.countInStock > 0 ? (
                                         <>
-
                                             <span className='ctrl'>
                                                 <div className='ctrl__button ctrl__button--decrement' onClick={() => ctrl(-1)}>&ndash;</div>
                                                 <div className='ctrl__counter'>
                                                     <input className='ctrl__counter-input' type='text' id='qty-input' defaultValue={1} onChange={(e) => setQty(parseInt(e.target.value))} />
                                                 </div>
                                                 <div className='ctrl__button ctrl__button--increment ' onClick={() => ctrl(1)}>+</div>
-                                                <button className="btn-dark ml-2" onClick={() => addToCartHandler()}>Thêm vào giỏ hàng</button>
+                                                <button className="btn-dark ml-2" onClick={() => addToCartHandler(product._id, qty)}>Thêm vào giỏ hàng</button>
                                             </span>
-
-
                                         </>
                                     ) : (
                                         <>
                                             <button className="btn-dark mb-2" disabled>Thêm vào giỏ hàng</button>
                                         </>
                                     )}
-
                                     <div className="product__details__contents__description__heading">
                                         Mô tả sản phẩm
-
                                     </div>
                                     <div className="product__details__contents__description__msg">{product.description}</div>
                                 </div>
-
-
-
                             </div>
-
-
                         </div>
-
                     </div>
-
-
                 </div>
                 <div className="container"> <div className="row">
 
@@ -129,7 +121,6 @@ export default function ProductScreen(props) {
                 </div>
             </>
             )}
-
             <Footer />
         </>
 

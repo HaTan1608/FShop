@@ -153,6 +153,29 @@
 .cart {
     
     margin: 3rem 10rem;
+    &__empty{
+        width: 100%;
+        height: auto;
+        @include align(flex,center,center,null);
+        img{
+            width: 45%;;
+        }
+        &__link{
+            width: 100%;
+            height: auto;
+            @include align(flex,center,center,null);
+            
+            a{
+                font-size:2rem;
+                margin-top:2rem;
+                padding:1rem 2rem;
+            background-color:#ffca55 ;
+            text-decoration: none;
+            color:$white;
+                border-radius: 1rem;
+            }
+        }
+    }
     &__checkout{
         height: 100%;
         padding:2rem;

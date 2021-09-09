@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { useDispatch, useSelector } from 'react-redux'
 import { detailsOrder } from '../actions/orderActions';
@@ -44,7 +44,7 @@ const OrderDetails = (props) => {
                     <div className="col-5">
                         <div className="information__cart">
                             {orderDetailss.orderItems.length > 0 ? orderDetailss.orderItems.map((item) => (
-                                <div className="information__cart__item" key={item.name}>
+                                <div className="information__cart__item" key={item.product}>
                                     <div className="information__cart__item__image">
                                         <LazyLoadImage src={item.image} alt={item.image} />
                                     </div>

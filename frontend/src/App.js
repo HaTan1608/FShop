@@ -1,6 +1,4 @@
 import React from 'react';
-import Header from './components/Header';
-import data from './data';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import ProductsPage from './pages/ProductsPage';
 import ProductScreen from './pages/ProductScreen';
@@ -10,20 +8,48 @@ import RegisterScreen from './pages/RegisterScreen';
 import InformationScreen from './pages/InformationScreen';
 import PaymentScreen from './pages/PaymentScreen';
 import OrderDetails from './pages/OrderDetails';
+import OrdersHistoryScreen from './pages/OrdersHistoryScreen';
+import PrivateRoute from './components/PrivateRoute';
+import ProfileScreen from './pages/ProfileScreen';
+
+import ProductListScreen from './pages/ProductListScreen';
+import AdminRoute from './components/AdminRoute';
+import ProductEditScreen from './pages/ProductEditScreen';
+import OrderListScreen from './pages/OrderListScreen.';
 function App() {
   return (
 
     <Router>
-      <Route path="/" exact component={ProductsPage} />
-      <Route path="/register" exact component={RegisterScreen} />
-      <Route path="/signin" exact component={SigninScreen} />
-      <Route path="/cart" exact component={CartScreen} />
-      <Route path="/cart/:id" component={CartScreen} />
-      <Route path="/products" exact component={ProductsPage} />
-      <Route path="/product/:id" exact component={ProductScreen} />
-      <Route path="/checkout" exact component={InformationScreen} />
-      <Route path="/payment" exact component={PaymentScreen} />
-      <Route path="/order/:id" exact component={OrderDetails} />
+      <Switch>
+        <Route path="/" exact component={ProductsPage} />
+        <Route path="/register" exact component={RegisterScreen} />
+        <Route path="/signin" exact component={SigninScreen} />
+        <Route path="/cart" exact component={CartScreen} />
+        <Route path="/cart/:id" component={CartScreen} />
+        <Route path="/products" exact component={ProductsPage} />
+        <Route path="/product/:id" exact component={ProductScreen} />
+        <Route path="/orderhistory" exact component={OrdersHistoryScreen} />
+        <Route
+          path="/product/:id/edit"
+          component={ProductEditScreen}
+          exact
+        />
+        <PrivateRoute
+          path="/profile"
+          component={ProfileScreen}
+        ></PrivateRoute>
+        <AdminRoute
+          path="/productlist"
+          component={ProductListScreen}
+        ></AdminRoute>
+        <AdminRoute
+          path="/orderlist"
+          component={OrderListScreen}
+        ></AdminRoute>
+        <Route path="/checkout" exact component={InformationScreen} />
+        <Route path="/payment" exact component={PaymentScreen} />
+        <Route path="/order/:id" exact component={OrderDetails} />
+      </Switch>
     </Router>
 
   );
