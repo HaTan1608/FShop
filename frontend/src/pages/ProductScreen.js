@@ -36,13 +36,9 @@ export default function ProductScreen(props) {
     }
 
     const addToCartHandler = (id, qty) => {
-        let a = cartItems.find(item => item.product === id);
-        if (a) {
-            console.log(a);
-            dispatch(addToCart(id, a.qty + qty));
-        } else {
-            dispatch(addToCart(id, qty));
-        }
+
+        dispatch(addToCart(id, qty));
+
     }
     useEffect(() => {
         dispatch(detailsProduct(productId));
@@ -77,7 +73,7 @@ export default function ProductScreen(props) {
                                     <div className="product__details__contents__name">
                                         <h1>{product.name}</h1>
                                     </div>
-                                    <div className="product__details__contents__rating">
+                                    <div className="product__details__contents__rating__rating">
                                         {rating(product.rating)}
                                     </div>
                                     <h2 className="product__details__contents__price"> {formate(product.price)}<span className="product__details__contents__price__dollor">VNĐ</span></h2>

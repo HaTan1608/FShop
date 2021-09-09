@@ -48,9 +48,10 @@
         &__contents{
             margin:1.5rem 0 .5rem 0 ;
             &__top{
-                @include align(flex,space-between,center,null);
+                @include align(flex,center,null,null);
                 &__name{
-                    font-size: 1.5rem;
+                    font-size: 2rem;
+                    justify-content: center;
                 }
                 &__duration{
                     @include align(flex,null,center,null);
@@ -61,8 +62,10 @@
                 }
             }
             &__price{
+                @include align(flex,center,center,null);
                 &__dollor{
                     font-size:1.4rem;
+                    margin-top:.5rem;
                 }
                 margin-top:.5rem;
                 font-size:2rem;
@@ -77,6 +80,7 @@
                 }
             }
             &__button{
+                @include align(flex,center,center,null);
                 margin-top:1rem;
             }
         }

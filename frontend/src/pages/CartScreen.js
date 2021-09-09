@@ -20,12 +20,7 @@ export default function CartScreen(props) {
     const ctrl = (id, number) => {
         const newQty = parseInt(document.getElementById(`qty-input-${id}`).value) + number;
         document.getElementById(`qty-input-${id}`).value = newQty;
-        if (productId === id) {
-            props.history.push(`/cart/${id}?qty=${newQty}`)
-        }
-        else {
-            dispatch(addToCart(id, newQty))
-        }
+        dispatch(addToCart(id, number))
     }
     const removeFromCartHandler = (id) => {
         dispatch(removeFromCart(id));

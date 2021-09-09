@@ -48,7 +48,10 @@
             color:$silverDark;
         }
         &__rating{
-            margin-top:1rem;
+            @include align(flex,center,center,null);
+            &__rating{
+                margin-top:1rem;
+            }
         }
         &__price{
             padding-top: 1rem;

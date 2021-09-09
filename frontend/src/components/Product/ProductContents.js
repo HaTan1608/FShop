@@ -42,7 +42,7 @@ const ProductContents = ({ name, price, ratingStar, addCart }) => {
             </div>
 
             <div className="cities__body__contents__button">
-                <button className='btn-dark-sm' onClick={sendData} >Thêm vào giỏ hàng</button>
+                <button className='btn-default' onClick={sendData} >Thêm vào giỏ hàng</button>
             </div>
         </div>
     )

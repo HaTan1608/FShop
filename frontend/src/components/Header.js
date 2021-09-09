@@ -26,9 +26,13 @@ const Header = () => {
             <div className="container">
                 <div className="row header__container">
                     <div className="header__logo">
-
-                        <LazyLoadImage src={state.logo} alt="logo image" />
+                        <Link to='/'>
+                            <div className='header__logo__text'>Fshop</div></Link>
                     </div>
+                    <div className="header__search">
+                        <input type="text" className="header__search__input" placeholder="Bạn cần mua gì" />
+                    </div>
+
                     <div className="header__right">
                         <div className="header__right__cart__icon">
                             <div className="wrapper">
@@ -129,6 +133,12 @@ const Header = () => {
 
                     </div >
                 </div >
+                <div className="row header__links">
+                    <Link to=''>About Fshop</Link>
+                    <Link to=''>Nam</Link>
+                    <Link to=''>Nữ</Link>
+                    <Link to=''>Khuyến mãi</Link>
+                </div>
 
             </div >
         </div >

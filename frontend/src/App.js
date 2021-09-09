@@ -16,12 +16,13 @@ import ProductListScreen from './pages/ProductListScreen';
 import AdminRoute from './components/AdminRoute';
 import ProductEditScreen from './pages/ProductEditScreen';
 import OrderListScreen from './pages/OrderListScreen.';
+import HomePage from './pages/HomePages';
 function App() {
   return (
 
     <Router>
       <Switch>
-        <Route path="/" exact component={ProductsPage} />
+        <Route path="/" exact component={HomePage} />
         <Route path="/register" exact component={RegisterScreen} />
         <Route path="/signin" exact component={SigninScreen} />
         <Route path="/cart" exact component={CartScreen} />

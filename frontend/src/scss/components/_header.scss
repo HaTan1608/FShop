@@ -1,18 +1,52 @@
 @use "../abstracts" as *;
 .header {
     width:100%;
-    height: 10vh;
+    height: 13vh;
     background: linear-gradient(to right, $main1,$main2);
+    &__links{
+        @include align(flex,center,center,null);
+        
+        
+        a{ 
+            text-decoration: none;
+            text-transform: uppercase;
+            color:$white;
+            font-weight: 700;
+            font-size:2rem;
+            margin-top: -1rem!important;
+            margin:0rem 2rem;
+            &:hover{
+            color:#ffca55;
+            }
+         }
+    }
+    &__search{
+        width:60rem;
+        height:8rem;
+        @include align(flex,center,center,null);
+        &__input{
+            width:100%;
+            padding:1rem;
+            border-radius: .5rem;
+            border-top-style: hidden;
+        border-right-style: hidden;
+        border-left-style: hidden;
+        border-bottom-style: groove;
+        }
+    }
     &__container{
        @include align(flex,space-between,center,null);
     }
     &__logo{
+        margin-top:1.5rem;
         margin-left: 2rem;
-        img{
-            width: 15rem;
-            height:auto;
-            object-fit: cover;
-            cursor: pointer;
+        &__text{
+            font-family: "Leckerli One";
+            font-size:5rem;
+        color:white;
+        }
+        a{
+            text-decoration: none;
         }
     }
     &__cart__count{
@@ -42,6 +76,10 @@
         &__heading{
             font-size:1.5rem;
         }
+        &__name{
+            
+            margin-top:2rem;
+        }
         &__text{
             border-top: dotted 1px $silverLight-40;
             font-size:1.5rem;
@@ -50,8 +88,10 @@
         }
         &__cart__icon{
             margin-right:6rem;
+            margin-top:2rem;
         }
         &__user{
+            
             color:$silverDark;
             font-size:1.7rem;
             &__heading{
