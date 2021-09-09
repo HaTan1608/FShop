@@ -10,8 +10,8 @@ import { addToCart } from "../actions/cartActions";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 const HomePage = () => {
     const [imageBitis] = useState({
-        image1: '/assets/images/bitis1.png',
-        image2: '/assets/images/bitis2.png',
+        image1: 'images/bitis1.png',
+        image2: 'images/bitis2.png',
     })
     const dispatch = useDispatch();
     const productList = useSelector((state) => state.productList);
