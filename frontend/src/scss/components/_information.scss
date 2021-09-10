@@ -1,6 +1,33 @@
 @use "../abstracts" as *;
 .information{
     margin-top: 10rem;
+    &__review{
+       
+        &__rating{
+            @include align(flex,null,center,null);
+            margin: 1rem !important;
+        span{
+            font-size:1.7rem;
+            padding-right: 2rem;
+        }
+    } &__comment{
+        margin: 1rem !important;
+        font-size:1.7rem;
+        textarea{
+            margin-top: 1rem;
+            width: 100%;
+            height: 10rem;
+            padding: 1rem 1.7rem;
+            line-height: 2rem;
+  box-sizing: border-box;
+  border: .2rem solid #ccc;
+  border-radius: .2rem;
+  background-color: #f8f8f8;
+  resize: none;
+        }
+    }
+    
+    }
     &__cart{
         background-color: #FAFAFA;
         height: 100%;

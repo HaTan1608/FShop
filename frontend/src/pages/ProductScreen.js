@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { detailsProduct } from '../actions/productActions';
+import { createReview, detailsProduct } from '../actions/productActions';
 import { BsFillStarFill, BsStar } from 'react-icons/bs';
 import Header from '../components/Header';
 import Footer from '../components/Footer/Footer';
@@ -11,6 +11,7 @@ export default function ProductScreen(props) {
     const productId = props.match.params.id;
     const productDetails = useSelector((state) => state.productDetails);
     const { loading, product } = productDetails;
+
     const [qty, setQty] = useState(1);
     const cart = useSelector((state) => state.cart);
     const { cartItems } = cart;
@@ -22,7 +23,7 @@ export default function ProductScreen(props) {
         document.getElementById("qty-input").value = qty + number;
         setQty(parseInt(qty + number));
     }
-    const rating = (number) => {
+    const rating1 = (number) => {
         let container = [];
         for (let i = 1; i <= 5; i++) {
             if (i <= number) {
@@ -40,7 +41,9 @@ export default function ProductScreen(props) {
         dispatch(addToCart(id, qty));
 
     }
+
     useEffect(() => {
+
         dispatch(detailsProduct(productId));
     }, [dispatch, productId]);
 
@@ -74,7 +77,7 @@ export default function ProductScreen(props) {
                                         <h1>{product.name}</h1>
                                     </div>
                                     <div className="product__details__contents__rating__rating">
-                                        {rating(product.rating)}
+                                        {rating1(product.rating)}
                                     </div>
                                     <h2 className="product__details__contents__price"> {formate(product.price)}<span className="product__details__contents__price__dollor">VNĐ</span></h2>
 
@@ -112,7 +115,22 @@ export default function ProductScreen(props) {
                 </div>
                 <div className="container"> <div className="row">
 
-                    <div className="product__reviews"> Nhận xét, đánh giá</div>
+                    <div className="product__reviews"><h2 id="reviews">Reviews</h2>
+                        {product.reviews.length === 0 && (
+                            ''
+                        )}
+                        <ul>
+                            {product.reviews.map((review) => (
+                                <li key={review._id}>
+                                    <strong>{review.name}</strong>
+                                    <p>{review.createdAt.substring(0, 10)}</p>
+                                    <p>{review.comment}</p>
+                                </li>
+                            ))}
+                            <li>
+
+                            </li>
+                        </ul></div>
                 </div>
                 </div>
             </>

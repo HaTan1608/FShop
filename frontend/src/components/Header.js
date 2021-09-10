@@ -1,18 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { BsSearch } from 'react-icons/bs';
 import { MdShoppingCart } from 'react-icons/md'
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { signout } from '../actions/signinActions';
-import { listProducts } from '../actions/productActions';
-const Header = (props) => {
+const Header = () => {
     const [state] = useState({
         logo: '/assets/images/logo.png',
         logoEmpty: '/assets/images/emptycartsmall.png',
 
     })
-
     const formate = (price) => {
         return `${price}.000`;
     }
@@ -137,8 +135,8 @@ const Header = (props) => {
                 </div >
                 <div className="row header__links">
                     <Link to=''>About Fshop</Link>
-                    <Link to=''>Nam</Link>
-                    <Link to=''>Nữ</Link>
+                    <Link to='/products/male'>Nam</Link>
+                    <Link to='/products/famale'>Nữ</Link>
                     <Link to=''>Khuyến mãi</Link>
                 </div>
 
