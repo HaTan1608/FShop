@@ -8,49 +8,31 @@ import { listProducts } from "../actions/productActions";
 import { Link } from "react-router-dom";
 import { addToCart } from "../actions/cartActions";
 import { useParams } from "react-router";
-import Menu from "../components/Menu/Menu";
-import { LazyLoadImage } from "react-lazy-load-image-component";
-const ProductsPage = () => {
-    const [imageBitisMan] = useState({
-        image: 'assets/images/bitisman.png',
-    })
+const SearchScreen = () => {
     const dispatch = useDispatch();
     const productList = useSelector((state) => state.productList);
     const { loading, products } = productList;
     const cart = useSelector((state) => state.cart);
     const { cartItems } = cart;
-
-    const { name } = useParams();
+    const {
+        name = 'all',
+        category = 'all',
+        min = 0,
+        max = 0,
+        rating = 0,
+        order = 'newest',
+    } = useParams();
     const addToCartHandler = (productId) => {
 
         dispatch(addToCart(productId, 1));
 
     }
-    const [checkPrice, setCheckPrice] = useState({ min: 0, max: 1000000 })
-    const [orderBy, setOrderBy] = useState('');
-    const getPrice = (price) => {
-        setCheckPrice({ ...checkPrice, min: price.min, max: price.max })
-    }
-    const [category, setCategory] = useState('all');
-    const getCategory = (category) => {
-        setCategory(category);
-    }
     useEffect(() => {
-
-        console.log(orderBy)
-        dispatch(
-            listProducts({
-                name: name !== 'all' ? name : '',
-                category: category !== 'all' ? category : '',
-
-                order: orderBy,
-                min: checkPrice.min,
-                max: checkPrice.max,
-
-            })
-        );
-    }, [category, dispatch, name, checkPrice.min, checkPrice.max, orderBy]);
-
+        alert(name);
+        dispatch(listProducts({
+            name
+        }));
+    }, [dispatch, name]);
 
     return (
         <>
@@ -59,34 +41,17 @@ const ProductsPage = () => {
             <div className='cities'>
                 <div className='container'>
                     <div className='cities__container'>
+                        <h2 className="heading">Cities in Polo</h2>
+
                         <div className="row mr-minus-15 ml-minus-15">
-                            <div className="cities__banner">
-                                <LazyLoadImage src={imageBitisMan.image} alt='banner man' />
-                            </div>
                             <div className="col-2 p-15">
-                                <Menu getCategoryChild={getCategory} getPriceChild={getPrice} />
                             </div>
-
                             <div className="col-10 p-15">
-                                <div className="heading fw-900 fz-3 ">NAM</div>
-
-                                <div className="cities__heading">
-                                    {loading ? '' : (<div className="cities__heading__result">Có {products.length} sản phẩm</div>)}
-
-                                    <div className="cities__heading__select">
-                                        <select onChange={(e) => setOrderBy(e.target.value)}>
-                                            <option value="lowest">Rẻ nhất</option>
-                                            <option value="highest">Mắc nhất</option>
-                                        </select>
-                                    </div>
-                                </div>
                                 {loading ? '' : (
                                     <div className="row">
                                         {products.length > 0 ? products.map((product) => (
                                             <div className="col-4 p-15" key={product._id}>
-
                                                 <div className="cities__body">
-
                                                     <Link to={`/product/${product._id}`}>
                                                         <ProductImage img={product.image} />
                                                     </Link>
@@ -109,4 +74,4 @@ const ProductsPage = () => {
         </>
     )
 }
-export default ProductsPage
+export default SearchScreen

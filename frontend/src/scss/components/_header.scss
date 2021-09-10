@@ -24,6 +24,7 @@
         width:60rem;
         height:8rem;
         @include align(flex,center,center,null);
+        position: relative;
         &__input{
             width:100%;
             padding:1rem;
@@ -32,6 +33,13 @@
         border-right-style: hidden;
         border-left-style: hidden;
         border-bottom-style: groove;
+        }
+        &__button{
+            position: absolute;
+            right:1rem;
+            a{
+                color:$main1;
+            }
         }
     }
     &__container{

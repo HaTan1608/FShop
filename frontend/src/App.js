@@ -17,6 +17,7 @@ import AdminRoute from './components/AdminRoute';
 import ProductEditScreen from './pages/ProductEditScreen';
 import OrderListScreen from './pages/OrderListScreen.';
 import HomePage from './pages/HomePages';
+import SearchScreen from './pages/SearchScreen';
 function App() {
   return (
 
@@ -35,6 +36,11 @@ function App() {
           component={ProductEditScreen}
           exact
         />
+        <Route
+          path="/search/name/:name?"
+          component={SearchScreen}
+          exact
+        ></Route>
         <PrivateRoute
           path="/profile"
           component={ProfileScreen}

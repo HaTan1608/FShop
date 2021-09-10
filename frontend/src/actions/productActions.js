@@ -1,12 +1,14 @@
 import axios from "axios";
 import { PRODUCT_CREATE_FAIL, PRODUCT_CREATE_REQUEST, PRODUCT_CREATE_SUCCESS, PRODUCT_DELETE_FAIL, PRODUCT_DELETE_REQUEST, PRODUCT_DELETE_SUCCESS, PRODUCT_DETAILS_FAIL, PRODUCT_DETAILS_REQUEST, PRODUCT_DETAILS_SUCCESS, PRODUCT_LIST_FAIL, PRODUCT_LIST_REQUEST, PRODUCT_LIST_SUCCESS, PRODUCT_UPDATE_FAIL, PRODUCT_UPDATE_REQUEST, PRODUCT_UPDATE_SUCCESS } from "../types/productTypes"
 
-export const listProducts = () => async (dispatch) => {
+export const listProducts = ({ name = '', category = '', order = '', min = 0, max = 0, }) => async (dispatch) => {
     dispatch({
         type: PRODUCT_LIST_REQUEST
     });
     try {
-        const { data } = await axios.get('/api/products');
+        const { data } = await axios.get(
+            `/api/products?name=${name}&category=${category}&min=${min}&max=${max}&order=${order}`
+        );
         dispatch({
             type: PRODUCT_LIST_SUCCESS,
             payload: data
@@ -18,6 +20,8 @@ export const listProducts = () => async (dispatch) => {
         })
     }
 }
+
+
 
 export const detailsProduct = (productId) => async (dispatch) => {
     dispatch({

@@ -1,5 +1,6 @@
 import Header from "../components/Header"
 import React, { useEffect, useState } from "react"
+import { useParams } from "react-router";
 import ProductImage from "../components/Product/ProductImage";
 import ProductContents from "../components/Product/ProductContents";
 import Footer from "../components/Footer/Footer";
@@ -15,6 +16,7 @@ const HomePage = () => {
     })
 
     const dispatch = useDispatch();
+    const [category, setCategory] = '';
     const productList = useSelector((state) => state.productList);
     const { loading, products } = productList;
     const cart = useSelector((state) => state.cart);
@@ -30,8 +32,8 @@ const HomePage = () => {
     }
 
     useEffect(() => {
-        dispatch(listProducts());
-    }, [])
+        listProducts({})
+    }, [dispatch]);
     return (
         <>
 

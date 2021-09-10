@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-
+import { BsSearch } from 'react-icons/bs';
 import { MdShoppingCart } from 'react-icons/md'
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { signout } from '../actions/signinActions';
-const Header = () => {
+import { listProducts } from '../actions/productActions';
+const Header = (props) => {
     const [state] = useState({
         logo: '/assets/images/logo.png',
         logoEmpty: '/assets/images/emptycartsmall.png',
@@ -15,12 +16,12 @@ const Header = () => {
     const formate = (price) => {
         return `${price}.000`;
     }
+    const [name, setName] = useState('');
     const dispatch = useDispatch();
     const cart = useSelector((state) => state.cart);
     const { cartItems } = cart;
     const userSignin = useSelector((state) => state.userSignin);
     const { userInfo } = userSignin;
-
     return (
         <div className="header">
             <div className="container">
@@ -30,7 +31,8 @@ const Header = () => {
                             <div className='header__logo__text'>Fshop</div></Link>
                     </div>
                     <div className="header__search">
-                        <input type="text" className="header__search__input" placeholder="Bạn cần mua gì" />
+                        <input type="text" className="header__search__input" placeholder="Bạn cần mua gì" onChange={(e) => setName(e.target.value)} />
+                        <span className="header__search__button"><Link to={`/search/name/${name}`}><BsSearch size={18} /></Link></span>
                     </div>
 
                     <div className="header__right">
