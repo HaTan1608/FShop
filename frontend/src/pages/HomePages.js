@@ -11,8 +11,8 @@ import { addToCart } from "../actions/cartActions";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 const HomePage = () => {
     const [imageBitis] = useState({
-        image1: 'images/bitis1.PNG',
-        image2: 'images/bitis2.PNG',
+        image1: 'https://fshop-app.s3.us-east-2.amazonaws.com/bitis1.PNG',
+        image2: 'https://fshop-app.s3.us-east-2.amazonaws.com/bitis2.PNG',
     })
     const dispatch = useDispatch();
     const [category, setCategory] = '';
