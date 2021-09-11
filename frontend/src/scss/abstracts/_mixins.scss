@@ -47,6 +47,21 @@
     }
 }
 
+@mixin animationX($name,$duration,$timeFunction,$translate1,$translate2){
+    animation: $name $duration $timeFunction;
+    @keyframes #{$name} {
+        0%{
+            opacity:0;
+            transform: translateX($translate1);
+        }
+        100%{
+         opacity:1;
+         transform: translateX($translate2);
+        }
+        
+    }
+}
+
 @mixin toggleSpans($bg,$width,$height,$mt){
     display:block;
     background: $bg;

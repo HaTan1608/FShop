@@ -2,10 +2,6 @@
 .cities{
     margin:2rem 0;
     background:$silverLight-40;
-    transform: skewY(-1deg);
-    &__container{
-        transform:skewY(1deg);
-    }
     &__heading{
         @include align(flex,space-between,center,null);
         margin:0rem 1rem;

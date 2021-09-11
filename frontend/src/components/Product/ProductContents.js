@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { BsFillStarFill, BsStar, BsStarHalf } from 'react-icons/bs';
+import MessageBox from "../Message/MessageBox";
 const ProductContents = ({ name, price, ratingStar, addCart }) => {
     const formate = (price) => {
         return `${price}.000`;
     }
+    const [openMess, setOpenMess] = useState({ open: false, tittle: '', content: '', type: '', duration: 0 });
+
     const sendData = () => {
+        setOpenMess({ ...openMess, open: true, title: 'Thành công', content: 'Đã thêm sản phẩm vào giỏ hàng', type: 'success' })
         addCart();
     }
     const rating = (number) => {
@@ -26,8 +30,11 @@ const ProductContents = ({ name, price, ratingStar, addCart }) => {
         }
         return container;
     }
-    return (
+    return (<>
+        <MessageBox messData={openMess} />
         <div className="cities__body__contents">
+
+
             <div className="cities__body__contents__top">
                 <div className="cities__body__contents__top__name">{name}</div>
 
@@ -45,6 +52,7 @@ const ProductContents = ({ name, price, ratingStar, addCart }) => {
                 <button className='btn-default' onClick={sendData} >Thêm vào giỏ hàng</button>
             </div>
         </div>
+    </>
     )
 }
 export default ProductContents;

@@ -23,8 +23,23 @@
     }
 }
 .product__reviews{
-   margin-left: 10rem;
+   margin: 0rem 2rem;
    font-size:1.6rem;
+   width: 100%;
+   &__review{
+       padding: 2rem;
+       background:$silverLight-40;
+       margin: 0rem 1rem 1rem 1rem;
+       &__name{
+           font-weight: 600;
+           font-size:1.7rem;
+       }
+       &__date{
+           margin-left: 2rem;
+           font-size:1.5rem;
+           font-weight: 400;
+       }
+   }
 }
 .product__details{
     height:50rem;

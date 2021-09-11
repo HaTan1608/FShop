@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { addToCart } from '../../actions/cartActions';
 import { listProducts } from '../../actions/productActions';
+import LoadingBox from '../Message/LoadingBox';
 import ProductContents from './ProductContents';
 import ProductImage from './ProductImage';
 const ProductList = ({ category, gender, price }) => {
@@ -39,7 +40,7 @@ const ProductList = ({ category, gender, price }) => {
                 </select>
             </div>
         </div>
-        {loading ? '' : (
+        {loading ? <LoadingBox /> : (
             <div className="row">
                 {products.length > 0 ? products.map((product) => (
                     <div className="col-4 p-15" key={product._id}>

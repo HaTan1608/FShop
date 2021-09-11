@@ -14,7 +14,6 @@ const HomePage = () => {
         image1: 'images/bitis1.PNG',
         image2: 'images/bitis2.PNG',
     })
-
     const dispatch = useDispatch();
     const [category, setCategory] = '';
     const productList = useSelector((state) => state.productList);
@@ -32,7 +31,7 @@ const HomePage = () => {
     }
 
     useEffect(() => {
-        listProducts({})
+        dispatch(listProducts({}));
     }, [dispatch]);
     return (
         <>

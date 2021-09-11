@@ -30,23 +30,22 @@ const ProductsPage = () => {
 
     return (
         <>
-
             <Header />
             <div className='cities'>
                 <div className='container'>
-                    <div className='cities__container'>
-                        <div className="row mr-minus-15 ml-minus-15">
-                            <ProductBanner gender={gender} />
-                            <div className="col-2 p-15">
-                                <Menu getCategoryChild={getCategory} getPriceChild={getPrice} />
-                            </div>
 
-                            <div className="col-10 p-15">
-                                <ProductList gender={gender} price={checkPrice} category={category} />
-                            </div>
-
+                    <div className="row mr-minus-15 ml-minus-15">
+                        <ProductBanner gender={gender} />
+                        <div className="col-2 p-15">
+                            <Menu getCategoryChild={getCategory} getPriceChild={getPrice} />
                         </div>
+
+                        <div className="col-10 p-15">
+                            <ProductList gender={gender} price={checkPrice} category={category} />
+                        </div>
+
                     </div>
+
                 </div>
             </div>
             <Footer />

@@ -18,6 +18,7 @@ import ProductEditScreen from './pages/ProductEditScreen';
 import OrderListScreen from './pages/OrderListScreen.';
 import HomePage from './pages/HomePages';
 import SearchScreen from './pages/SearchScreen';
+import LoadingBox from './components/Message/LoadingBox';
 function App() {
   return (
 
@@ -36,6 +37,7 @@ function App() {
           component={ProductEditScreen}
           exact
         />
+
         <Route
           path="/search/name/:name?"
           component={SearchScreen}
@@ -56,6 +58,7 @@ function App() {
         <Route path="/checkout" exact component={InformationScreen} />
         <Route path="/payment" exact component={PaymentScreen} />
         <Route path="/order/:id" exact component={OrderDetails} />
+        <Route path='/loading' excart component={LoadingBox} />
       </Switch>
     </Router>
 
