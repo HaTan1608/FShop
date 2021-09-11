@@ -32,6 +32,7 @@ const HomePage = () => {
 
     useEffect(() => {
         dispatch(listProducts({}));
+        console.log(product3)
     }, [dispatch]);
     return (
         <>
