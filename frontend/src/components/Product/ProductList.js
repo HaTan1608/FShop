@@ -14,6 +14,7 @@ const ProductList = ({ category, gender, price }) => {
     const addToCartHandler = (productId) => {
         dispatch(addToCart(productId, 1));
     }
+
     useEffect(() => {
         dispatch(
             listProducts({
@@ -30,29 +31,33 @@ const ProductList = ({ category, gender, price }) => {
             <div className="heading fw-900 fz-3 ">NAM</div> :
             <div className="heading fw-900 fz-3 ">NỮ</div>}
 
-        <div className="cities__heading">
-            {loading ? '' : (<div className="cities__heading__result">Có {products.length} sản phẩm</div>)}
 
-            <div className="cities__heading__select">
-                <select onChange={(e) => setOrderBy(e.target.value)}>
-                    <option value="lowest">Rẻ nhất</option>
-                    <option value="highest">Mắc nhất</option>
-                </select>
-            </div>
-        </div>
         {loading ? <LoadingBox /> : (
-            <div className="row">
-                {products.length > 0 ? products.map((product) => (
-                    <div className="col-4 p-15" key={product._id}>
-                        <div className="cities__body">
-                            <Link to={`/product/${product._id}`}>
-                                <ProductImage img={product.image} />
-                            </Link>
-                            <ProductContents ratingStar={product.rating} name={product.name} price={product.price} addCart={() => addToCartHandler(product._id)} />
-                        </div>
+            <>
+                <div className="cities__heading">
+                    {loading ? '' : (<div className="cities__heading__result">Có {products.length} sản phẩm</div>)}
+
+                    <div className="cities__heading__select">
+                        <select onChange={(e) => setOrderBy(e.target.value)}>
+                            <option value="lowest">Rẻ nhất</option>
+                            <option value="highest">Mắc nhất</option>
+                        </select>
                     </div>
-                )) : ''}
-            </div>
+                </div>
+                <div className="row">
+
+                    {products.length > 0 ? products.map((product) => (
+                        <div className="col-4 p-15" key={product._id}>
+                            <div className="cities__body">
+                                <Link to={`/product/${product._id}`}>
+                                    <ProductImage img={product.image} />
+                                </Link>
+                                <ProductContents ratingStar={product.rating} name={product.name} price={product.price} addCart={() => addToCartHandler(product._id)} />
+                            </div>
+                        </div>
+                    )) : ''}
+                </div>
+            </>
         )}
     </>
     )

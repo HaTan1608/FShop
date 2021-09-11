@@ -53,16 +53,45 @@ export default function ProductScreen(props) {
         <>
 
             <Header />
-            {loading ? (
-                <LoadingBox />
-            ) : (<>
-                <div className="product__details">
+            <div className="product__details">
+                {loading ? (
+                    <LoadingBox />
+                ) : (<>
                     <MessageBox messData={openMess} />
                     <div className="container">
                         <div className="row ">
                             <div className="col-6">
                                 <div className="row">
                                     <div className="col-3">
+                                        <div className="product__details__slide">
+                                            <div className="product__details__slide__img">
+                                                <LazyLoadImage
+                                                    src={product.image}
+                                                    alt={product.name}
+                                                />
+                                            </div>
+                                            <div className="product__details__slide__img">
+                                                <LazyLoadImage
+                                                    src={product.image}
+                                                    alt={product.name}
+                                                />
+                                            </div><div className="product__details__slide__img">
+                                                <LazyLoadImage
+                                                    src={product.image}
+                                                    alt={product.name}
+                                                />
+                                            </div><div className="product__details__slide__img">
+                                                <LazyLoadImage
+                                                    src={product.image}
+                                                    alt={product.name}
+                                                />
+                                            </div><div className="product__details__slide__img">
+                                                <LazyLoadImage
+                                                    src={product.image}
+                                                    alt={product.name}
+                                                />
+                                            </div>
+                                        </div>
                                     </div>
                                     <div className="col-9">
                                         <div className="product__details__image">
@@ -115,33 +144,35 @@ export default function ProductScreen(props) {
                             </div>
                         </div>
                     </div>
-                </div>
-                <div className="container"> <div className="row">
-                    <div className="product__reviews"><h2 className="heading">Nhận xét & đánh giá</h2>
-                        {product.reviews.length === 0 && (
-                            <div className="product__reviews__review__comment">Chưa có nhận xét đánh giá nào</div>
-                        )}
-                        {product.reviews.map((review) => (
-                            <div className="product__reviews__review">
-                                <div className="product__reviews__review__name">
-                                    {review.name}
-                                    <span className="product__reviews__review__date">
-                                        {review.createdAt.substring(0, 10)}
-                                    </span>
+                    <div className="container"> <div className="row">
+                        <div className="product__reviews"><h2 className="heading">Nhận xét & đánh giá</h2>
+                            {product.reviews.length === 0 && (
+                                <div className="product__reviews__review__comment">Chưa có nhận xét đánh giá nào</div>
+                            )}
+                            {product.reviews.map((review) => (
+                                <div className="product__reviews__review">
+                                    <div className="product__reviews__review__name">
+                                        {review.name}
+                                        <span className="product__reviews__review__date">
+                                            {review.createdAt.substring(0, 10)}
+                                        </span>
+                                    </div>
+                                    <div className="product__reviews__review__rating">
+                                        {rating1(review.rating, 17)}
+                                    </div>
+                                    <div className="product__reviews__review__comment">
+                                        {review.comment}
+                                    </div>
                                 </div>
-                                <div className="product__reviews__review__rating">
-                                    {rating1(review.rating, 17)}
-                                </div>
-                                <div className="product__reviews__review__comment">
-                                    {review.comment}
-                                </div>
-                            </div>
-                        ))}
+                            ))}
+                        </div>
                     </div>
-                </div>
-                </div>
-            </>
-            )}
+                    </div>
+
+
+                </>
+                )}
+            </div>
             <Footer />
         </>
 

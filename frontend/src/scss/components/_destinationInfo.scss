@@ -42,8 +42,8 @@
    }
 }
 .product__details{
-    height:50rem;
     margin-top: 5rem;
+    min-height: 43rem;
     &__image{
         width: 100%;
         height: 40rem;
@@ -54,6 +54,22 @@
             
             cursor: pointer;
             margin:auto;
+        }
+    }
+    &__slide{
+        width: 100%;
+        height: 100%;
+      
+        &__img{
+            margin:1rem;
+            @include align(flex,center,center,null);
+        img{
+        
+            width: auto;
+            height:7rem;
+            
+            cursor: pointer;
+        }
         }
     }
     &__contents{

@@ -5,6 +5,8 @@ import { listOrderMine } from '../actions/orderActions';
 import { detailsUser, updateUserProfile } from '../actions/userActions';
 import Footer from '../components/Footer/Footer';
 import Header from '../components/Header';
+import LoadingBox from '../components/Message/LoadingBox';
+import MessageBox from '../components/Message/MessageBox';
 import { USER_UPDATE_PROFILE_RESET } from '../types/userTypes';
 
 export default function ProfileScreen() {
@@ -48,34 +50,42 @@ export default function ProfileScreen() {
         }
 
     }, [dispatch, userInfo._id, user]);
+    const [openMess, setOpenMess] = useState({ open: false, tittle: '', content: '', type: '', duration: 0 });
+
     const submitHandler = (e) => {
+        console.log('sfsdafds')
         e.preventDefault();
         if (password !== confirmPassword) {
-            alert('Password and Confirm Password Are Not Matched');
+            setOpenMess({ ...openMess, open: true, title: 'Thất bại', content: 'Mật khẩu xác nhận không đúng', type: 'error' })
         } else {
             dispatch(updateUserProfile({ userId: user._id, name, email, password }));
+
+            setOpenMess({ ...openMess, open: true, title: 'Thành công', content: 'Cập nhật thông tin thành công', type: 'success' })
         }
     };
     return (
         <>
             <Header />
+
             <div className="profile">
-                <div className="container">
 
 
-                    {loading ? (
-                        ''
-                    ) : error ? (
-                        ''
-                    ) : (
-                        <>
-                            {loadingUpdate && ''}
-                            {errorUpdate && (
-                                ''
-                            )}
-                            {successUpdate && (
-                                ''
-                            )}
+
+                {loading ? (
+                    <LoadingBox />
+                ) : error ? (
+                    ''
+                ) : (
+                    <>
+                        {loadingUpdate && ""}
+                        {errorUpdate && (
+                            <MessageBox messData={openMess} />
+                        )}
+                        {successUpdate && (
+                            <MessageBox messData={openMess} />
+                        )}
+
+                        <div className="container">
                             <div className="row">
                                 <div className="col-2"></div>
                                 <div className="col-5">
@@ -124,13 +134,13 @@ export default function ProfileScreen() {
                                 <div className="col-1"></div>
                             </div>
 
-                        </>
-                    )}
 
-                </div>
+                        </div>
+                    </>
+                )}
             </div>
-
             <Footer />
+
         </>
     );
 }
