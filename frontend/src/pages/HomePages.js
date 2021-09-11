@@ -66,7 +66,7 @@ const HomePage = () => {
                     </div>
                     {loading ? '' : (
                         <div className="row">
-                            {product3.length > 0 ? product3.map((product) => (
+                            {product3.length > 2 ? product3.map((product) => (
                                 <div className="col-4 p-15" key={product._id}>
                                     <div className="cities__body">
                                         <Link to={`/product/${product._id}`}>
@@ -95,7 +95,7 @@ const HomePage = () => {
                                 <div className="col-4 p-15" key={product._id}>
                                     <div className="cities__body">
                                         <Link to={`/product/${product._id}`}>
-                                            <ProductImage img={product.image[0].image} />
+                                            <ProductImage img={product.images[0].image} />
                                         </Link>
                                         <ProductContents ratingStar={product.rating} name={product.name} price={product.price} addCart={() => addToCartHandler(product._id)} />
 
