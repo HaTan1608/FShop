@@ -80,7 +80,7 @@ const HomePage = () => {
                         </div>
                     )}
                     <div className="homepage__button">
-                        <button className='btn-orange' ><Link to='/products'>Xem thêm sản phẩm</Link></button>
+                        <button className='btn-orange' ><Link to='/products/male'>Xem thêm sản phẩm</Link></button>
 
                     </div>
                     <div className="homepage__heading">
@@ -105,7 +105,7 @@ const HomePage = () => {
                         </div>
                     )}
                     <div className="homepage__button">
-                        <button className='btn-orange' ><Link to='/products'>Xem thêm sản phẩm</Link></button>
+                        <button className='btn-orange' ><Link to='/products/famale'>Xem thêm sản phẩm</Link></button>
 
                     </div>
 

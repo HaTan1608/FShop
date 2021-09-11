@@ -3,7 +3,7 @@ import expressAsyncHandler from 'express-async-handler';
 import data from '../data.js';
 import Product from '../models/productModel.js';
 
-import { isAdmin, isAuth } from '../utils.js';
+import { isAuth } from '../utils.js';
 const productRouter = express.Router();
 
 productRouter.get(
@@ -71,19 +71,15 @@ productRouter.get(
 
 productRouter.post(
     '/',
-    isAuth,
-    isAdmin,
     expressAsyncHandler(async (req, res) => {
         const product = new Product({
             name: 'samle name ' + Date.now(),
-            image: '/images/p1.jpg',
             price: 0,
             category: 'sample category',
             gender: 'sample brand',
             countInStock: 0,
             rating: 0,
             numReviews: 0,
-            description: 'sample description',
         });
         const createdProduct = await product.save();
         res.send({ message: 'Product Created', product: createdProduct });
@@ -92,11 +88,10 @@ productRouter.post(
 
 
 productRouter.put(
-    '/:id',
-    isAuth,
-    isAdmin,
+    '/update/:id',
     expressAsyncHandler(async (req, res) => {
         const productId = req.params.id;
+        console.log(req.body.name)
         const product = await Product.findById(productId);
         if (product) {
             product.name = req.body.name;
@@ -104,7 +99,6 @@ productRouter.put(
             product.category = req.body.category;
             product.gender = req.body.gender;
             product.countInStock = req.body.countInStock;
-            product.description = req.body.description;
             const updatedProduct = await product.save();
             res.send({ message: 'Product Updated', product: updatedProduct });
         } else {
@@ -115,8 +109,6 @@ productRouter.put(
 
 productRouter.delete(
     '/:id',
-    isAuth,
-    isAdmin,
     expressAsyncHandler(async (req, res) => {
         const product = await Product.findById(req.params.id);
         if (product) {
@@ -154,6 +146,28 @@ productRouter.post(
             res.status(201).send({
                 message: 'Review Created',
                 review: updatedProduct.reviews[updatedProduct.reviews.length - 1],
+            });
+        } else {
+            res.status(404).send({ message: 'Product Not Found' });
+        }
+    })
+);
+
+productRouter.post(
+    '/images/images/:id',
+    expressAsyncHandler(async (req, res) => {
+        console.log("asdsadsa");
+        const productId = req.params.id;
+        const product = await Product.findById(productId);
+        if (product) {
+            const image = {
+                image: req.body.image
+            };
+            product.images.push(image);
+            const updatedProduct = await product.save();
+            res.status(201).send({
+                message: 'Add images congra',
+                image: updatedProduct.images[updatedProduct.images.length - 1],
             });
         } else {
             res.status(404).send({ message: 'Product Not Found' });

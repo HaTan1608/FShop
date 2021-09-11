@@ -13,7 +13,6 @@ export default function ProductScreen(props) {
     const productId = props.match.params.id;
     const productDetails = useSelector((state) => state.productDetails);
     const { loading, product } = productDetails;
-
     const [qty, setQty] = useState(1);
     const [openMess, setOpenMess] = useState({ open: false, tittle: '', content: '', type: '', duration: 0 });
 
@@ -39,6 +38,7 @@ export default function ProductScreen(props) {
         }
         return container;
     }
+    const [mainImage, setMainImage] = useState(0);
 
     const addToCartHandler = (id, qty) => {
         setOpenMess({ ...openMess, open: true, title: 'Thành công', content: 'Đã thêm sản phẩm vào giỏ hàng', type: 'success' })
@@ -61,46 +61,23 @@ export default function ProductScreen(props) {
                     <div className="container">
                         <div className="row ">
                             <div className="col-6">
-                                <div className="row">
-                                    <div className="col-3">
-                                        <div className="product__details__slide">
-                                            <div className="product__details__slide__img">
-                                                <LazyLoadImage
-                                                    src={product.image}
-                                                    alt={product.name}
-                                                />
-                                            </div>
-                                            <div className="product__details__slide__img">
-                                                <LazyLoadImage
-                                                    src={product.image}
-                                                    alt={product.name}
-                                                />
-                                            </div><div className="product__details__slide__img">
-                                                <LazyLoadImage
-                                                    src={product.image}
-                                                    alt={product.name}
-                                                />
-                                            </div><div className="product__details__slide__img">
-                                                <LazyLoadImage
-                                                    src={product.image}
-                                                    alt={product.name}
-                                                />
-                                            </div><div className="product__details__slide__img">
-                                                <LazyLoadImage
-                                                    src={product.image}
-                                                    alt={product.name}
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-9">
-                                        <div className="product__details__image">
+
+                                <div className="product__details__image">
+                                    <LazyLoadImage
+                                        src={product.images[mainImage].image}
+                                        alt={product.images[mainImage].image}
+                                    />
+                                </div>
+                                <div className="product__details__slide">
+                                    {product.images.map((image, index) => (
+                                        <div className="product__details__slide__img" onClick={() => setMainImage(index)}>
                                             <LazyLoadImage
-                                                src={product.image}
-                                                alt={product.name}
+                                                src={image.image}
+                                                alt={image.image}
                                             />
                                         </div>
-                                    </div>
+                                    ))}
+
                                 </div>
                             </div>
                             <div className="col-6">
@@ -139,7 +116,9 @@ export default function ProductScreen(props) {
                                     <div className="product__details__contents__description__heading">
                                         Mô tả sản phẩm
                                     </div>
-                                    <div className="product__details__contents__description__msg">{product.description}</div>
+                                    <ul className="product__details__contents__description__msg">
+                                        {product.descriptions.map(x => (<li> {x.text} </li>))}
+                                    </ul>
                                 </div>
                             </div>
                         </div>

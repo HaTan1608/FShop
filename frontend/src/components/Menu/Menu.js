@@ -4,9 +4,9 @@ const Menu = ({ getCategoryChild, getPriceChild }) => {
         if (document.getElementById('bitis').checked === true && document.getElementById('sandals').checked === true) {
             getCategoryChild('all')
         } else if (document.getElementById('bitis').checked === true && document.getElementById('sandals').checked === false) {
-            getCategoryChild('Bitis')
+            getCategoryChild('bitis')
         } else if (document.getElementById('bitis').checked === false && document.getElementById('sandals').checked === true) {
-            getCategoryChild('Sandals')
+            getCategoryChild('sandals')
         } else {
             getCategoryChild('all')
         }

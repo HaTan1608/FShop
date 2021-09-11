@@ -14,12 +14,13 @@ const reviewSchema = new mongoose.Schema(
 
 const imageSchema = new mongoose.Schema(
     {
-        name: { type: String, required: true },
-        comment: { type: String, required: true },
-        rating: { type: Number, required: true },
-    },
+        image: { type: String, required: true },
+    }
+);
+
+const descriptionSchema = new mongoose.Schema(
     {
-        timestamps: true,
+        description: { type: String, required: true },
     }
 );
 const productSchema = new mongoose.Schema(
@@ -28,7 +29,7 @@ const productSchema = new mongoose.Schema(
         images: [imageSchema],
         gender: { type: String, required: true },
         category: { type: String, required: true },
-        description: { type: String, required: true },
+        descriptions: [descriptionSchema],
         price: { type: Number, required: true },
         countInStock: { type: Number, required: true },
         rating: { type: Number, required: true },

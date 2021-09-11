@@ -39,7 +39,8 @@ const ProductList = ({ category, gender, price }) => {
 
                     <div className="cities__heading__select">
                         <select onChange={(e) => setOrderBy(e.target.value)}>
-                            <option value="lowest">Rẻ nhất</option>
+                            <option value="all">Sắp xếp</option>
+                            <option value="lowest" >Rẻ nhất</option>
                             <option value="highest">Mắc nhất</option>
                         </select>
                     </div>
@@ -50,7 +51,7 @@ const ProductList = ({ category, gender, price }) => {
                         <div className="col-4 p-15" key={product._id}>
                             <div className="cities__body">
                                 <Link to={`/product/${product._id}`}>
-                                    <ProductImage img={product.image} />
+                                    <ProductImage img={product.images[0].image} />
                                 </Link>
                                 <ProductContents ratingStar={product.rating} name={product.name} price={product.price} addCart={() => addToCartHandler(product._id)} />
                             </div>
