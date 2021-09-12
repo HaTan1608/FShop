@@ -5,6 +5,8 @@ import { MdShoppingCart } from 'react-icons/md'
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { signout } from '../actions/signinActions';
+import Toggle from './Menu/Toggle';
+import SearchBox from './Menu/SearchBox';
 const Header = () => {
     const [state] = useState({
         logo: '/assets/images/logo.png',
@@ -14,24 +16,35 @@ const Header = () => {
     const formate = (price) => {
         return `${price}.000`;
     }
-    const [name, setName] = useState('');
     const dispatch = useDispatch();
     const cart = useSelector((state) => state.cart);
     const { cartItems } = cart;
     const userSignin = useSelector((state) => state.userSignin);
     const { userInfo } = userSignin;
+    const [openSearch, setOpenSearch] = useState(false);
+    const [openToggle, setOpenToggle] = useState(false);
+    const getToggle = () => {
+        setOpenToggle(!openToggle);
+    }
     return (
         <div className="header">
             <div className="container">
                 <div className="row header__container">
+                    <Toggle getOpen={getToggle} />
+                    <BsSearch className="search" onClick={() => setOpenSearch(!openSearch)} />
+
+                    {openSearch ? <div className='navLayer zi-10' onClick={() => setOpenSearch(!openSearch)}></div> : ''}
+
+                    <div className={openSearch ? 'header__search__small header__search__small--open' : 'header__search__small header__search__small--close'} >
+
+                        <SearchBox />
+                    </div>
+
                     <div className="header__logo">
                         <Link to='/'>
                             <div className='header__logo__text'>Fshop</div></Link>
                     </div>
-                    <div className="header__search">
-                        <input type="text" className="header__search__input" placeholder="Bạn cần mua gì" onChange={(e) => setName(e.target.value)} />
-                        <span className="header__search__button"><Link to={`/search/name/${name}`}><BsSearch size={18} /></Link></span>
-                    </div>
+                    <SearchBox />
 
                     <div className="header__right">
                         <div className="header__right__cart__icon">
@@ -133,11 +146,23 @@ const Header = () => {
 
                     </div >
                 </div >
-                <div className="row header__links">
-                    <Link to=''>About Fshop</Link>
-                    <Link to='/products/male'>Nam</Link>
-                    <Link to='/products/famale'>Nữ</Link>
-                    <Link to=''>Khuyến mãi</Link>
+                <div className="row ">
+                    <div className={openToggle ? "header__links header__links--open" : "header__links header__links--close"}>
+                        <div className="header__links__small">
+                            <div>
+                                <Link to=''>About Fshop</Link></div>
+                            <div>
+                                <Link to='/products/male'>Nam</Link></div>
+
+                            <div>
+                                <Link to='/products/famale'>Nữ</Link></div>
+
+                            <div>
+                                <Link to=''>Khuyến mãi</Link></div>
+                            <div className="header__links__small__add"> <Link to=''>Đăng nhập</Link></div>
+                            <div className="header__links__small__add"> <Link to=''>Tạo tài khoản</Link></div>
+                        </div>
+                    </div>
                 </div>
 
             </div >

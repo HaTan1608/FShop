@@ -1,11 +1,23 @@
+@use '../abstracts' as *;
 .homepage{
     &__heading{
+        
+
         font-size:2rem;
         display:flex;
         justify-content: center;
         h1{
             padding:3rem 0rem;
         }
+        @include responsive(medium){ font-size:1.8rem;h1{
+            padding:2.7rem 0rem;
+        }}
+        @include responsive(small){font-size:1.6rem;h1{
+            padding:2.4rem 0rem;
+        }}
+        @include responsive(xsmall){font-size:1.5rem;h1{
+            padding:2.2rem 0rem;
+        }}
     }
     &__text{
         font-size:2rem;
@@ -14,6 +26,9 @@
         div{
             padding-bottom: 2rem;
         }
+        @include responsive(medium){font-size:1.8rem;}
+        @include responsive(small){font-size:1.6rem;}
+        @include responsive(xsmall){font-size:1.5rem;}
     }
     &__button{
         display:flex;
@@ -22,5 +37,30 @@
             color:white;
             text-decoration: none;
         }
+    }
+    &__banner{
+      
+            width: 100%;
+            overflow: hidden;
+            border-top-left-radius: 1rem;
+            border-top-right-radius: 1rem;;
+            position: relative;
+            
+              
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                
+                image-rendering: pixelated;
+                transition:all .5s linear;
+               
+                &:hover{
+                    transform: scale(1.2);
+                }
+                
+                
+            }
+        
     }
 }

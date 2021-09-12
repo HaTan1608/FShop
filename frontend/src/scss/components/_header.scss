@@ -3,28 +3,126 @@
     width:100%;
     height: 80%;
     background: linear-gradient(to right, $main1,$main2);
+    @include responsive(medium){
+           
+    }
+    @include responsive(small){
+        min-height: 6rem;
+    }
+    @include responsive(xsmall){
+        min-height: 4rem;
+    }
     &__links{
-        @include align(flex,center,center,null);
+       
             
         margin-top: -2rem;
         padding:2rem 0rem;
+        width:100%;
+        font-weight: 700;
+        font-size:2rem;
+        @include responsive(medium){
+           font-size:1.7rem;
+           margin-top:-.8rem;
+        }
+       
         a{ 
             text-decoration: none;
             text-transform: uppercase;
             color:$white;
-            font-weight: 700;
-            font-size:2rem;
             margin-top: -1rem!important;
             margin:0rem 2rem;
             &:hover{
             color:#ffca55;
             }
+            @include responsive(small){
+                width:100%;
+            }
+            @include responsive(xsmall){
+                
+                width:100%;
+            }
          }
+         @include responsive(small){
+             z-index: 4;
+            transition: all .3s linear;
+            position: fixed;
+            display:block;
+            width:65%;
+            height:100%;
+            left:0;
+            top:0;
+            background: $silverDark;
+        
+             &--open{
+               
+                transform: translateX(0);
+             }
+             &--close{
+                transform: translateX(-100%);
+             }
+          
+           
+        }
+        @include responsive(xsmall){
+            
+            z-index: 4;
+            transition: all .3s linear;
+            position: fixed;
+            display:block;
+            width:65%;
+            height:100%;
+            left:0;
+            top:0;
+            background: $silverDark;
+            &--open{
+                transform: translateX(0);
+             }
+             &--close{
+                
+                transform: translateX(-100%);
+             }
+           
+        }
+        &__small{
+             @include align(flex,center,center,null);
+            @include responsive(small){
+                display:block;
+                margin-top:5rem;
+                div{
+                    padding: .5rem 0rem;
+                    border-bottom:dotted 1px $white;
+                }
+            }
+                @include responsive(xsmall){
+                    
+                display:block;
+                    margin-top:4rem;
+                }
+
+            &__add{
+                display:none;
+                @include responsive(small){
+                    display:block;
+                }
+                    @include responsive(xsmall){
+                        display:block;
+                    }
+            }    
+        }
     }
     &__search{
-        width:60rem;
+        width:50%;
         @include align(flex,center,center,null);
         position: relative;
+        @include responsive(medium){
+            width:40%;
+        }
+        @include responsive(small){
+            display: none;
+        }
+        @include responsive(xsmall){
+            display:none;
+        }
         &__input{
             width:100%;
             padding:1rem;
@@ -40,7 +138,11 @@
             a{
                 color:$main1;
             }
+            @include responsive(medium){
+                right:-1.3rem;
+            }
         }
+      
     }
     &__container{
        @include align(flex,space-between,center,null);
@@ -48,14 +150,53 @@
     &__logo{
         margin-top:1.5rem;
         margin-left: 2rem;
+        @include responsive(medium){
+            font-size: 4rem;
+            margin-top:1.2rem;
+            margin-left: 1.6rem;
+        }
+        @include responsive(small){
+            font-size: 3rem;
+            margin-top:.9rem;
+            margin-left: 1.2rem;
+            
+            width: 100%;
+            position: relative;
+        }
+        @include responsive(xsmall){
+            font-size: 2rem;
+            margin-top:.6rem;
+            margin-left: .8rem;
+        
+            width: 100%;
+            position: relative;
+        }
         &__text{
             font-family: "Leckerli One";
             font-size:5rem;
+            @include responsive(medium){
+                font-size: 4rem;
+
+            }
+            @include responsive(small){
+                font-size: 3rem;
+                
+            position: absolute;
+                left:45%;
+            }
+            @include responsive(xsmall){
+                font-size: 2rem;    
+                position: absolute;
+            
+                left:45%;
+            }
         color:white;
         }
         a{
             text-decoration: none;
+          
         }
+      
     }
     &__cart__count{
         position: absolute;
@@ -66,13 +207,47 @@
         border-radius: 1rem;
         color:$main1;
         background: $white;
+        @include responsive(medium){
+            font-size: 1.5rem;
+            left:4rem;
+        bottom:2.2rem;
+        }
+        @include responsive(small){
+            font-size: 1.5rem;
+            left:2.5rem;
+        bottom:2.2rem;
+        
+        }
+        @include responsive(xsmall){
+            font-size: 1rem;
+            left:1.5rem;
+        bottom:2rem;
+        }
     }
     &__right{
-        @include align(flex,space-between,center,10vh);
+        @include align(flex,space-between,center,null);
         font-weight:900 ;
         font-size: 2.2rem;
         color:$white;
         position: relative;
+        @include responsive(medium){
+            font-size: 1.9rem;
+
+        }
+        @include responsive(small){
+            font-size: 1.6rem;
+            min-height: 6rem;
+            position: absolute;
+            right:1rem;
+            margin-top:4rem;
+        }
+        @include responsive(xsmall){
+            font-size: 1.3rem;    
+            min-height: 4rem;
+            position: absolute;
+            right:1rem;
+            margin-bottom: 2rem;
+        }
         a {
             margin-right:3rem;
             color: inherit;
@@ -95,8 +270,21 @@
             margin-top:1rem;
         }
         &__cart__icon{
-            margin-right:6rem;
+            margin-right:4rem;
             margin-top:2rem;
+            @include responsive(medium){
+                margin-right:1rem;
+                margin-top:2rem;
+                font-size:1rem;
+            }
+            @include responsive(small){
+                margin-right:.2rem;
+                margin-top:2rem;
+                font-size:1rem;
+            }
+            @include responsive(xsmall){
+                margin-left: 1rem;
+            }
         }
         &__user{
             
@@ -158,4 +346,106 @@
         color:$silverDark!important;
         @include align(flex,space-between,null,null);
     }
+    
+&__search__small{
+    display:none;
+    
+    
+     @include responsive(small){
+        display:block;
+        width:100%;
+        top:4rem;
+        left:0;
+        position: fixed;
+        
+        transition: all .3s linear;
+        .header__search{
+            display:block;
+            margin-top:.5rem;
+            width:100%;
+            padding:1rem;
+          
+            .header__search__button{
+                margin-right:2.5rem;
+                margin-top:.7rem;
+            }
+        }
+        &--open{
+            z-index:99999;
+            transform: translateY(0);
+         }
+         &--close{
+            transform: translateY(-100rem);
+         }
+      }
+      @include responsive(xsmall){
+         
+        width:100%;
+    top:4rem;
+    left:0;
+    position: fixed;
+    display:block;
+    
+    transition: all .3s linear;
+    .header__search{
+        display:block;
+        margin-top:.5rem;
+        width:100%;
+        padding:1rem;
+      
+        .header__search__button{
+            margin-right:2.5rem;
+            margin-top:.7rem;
+        }
+    }
+    transition: all .3s linear;
+    &--open{
+               
+        transform: translateY(0);
+     }
+     &--close{
+        transform: translateY(-100rem);
+     }
+      }
+}
+}
+
+svg{
+    @include responsive(medium){
+        width:7rem;
+    }
+    @include responsive(small){
+        
+      width:4rem;
+    }
+    @include responsive(xsmall){
+       
+      width:2rem;
+    }
+}
+
+.search{
+    color:$white;
+    
+    display:none;
+    @include responsive(small){
+        display:block;
+      position: absolute;
+      font-size:2.2rem;
+      font-weight: 900;
+      top:2rem;
+      left:7rem;
+   
+      
+    }
+    @include responsive(xsmall){
+        display:block;
+      
+      font-size:2rem;
+      top:1rem;
+      
+      left:6rem;
+      position: absolute;
+    }
+    
 }

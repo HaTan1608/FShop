@@ -1,8 +1,10 @@
 @use "../abstracts" as *;
 .reviews{
     width: 100%;
+    font-weight: 700!important;
     margin:16rem 0;
     &__body{
+        
         background: $silverLight-40;
         padding:1rem;
         border-radius:.3rem;

@@ -8,6 +8,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { addToCart } from '../actions/cartActions';
 import LoadingBox from '../components/Message/LoadingBox';
 import MessageBox from '../components/Message/MessageBox';
+import SlideImage from '../components/Product/SlideImage';
 export default function ProductScreen(props) {
     const dispatch = useDispatch();
     const productId = props.match.params.id;
@@ -39,7 +40,18 @@ export default function ProductScreen(props) {
         return container;
     }
     const [mainImage, setMainImage] = useState(0);
-
+    const getIndexImage = (index) => {
+        if (index > 0) {
+            if (mainImage < product.images.length - 1) {
+                setMainImage(mainImage + index);
+            }
+        }
+        if (index < 0) {
+            if (mainImage > 0) {
+                setMainImage(mainImage + index);
+            }
+        }
+    }
     const addToCartHandler = (id, qty) => {
         setOpenMess({ ...openMess, open: true, title: 'Thành công', content: 'Đã thêm sản phẩm vào giỏ hàng', type: 'success' })
         dispatch(addToCart(id, qty));
@@ -62,15 +74,10 @@ export default function ProductScreen(props) {
                         <div className="row ">
                             <div className="col-6">
 
-                                <div className="product__details__image">
-                                    <LazyLoadImage
-                                        src={product.images[mainImage].image}
-                                        alt={product.images[mainImage].image}
-                                    />
-                                </div>
+                                <SlideImage image={product.images[mainImage].image} getIndex={getIndexImage} />
                                 <div className="product__details__slide">
                                     {product.images.map((image, index) => (
-                                        <div className="product__details__slide__img" onClick={() => setMainImage(index)}>
+                                        <div className="product__details__slide__img" onClick={() => setMainImage(index)} key={index}>
                                             <LazyLoadImage
                                                 src={image.image}
                                                 alt={image.image}
@@ -113,17 +120,18 @@ export default function ProductScreen(props) {
                                             <button className="btn-dark mb-2" disabled>Thêm vào giỏ hàng</button>
                                         </>
                                     )}
-                                    <div className="product__details__contents__description__heading">
-                                        Mô tả sản phẩm
-                                    </div>
-                                    <ul className="product__details__contents__description__msg">
-                                        {product.descriptions.map(x => (<li> {x.text} </li>))}
-                                    </ul>
+
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div className="container"> <div className="row">
+                    <div className="container"> <div className="row"><div className="product__reviews">
+                        <div className="heading">
+                            Mô tả sản phẩm
+                        </div>
+                        <ul className="product__details__contents__description__msg">
+                            {product.descriptions.map((x, index) => (<li key={index}> {x.text} </li>))}
+                        </ul></div>
                         <div className="product__reviews"><h2 className="heading">Nhận xét & đánh giá</h2>
                             {product.reviews.length === 0 && (
                                 <div className="product__reviews__review__comment">Chưa có nhận xét đánh giá nào</div>

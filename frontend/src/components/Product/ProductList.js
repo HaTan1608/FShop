@@ -50,16 +50,19 @@ const ProductList = ({ category, gender, price }) => {
                     {products.length > 0 ? products.map((product) => (
                         <div className="col-4 p-15" key={product._id}>
                             <div className="cities__body">
-                                <Link to={`/product/${product._id}`}>
-                                    <ProductImage img={product.images[0].image} />
-                                </Link>
+                                <div className="cities__body__image1">
+                                    <Link to={`/product/${product._id}`}>
+                                        <ProductImage img={product.images[0].image} />
+                                    </Link></div>
+
                                 <ProductContents ratingStar={product.rating} name={product.name} price={product.price} addCart={() => addToCartHandler(product._id)} />
                             </div>
                         </div>
                     )) : ''}
                 </div>
             </>
-        )}
+        )
+        }
     </>
     )
 }

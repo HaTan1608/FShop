@@ -36,10 +36,12 @@ const HomePage = () => {
     }, [dispatch]);
     return (
         <>
-
             <Header />
             <div className="homepage">
-                <LazyLoadImage src={imageBitis.image1} alt={imageBitis.image} />
+                <div className="homepage__banner">
+                    <LazyLoadImage src={imageBitis.image1} alt={imageBitis.image} />
+                </div>
+
                 <div className="container">
 
                     <div className="homepage__heading">
@@ -56,7 +58,10 @@ const HomePage = () => {
                     </div>
 
                 </div>
-                <LazyLoadImage src={imageBitis.image2} alt={imageBitis.image} />
+                <div className="homepage__banner">
+                    <LazyLoadImage src={imageBitis.image2} alt={imageBitis.image} />
+                </div>
+
                 <div className="container">
 
                     <div className="homepage__heading">
