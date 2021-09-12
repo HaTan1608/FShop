@@ -25,7 +25,10 @@ const ProductsPage = () => {
     const getCategory = (category) => {
         setCategory(category);
     }
-
+    const [toggle, setToggle] = useState(false);
+    const getToggle = () => {
+        setToggle(!toggle);
+    }
 
 
     return (
@@ -35,13 +38,14 @@ const ProductsPage = () => {
                 <div className='container'>
 
                     <div className="row mr-minus-15 ml-minus-15">
+
                         <ProductBanner gender={gender} />
-                        <div className="col-2 p-15">
+                        <div className={toggle ? "menu__small" : "col-2 p-15 m-0"}>
                             <Menu getCategoryChild={getCategory} getPriceChild={getPrice} />
                         </div>
 
-                        <div className="col-10 p-15">
-                            <ProductList gender={gender} price={checkPrice} category={category} />
+                        <div className="col-10 p-15 m-12">
+                            <ProductList getToggleChild={getToggle} gender={gender} price={checkPrice} category={category} />
                         </div>
 
                     </div>

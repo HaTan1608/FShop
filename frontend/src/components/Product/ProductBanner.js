@@ -7,7 +7,7 @@ const ProductBanner = ({ gender }) => {
     })
 
     return (
-        <div className="cities__banner">
+        <div className="homepage__banner">
             {gender === 'male' ?
                 <LazyLoadImage src={imageBitisMan.imageMale} alt='banner man' /> :
                 <LazyLoadImage src={imageBitisMan.imageFamale} alt='banner man' />}

@@ -3,13 +3,18 @@
     width:100%;
     height: 80%;
     background: linear-gradient(to right, $main1,$main2);
+    padding-top:2rem;
     @include responsive(medium){
-           
+           padding-top: 1.5rem;
     }
     @include responsive(small){
+        
+        padding-top: 0rem;
         min-height: 6rem;
     }
     @include responsive(xsmall){
+        
+        padding-top: 0rem;
         min-height: 4rem;
     }
     &__links{
@@ -148,8 +153,7 @@
        @include align(flex,space-between,center,null);
     }
     &__logo{
-        margin-top:1.5rem;
-        margin-left: 2rem;
+   
         @include responsive(medium){
             font-size: 4rem;
             margin-top:1.2rem;
@@ -249,7 +253,7 @@
             margin-bottom: 2rem;
         }
         a {
-            margin-right:3rem;
+            
             color: inherit;
              text-decoration: none;
             }
@@ -271,19 +275,18 @@
         }
         &__cart__icon{
             margin-right:4rem;
-            margin-top:2rem;
+            margin-top:1.5rem;
             @include responsive(medium){
                 margin-right:1rem;
-                margin-top:2rem;
                 font-size:1rem;
             }
             @include responsive(small){
-                margin-right:.2rem;
+                margin-right:2rem;
                 margin-top:2rem;
                 font-size:1rem;
             }
             @include responsive(xsmall){
-                margin-left: 1rem;
+                margin-right: 1.5rem;
             }
         }
         &__user{
@@ -291,7 +294,7 @@
             color:$silverDark;
             font-size:1.7rem;
             &__heading{
-                padding-bottom:1rem;
+                margin-top:1.5rem;
             }
             &__child{
                 padding-top:1rem;

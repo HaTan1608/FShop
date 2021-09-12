@@ -93,6 +93,31 @@ font-weight: 900!important;
 .zi-10{
   z-index:10!important;
 }
+.m-0{
+  @include responsive(small){
+    display:none;
+  }
+  @include responsive(xsmall){
+    display:none;
+  }
+  
+  @include responsive(medium){
+    display:none;
+  }
+}
+.m-12{
+  @include responsive(small){
+    width: 100%!important;
+  }
+  @include responsive(xsmall){
+    width: 100%!important;
+  }
+  
+  @include responsive(medium){
+    width: 100%!important;;
+  }
+ 
+}
 .r-3{
     right: 3rem !important;;
 }

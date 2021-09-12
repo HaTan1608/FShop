@@ -142,7 +142,11 @@ const Header = () => {
                                     </div>
                                 </div >
                             </div >
-                        ) : (<Link to="/signin">Đăng nhập</Link>)}
+                        ) : (<div className="header__right__user__heading">
+                            <Link to="/profile" >
+                                Đăng nhập
+                            </Link>
+                        </div>)}
 
                     </div >
                 </div >

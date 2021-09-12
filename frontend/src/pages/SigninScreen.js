@@ -33,7 +33,7 @@ const SigninScreen = (props) => {
                 <div className="container">
                     <div className='row'>
                         <div className="col-6">
-                            <div className="signin__image">
+                            <div className="homepage__banner">
                                 <LazyLoadImage src={image} alt="image" />
                             </div>
 

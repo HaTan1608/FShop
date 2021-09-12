@@ -3,18 +3,23 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { addToCart } from '../../actions/cartActions';
 import { listProducts } from '../../actions/productActions';
+import Toggle from '../Menu/Toggle';
 import LoadingBox from '../Message/LoadingBox';
 import ProductContents from './ProductContents';
 import ProductImage from './ProductImage';
-const ProductList = ({ category, gender, price }) => {
+const ProductList = ({ getToggleChild, category, gender, price }) => {
     const dispatch = useDispatch();
     const [orderBy, setOrderBy] = useState('');
     const productList = useSelector((state) => state.productList);
     const { loading, products } = productList;
+    const [toggle, setToggle] = useState(false);
     const addToCartHandler = (productId) => {
         dispatch(addToCart(productId, 1));
     }
-
+    const sendToggle = () => {
+        getToggleChild();
+        setToggle(!toggle);
+    }
     useEffect(() => {
         dispatch(
             listProducts({
@@ -27,11 +32,16 @@ const ProductList = ({ category, gender, price }) => {
         );
     }, [category, dispatch, price, orderBy, gender]);
     return (<>
-        {gender === 'male' ?
-            <div className="heading fw-900 fz-3 ">NAM</div> :
-            <div className="heading fw-900 fz-3 ">NỮ</div>}
-
-
+        <div className="products__heading__toggle">
+            {gender === 'male' ?
+                <div className="heading fw-900 fz-3 ">NAM</div> :
+                <div className="heading fw-900 fz-3 ">NỮ</div>}
+            <div className={toggle ? 'products__toggle-close' : 'products__toggle-open'} onClick={() => sendToggle()}>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
         {loading ? <LoadingBox /> : (
             <>
                 <div className="cities__heading">

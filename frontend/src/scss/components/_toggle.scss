@@ -73,3 +73,113 @@
       }
    
 }
+
+
+.products__toggle-close{
+    
+    cursor: pointer;
+    z-index:5;
+    @include responsive(medium){
+        
+        @include position(absolute,null,null,1rem,1rem,null,null);
+        span:nth-child(1){
+            @include toggleSpans($main1,3rem,1.5px,.5rem);
+            transform:rotate(-45deg) translateY(.5rem);
+        }
+        span:nth-child(2){
+           display :none;
+        }
+        span:nth-child(3){
+            @include toggleSpans($main1,3rem,1.5px,.5rem);
+            transform:rotate(45deg) translateY(-.5rem);
+        }
+        display:block ;
+      }
+    @include responsive(small){
+        
+        @include position(absolute,null,null,1rem,1rem,null,null);
+        span:nth-child(1){
+            @include toggleSpans($main1,3rem,1.5px,.5rem);
+            transform:rotate(-45deg) translateY(.5rem);
+        }
+        span:nth-child(2){
+           display :none;
+        }
+        span:nth-child(3){
+            @include toggleSpans($main1,3rem,1.5px,.5rem);
+            transform:rotate(45deg) translateY(-.5rem);
+        }
+        display:block ;
+      }
+    @include responsive(xsmall){
+        @include position(absolute,null,null,1rem,1rem,null,null);
+        span:nth-child(1){
+            @include toggleSpans($main1,3rem,1.5px,.5rem);
+            transform:rotate(-45deg) translateY(.5rem);
+        }
+        span:nth-child(2){
+           display :none;
+        }
+        span:nth-child(3){
+            @include toggleSpans($main1,3rem,1.5px,.5rem);
+            transform:rotate(45deg) translateY(-.5rem);
+        }
+ 
+        display:block ;
+      }
+   
+}
+
+.products__heading__toggle{
+    position: relative;
+}
+.products__toggle-open{
+    
+    cursor: pointer;
+    z-index:5;
+    
+    @include responsive(medium){
+        
+        @include position(absolute,null,null,1rem,1rem,null,null);
+        span:nth-child(1){
+            @include toggleSpans($main1,2.5rem,.3rem,null)
+        }
+        span:nth-child(2){
+            @include toggleSpans($main1,2.5rem,.3rem,.5rem)
+        }
+        span:nth-child(3){
+            @include toggleSpans($main1,2.5rem,.3rem,.5rem)
+        }
+        display:block ;
+      }
+        @include responsive(small){
+        
+            @include position(absolute,null,null,1rem,1rem,null,null);
+            span:nth-child(1){
+                @include toggleSpans($main1,2.5rem,.3rem,null)
+            }
+            span:nth-child(2){
+                @include toggleSpans($main1,2.5rem,.3rem,.5rem)
+            }
+            span:nth-child(3){
+                @include toggleSpans($main1,2.5rem,.3rem,.5rem)
+            }
+            display:block ;
+          }
+          @include responsive(xsmall){
+            @include position(absolute,null,null,1rem,1rem,null,null);
+            span:nth-child(1){
+                @include toggleSpans($main1,2.5rem,.3rem,null)
+            }
+            span:nth-child(2){
+                @include toggleSpans($main1,2.5rem,.3rem,.5rem)
+            }
+            span:nth-child(3){
+                @include toggleSpans($main1,2.5rem,.3rem,.5rem)
+            }
+          }
+          
+     
+   
+
+}
