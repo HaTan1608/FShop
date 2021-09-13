@@ -4,13 +4,12 @@
      width:100%;
      min-height: 43rem;
      &__form{
-         padding-right: 10rem;
      }
      &__heading{
          @include align(flex,space-between,center,null);
          margin:2rem;
         &__link{
-            margin-right:11rem;
+            text-align: right;
             a{
                 font-size:1.6rem;
                 text-decoration: none;
@@ -19,7 +18,7 @@
      }
      &__body{
          @include align(flex,space-between,center,null);
-         padding-right: 10rem;
+        
          &__text{
             height: 5rem;
                 font-size:1.7rem;
@@ -29,10 +28,11 @@
                 margin-left:3rem;
          }
          &__data{
+            text-align: right;
+            margin-right:2rem;
             font-size:1.7rem;
             font-weight: 400!important;
             padding: 1.2rem 0rem;
-            margin-right:3rem;
         
          }
      }

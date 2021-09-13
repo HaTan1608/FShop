@@ -52,7 +52,7 @@ const Header = () => {
                                 <div className="icon">
                                     <div className="tooltip mt-1  w-30 r-3">
 
-                                        {cartItems.length > 0 ? (
+                                        {cartItems && (cartItems.length > 0 ? (
                                             <>
                                                 <div className="header__cart__heading">
                                                     <div>Sản phẩm</div>
@@ -70,7 +70,10 @@ const Header = () => {
                                                 <div className="header__cart__total">
                                                     <div className="header__cart__total__text">Tổng tiền:</div>
                                                     <div className="header__cart__total__price">
-                                                        {formate(cartItems.reduce((a, c) => a + c.price * c.qty, 0))}<span className="header__cart__total__price__dollor "> VNĐ</span></div>
+                                                        {(cartItems.reduce((a, c) => a + c.price * c.qty, 0)).toLocaleString('it-IT', {
+                                                            style: 'currency',
+                                                            currency: 'VND',
+                                                        })}</div>
                                                 </div>
                                             </>) :
                                             (
@@ -79,10 +82,12 @@ const Header = () => {
                                                 </div>
                                             )
 
-                                        }
+                                        )}
 
                                     </div>
-                                    <div className="header__cart__count">{cartItems.reduce((a, c) => a + c.qty, 0)}</div>
+                                    {cartItems && (cartItems.length > 0 ? (
+                                        <div className="header__cart__count">{cartItems.reduce((a, c) => a + c.qty, 0)}</div>
+                                    ) : "")}
                                     <Link to='/cart'><MdShoppingCart size={30} /></Link>
                                 </div>
                             </div>

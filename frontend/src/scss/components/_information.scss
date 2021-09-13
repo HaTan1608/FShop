@@ -1,6 +1,7 @@
 @use "../abstracts" as *;
 .information{
     margin-top: 10rem;
+    position: relative;
     &__review{
        
         &__rating{
@@ -29,6 +30,11 @@
     
     }
     &__cart{
+        @include responsive(medium){
+            position: absolute;
+            right:0;
+            width: 50%;
+        }
         background-color: #FAFAFA;
         height: 100%;
         width:100%;
@@ -61,7 +67,7 @@
            &__name{
                margin-left:1rem;
                font-size:1.7rem;
-               width:50%
+               width:40%
            }
            &__total{
                position: absolute;
@@ -116,6 +122,14 @@
     &__heading{
         @include align(flex,space-between,null,null);
         margin:2rem 0;
+        &__homepage{
+            text-align: right;
+            a{
+                text-decoration: none;
+                color:cornflowerblue;
+                font-size:1.7rem;
+            }
+        }
         &__text{
             font-size:2rem;
         }
@@ -128,7 +142,7 @@
         }
         &__user{
             font-size:1.7rem;
-            width: 40rem;
+            width:100%;
             
             &__name{
                 @include align(flex,space-between,null,null);
@@ -137,8 +151,11 @@
            
         }
         &__form{
-            width: 40rem;
+            width:100%;
             position: static;
+            button{
+                width: 100%!important;;
+            }
             &__input{
                 height: 5rem;
                 font-size:1.7rem;

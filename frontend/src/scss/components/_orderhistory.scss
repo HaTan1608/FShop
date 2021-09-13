@@ -18,15 +18,25 @@
          margin:.2rem 0rem;
          padding:1rem 3rem;
          font-size:1.6rem;
-         display: flex;
          background-color: $silverLight-45;
+         position: relative;
          &__text{
             display:flex;
             justify-content: center;
             &__link{
+                position: relative;
+                
                 a{
+                    position: absolute;
+                right: 1rem;
                     text-decoration: none;
                     color:cornflowerblue;
+                    @include responsive(medium){
+                        right: -5rem;
+                    }
+                    @include responsive(medium){
+                        right: 0rem;
+                    }
                 }
                 
             }

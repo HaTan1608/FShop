@@ -30,10 +30,16 @@ const HomePage = () => {
         dispatch(addToCart(productId, 1));
     }
 
+    const [offset, setOffset] = useState(0);
     useEffect(() => {
+        window.onscroll = () => {
+            console.log(offset)
+            setOffset(window.pageYOffset)
+        }
         dispatch(listProducts({}));
-        console.log(product3)
     }, [dispatch]);
+
+
     return (
         <>
             <Header />

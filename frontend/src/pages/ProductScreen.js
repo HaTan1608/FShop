@@ -95,7 +95,10 @@ export default function ProductScreen(props) {
                                     <div className="product__details__contents__rating__rating">
                                         {rating1(product.rating, 20)}
                                     </div>
-                                    <h2 className="product__details__contents__price"> {formate(product.price)}<span className="product__details__contents__price__dollor">VNĐ</span></h2>
+                                    <h2 className="product__details__contents__price"> {(product.price).toLocaleString('it-IT', {
+                                        style: 'currency',
+                                        currency: 'VND',
+                                    })}<span className="product__details__contents__price__dollor">VNĐ</span></h2>
 
                                     <div className="product__details__contents__status">
                                         {product.countInStock > 0 ? (

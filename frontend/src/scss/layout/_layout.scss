@@ -29,7 +29,17 @@
             @include responsive(medium){
                 width:50%;
             }
-            
+            @include responsive(small){
+                width: 100%;
+            }
+            @include responsive(xsmall){
+                width: 100%;
+            }
+        }
+        @if $i==5{
+            @include responsive(small){
+                width: 100%;
+            }
             @include responsive(xsmall){
                 width: 100%;
             }

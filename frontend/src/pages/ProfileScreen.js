@@ -53,7 +53,6 @@ export default function ProfileScreen() {
     const [openMess, setOpenMess] = useState({ open: false, tittle: '', content: '', type: '', duration: 0 });
 
     const submitHandler = (e) => {
-        console.log('sfsdafds')
         e.preventDefault();
         if (password !== confirmPassword) {
             setOpenMess({ ...openMess, open: true, title: 'Thất bại', content: 'Mật khẩu xác nhận không đúng', type: 'error' })
@@ -87,8 +86,8 @@ export default function ProfileScreen() {
 
                         <div className="container">
                             <div className="row">
-                                <div className="col-2"></div>
-                                <div className="col-5">
+                                <div className="col-1 m-0 s-0 xs-0"></div>
+                                <div className="col-5 m-6 s-12 xs-12">
                                     <div className="profile__heading">
                                         <h1>Thông tin tài khoản</h1>
                                     </div>
@@ -104,11 +103,11 @@ export default function ProfileScreen() {
                                             <div className="information__heading__form__text">Mật khẩu</div>
                                             <input type="text" className="information__heading__form__input" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
                                             <div className="information__heading__form__text">Xác nhận mật khẩu</div>
-                                            <button className="btn-dark w-40" type="submit">CẬP NHẬT</button>
+                                            <button className="btn-dark width100" type="submit">CẬP NHẬT</button>
                                         </form>
                                     </div>
                                 </div>
-                                <div className="col-4 ml-2">
+                                <div className="col-4 m-5 s-12 xs-12 pl-2">
                                     <div className="profile__heading">
                                         <h1>Đơn hàng của tôi</h1>
                                         <span className="profile__heading__link"> <Link to='/orderhistory'>Chi tiết</Link></span>
@@ -131,7 +130,7 @@ export default function ProfileScreen() {
                                         </>
                                     )}
                                 </div>
-                                <div className="col-1"></div>
+                                <div className="col-1 m-0 s-0 xs-0"></div>
                             </div>
 
 

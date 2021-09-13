@@ -43,9 +43,12 @@ const ProductContents = ({ name, price, ratingStar, addCart }) => {
                 {rating(ratingStar)}
             </div>
             <div className="cities__body__contents__price">
-                {formate(price)}
+                {(price).toLocaleString('it-IT', {
+                    style: 'currency',
+                    currency: 'VND',
+                })}
 
-                <span className="cities__body__contents__price__dollor">VNĐ</span>
+
             </div>
 
             <div className="cities__body__contents__button">

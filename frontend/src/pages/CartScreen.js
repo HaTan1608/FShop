@@ -37,63 +37,80 @@ export default function CartScreen(props) {
             <Header />
             <div className="cart">
                 <div className="container">
+                    {cartItems.length > 0 && (<div className="cart__link">
+                        <Link to='/'>Tiếp tục mua sắm</Link></div>)}
                     <div className="row">
+                        )
+
                         {cartItems.length > 0
-                            ? (<><div className="col-10">
-                                <div className="row cart__title">
-                                    <div className="col-6 cart__title__product">SẢN PHẨM</div>
-                                    <div className="col-6 cart__title__atc">
-                                        <span>GIÁ</span>
-                                        <span>SỐ LƯỢNG</span>
-                                        <span>THÀNH TIỀN</span>
-                                    </div>
-                                </div>
-                                {
-                                    cartItems.map((item) => (
-                                        <div className="row" key={item.product}>
-                                            <div className="col-6 cart__infomation">
+                            ? (<>
 
-                                                <div className="cart__infomation__image">
-                                                    <LazyLoadImage src={item.image} />
-                                                </div>
-                                                <div className="cart__infomation__name">
-                                                    {item.name}
-                                                </div>
-                                            </div>
-                                            <div className="col-6 cart__infomation">
-                                                <div className="cart__infomation__price">
-                                                    {formate(item.price)}<span className="cart__infomation__price__dollor"> VNĐ</span>
-                                                </div>
-                                                <div className="cart__infomation__qty ">
-                                                    <span className='ctrl cart__infomation__stepper'>
-                                                        <div className='ctrl__button ctrl__button--decrement' onClick={(e) => ctrl(item.product, -1)}>&ndash;</div>
-                                                        <div className='ctrl__counter'>
-                                                            <input className='ctrl__counter-input' type='text' id={`qty-input-${item.product}`} defaultValue={item.qty} onChange={(e) =>
-                                                                dispatch(
-                                                                    addToCart(item.product, Number(e.target.value))
-                                                                )
-                                                            } />
-                                                        </div>
-                                                        <div className='ctrl__button ctrl__button--increment ' onClick={(e) => ctrl(item.product, 1)}>+</div>
-                                                    </span>
-                                                </div>
-                                                <div className="cart__infomation__total">
-                                                    {formate(item.price * item.qty)}<span className="cart__infomation__price__dollor"> VNĐ</span>
-                                                </div>
-                                                <div className="cart__infomation__delete">
-                                                    <MdDeleteForever size={30} onClick={() => removeFromCartHandler(item.product)} />
-                                                </div>
-                                            </div>
+                                <div className="col-10 m-12 s-12">
+
+
+                                    <div className="row cart__title m-0">
+                                        <div className="col-6 cart__title__product m-0">SẢN PHẨM</div>
+                                        <div className="col-6 cart__title__atc m-0 ">
+                                            <span>GIÁ</span>
+                                            <span>SỐ LƯỢNG</span>
+                                            <span>THÀNH TIỀN</span>
                                         </div>
-                                    ))
+                                    </div>
+                                    {
+                                        cartItems.map((item) => (
+                                            <div className="row" key={item.product}>
+                                                <div className="col-6 cart__infomation">
 
-                                }
+                                                    <div className="cart__infomation__image">
+                                                        <LazyLoadImage src={item.image} />
+                                                    </div>
+                                                    <div className="cart__infomation__name">
+                                                        {item.name}
+                                                    </div>
+                                                </div>
+                                                <div className="col-6 cart__infomation">
+                                                    <div className="cart__infomation__price">
+                                                        {(item.price).toLocaleString('it-IT', {
+                                                            style: 'currency',
+                                                            currency: 'VND',
+                                                        })}<span className="cart__infomation__price__dollor"> VNĐ</span>
+                                                    </div>
+                                                    <div className="cart__infomation__qty ">
+                                                        <span className='ctrl cart__infomation__stepper'>
+                                                            <div className='ctrl__button ctrl__button--decrement' onClick={(e) => ctrl(item.product, -1)}>&ndash;</div>
+                                                            <div className='ctrl__counter'>
+                                                                <input className='ctrl__counter-input' type='text' id={`qty-input-${item.product}`} defaultValue={item.qty} onChange={(e) =>
+                                                                    dispatch(
+                                                                        addToCart(item.product, Number(e.target.value))
+                                                                    )
+                                                                } />
+                                                            </div>
+                                                            <div className='ctrl__button ctrl__button--increment ' onClick={(e) => ctrl(item.product, 1)}>+</div>
+                                                        </span>
+                                                    </div>
+                                                    <div className="cart__infomation__total">
+                                                        {(item.price * item.qty).toLocaleString('it-IT', {
+                                                            style: 'currency',
+                                                            currency: 'VND',
+                                                        })}
+                                                    </div>
+                                                    <div className="cart__infomation__delete">
+                                                        <MdDeleteForever size={30} onClick={() => removeFromCartHandler(item.product)} />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ))
 
-                            </div><div className="col-2">
+                                    }
+                                </div>
+                                <div className="col-2 m-12 s-12">
                                     <div className="cart__checkout">
                                         <h2 className="cart__checkout__heading">TỔNG TIỀN </h2>
 
-                                        <div className="cart__checkout__total">{formate(cartItems.reduce((a, c) => a + c.price * c.qty, 0))}<span className="cart__infomation__price__dollor"> VNĐ</span></div>
+                                        <div className="cart__checkout__total">{(cartItems.reduce((a, c) => a + c.price * c.qty, 0)).toLocaleString('it-IT', {
+                                            style: 'currency',
+                                            currency: 'VND',
+                                        })}<span className="cart__infomation__price__dollor"> VNĐ</span></div>
                                         <div className="cart__checkout__qty">  ( {cartItems.reduce((a, c) => a + c.qty, 0)} sản phẩm ) </div>
                                         <div className="cart__checkout__button">
                                             <button type='button' onClick={checkoutHandler} className="btn-dark">Checkout</button>
