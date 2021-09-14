@@ -1,6 +1,6 @@
 import Header from "../components/Header"
 import React, { useEffect, useState } from "react"
-import { useParams } from "react-router";
+import ReactPlayer from 'react-player'
 import ProductImage from "../components/Product/ProductImage";
 import ProductContents from "../components/Product/ProductContents";
 import Footer from "../components/Footer/Footer";
@@ -9,9 +9,12 @@ import { listProducts } from "../actions/productActions";
 import { Link } from "react-router-dom";
 import { addToCart } from "../actions/cartActions";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
 const HomePage = () => {
     const [imageBitis] = useState({
-        image1: 'https://fshop-app.s3.us-east-2.amazonaws.com/bitis1.PNG',
+        image1: 'https://cdn.shopify.com/s/files/1/0565/9931/4585/files/z2584381159043_cf151161ee8677aae2f15686c3a75531_c00ba712-f330-47d9-8554-f2b3e6fe9673.jpg?v=1625049290',
         image2: 'https://fshop-app.s3.us-east-2.amazonaws.com/bitis2.PNG',
     })
     const dispatch = useDispatch();
@@ -22,21 +25,20 @@ const HomePage = () => {
     const { cartItems } = cart;
     let product3 = [];
     if (!loading) {
+        if (products.products) {
+            product3 = products.products.slice(0, 3);
+        }
 
-        product3 = products.slice(0, 3);
     }
     const addToCartHandler = (productId) => {
 
         dispatch(addToCart(productId, 1));
     }
 
-    const [offset, setOffset] = useState(0);
+
     useEffect(() => {
-        window.onscroll = () => {
-            console.log(offset)
-            setOffset(window.pageYOffset)
-        }
         dispatch(listProducts({}));
+        window.scrollTo(0, 0);
     }, [dispatch]);
 
 
@@ -45,7 +47,16 @@ const HomePage = () => {
             <Header />
             <div className="homepage">
                 <div className="homepage__banner">
-                    <LazyLoadImage src={imageBitis.image1} alt={imageBitis.image} />
+
+                    <Carousel showThumbs={false} autoPlay={true} interval={2000} infiniteLoop={true} emulateTouch={true}>
+                        <div>
+                            <LazyLoadImage src={imageBitis.image1} alt={imageBitis.image} />
+                        </div>
+                        <div>
+                            <LazyLoadImage src={imageBitis.image2} alt={imageBitis.image} />
+                        </div>
+                    </Carousel>
+
                 </div>
 
                 <div className="container">
@@ -65,7 +76,8 @@ const HomePage = () => {
 
                 </div>
                 <div className="homepage__banner">
-                    <LazyLoadImage src={imageBitis.image2} alt={imageBitis.image} />
+                    <ReactPlayer url='https://cdn.shopify.com/s/files/1/0565/9931/4585/files/output_compress-video-online.com_1.mp4?v=1629797501' playing={true} loop={true} muted={true} width='100%'
+                        height='100%' />
                 </div>
 
                 <div className="container">

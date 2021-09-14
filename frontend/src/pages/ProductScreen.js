@@ -59,6 +59,9 @@ export default function ProductScreen(props) {
 
     useEffect(() => {
         dispatch(detailsProduct(productId));
+
+        window.scrollTo(0, 0);
+
     }, [dispatch, productId]);
 
     return (

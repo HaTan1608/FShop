@@ -1,16 +1,28 @@
 import React, { useState } from 'react'
-import { LazyLoadImage } from 'react-lazy-load-image-component'
-const ProductBanner = ({ gender }) => {
-    const [imageBitisMan] = useState({
-        imageMale: 'https://file.hstatic.net/1000230642/file/banner-cate-2_d5cc77ab5fa34ae5bea38ff9413ad60f_master.jpg',
-        imageFamale: 'https://file.hstatic.net/1000230642/file/banner-main_72c5a4c7e3be459585e93d0cb037a47c.jpg',
-    })
+import { LazyLoadImage } from "react-lazy-load-image-component";
+
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
+const ProductBanner = () => {
+
 
     return (
         <div className="homepage__banner">
-            {gender === 'male' ?
-                <LazyLoadImage src={imageBitisMan.imageMale} alt='banner man' /> :
-                <LazyLoadImage src={imageBitisMan.imageFamale} alt='banner man' />}
+            <div className="homepage__banner">
+
+                <Carousel showThumbs={false} autoPlay={true} interval={2000} infiniteLoop={true} emulateTouch={true}>
+                    <div>
+                        <LazyLoadImage src='https://cdn.shopify.com/s/files/1/0565/9931/4585/files/Banner_Men_s_Sandal_900x.jpg?v=1623380326' alt='banner 1' />
+                    </div>
+                    <div>
+                        <LazyLoadImage src='https://cdn.shopify.com/s/files/1/0565/9931/4585/files/Baner_Women_s_Sneaker_900x.jpg?v=1623380413' alt='banner 2' />
+                    </div>
+                    <div>
+                        <LazyLoadImage src='https://cdn.shopify.com/s/files/1/0565/9931/4585/files/Banner_Women_s_sandal_900x.jpg?v=1623382127' alt='banner 3' />
+                    </div>
+                </Carousel>
+
+            </div>
         </div>
     )
 }

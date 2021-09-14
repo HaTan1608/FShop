@@ -10,6 +10,8 @@ productRouter.get(
     '/',
     expressAsyncHandler(async (req, res) => {
 
+        const pageSize = 8;
+        const page = Number(req.query.page) || 1;
         const name = req.query.name || '';
         const category = req.query.category || '';
         const gender = req.query.gender || '';
@@ -31,11 +33,16 @@ productRouter.get(
                     : order === 'toprated'
                         ? { rating: -1 }
                         : { _id: -1 };
-
+        const count = await Product.count({
+            ...nameFilter, ...categoryFilter, ...priceFilter, ...genderFilter
+        });
         const products = await Product.find({
             ...nameFilter, ...categoryFilter, ...priceFilter, ...genderFilter
-        }).sort(sortOrder);
-        res.send(products);
+        }).sort(sortOrder).skip(pageSize * (page - 1))
+            .limit(pageSize);
+        console.log(pageSize)
+        console.log(count)
+        res.send({ products, count, page, pages: Math.ceil(count / pageSize) });
     })
 );
 

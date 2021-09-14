@@ -7,15 +7,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { signout } from '../actions/signinActions';
 import Toggle from './Menu/Toggle';
 import SearchBox from './Menu/SearchBox';
+
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 const Header = () => {
     const [state] = useState({
         logo: '/assets/images/logo.png',
         logoEmpty: '/assets/images/emptycartsmall.png',
 
     })
-    const formate = (price) => {
-        return `${price}.000`;
-    }
     const dispatch = useDispatch();
     const cart = useSelector((state) => state.cart);
     const { cartItems } = cart;
@@ -44,8 +43,9 @@ const Header = () => {
                         <Link to='/'>
                             <div className='header__logo__text'>Fshop</div></Link>
                     </div>
-                    <SearchBox />
-
+                    <Route
+                        render={({ history }) => <SearchBox history={history}></SearchBox>}
+                    ></Route>
                     <div className="header__right">
                         <div className="header__right__cart__icon">
                             <div className="wrapper">

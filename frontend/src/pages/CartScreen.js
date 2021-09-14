@@ -14,9 +14,6 @@ export default function CartScreen(props) {
     const [empty] = useState({
         logo: '/assets/images/emptycart.png',
     })
-    const formate = (price) => {
-        return `${price}.000`;
-    }
     const ctrl = (id, number) => {
         const newQty = parseInt(document.getElementById(`qty-input-${id}`).value) + number;
         document.getElementById(`qty-input-${id}`).value = newQty;
@@ -30,7 +27,7 @@ export default function CartScreen(props) {
     }
     const dispatch = useDispatch();
     useEffect(() => {
-
+        window.scrollTo(0, 0);
     }, []);
     return (
         <>
@@ -40,7 +37,7 @@ export default function CartScreen(props) {
                     {cartItems.length > 0 && (<div className="cart__link">
                         <Link to='/'>Tiếp tục mua sắm</Link></div>)}
                     <div className="row">
-                        )
+
 
                         {cartItems.length > 0
                             ? (<>
