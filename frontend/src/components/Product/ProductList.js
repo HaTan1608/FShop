@@ -13,8 +13,8 @@ const ProductList = ({ getToggleChild, category, gender, price }) => {
     const productList = useSelector((state) => state.productList);
     const { loading, products, pages, count } = productList;
     const [toggle, setToggle] = useState(false);
-    const addToCartHandler = (productId) => {
-        dispatch(addToCart(productId, 1));
+    const addToCartHandler = (productId, index) => {
+        dispatch(addToCart(productId, 1, products[index].size[0]));
     }
     const sendToggle = () => {
         getToggleChild();
@@ -63,7 +63,7 @@ const ProductList = ({ getToggleChild, category, gender, price }) => {
                 </div>
                 <div className="row">
 
-                    {products.products ? (products.products.length > 0 ? products.products.map((product) => (
+                    {products.products ? (products.products.length > 0 ? products.products.map((product, index) => (
                         <div className="col-4 p-15" key={product._id}>
                             <div className="cities__body">
                                 <div className="cities__body__image1">
@@ -71,7 +71,7 @@ const ProductList = ({ getToggleChild, category, gender, price }) => {
                                         <ProductImage img={product.images[0].image} />
                                     </Link></div>
 
-                                <ProductContents ratingStar={product.rating} name={product.name} price={product.price} addCart={() => addToCartHandler(product._id)} />
+                                <ProductContents ratingStar={product.rating} name={product.name} price={product.price} addCart={() => addToCartHandler(product._id, index)} />
                             </div>
                         </div>
                     )) : '') : ''}

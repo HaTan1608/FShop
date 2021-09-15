@@ -79,7 +79,7 @@ export default function CartScreen(props) {
                                                         {(item.price).toLocaleString('it-IT', {
                                                             style: 'currency',
                                                             currency: 'VND',
-                                                        })}<span className="cart__infomation__price__dollor"> VNĐ</span>
+                                                        })}
                                                     </div>
                                                     <div className="cart__infomation__qty ">
                                                         <span className='ctrl cart__infomation__stepper'>
@@ -116,7 +116,7 @@ export default function CartScreen(props) {
                                         <div className="cart__checkout__total">{(cartItems.reduce((a, c) => a + c.price * c.qty, 0)).toLocaleString('it-IT', {
                                             style: 'currency',
                                             currency: 'VND',
-                                        })}<span className="cart__infomation__price__dollor"> VNĐ</span></div>
+                                        })}</div>
                                         <div className="cart__checkout__qty">  ( {cartItems.reduce((a, c) => a + c.qty, 0)} sản phẩm ) </div>
                                         <div className="cart__checkout__button">
                                             <button type='button' onClick={checkoutHandler} className="btn-dark">Checkout</button>

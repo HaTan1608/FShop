@@ -168,7 +168,7 @@ const OrderDetails = (props) => {
                                             {(orderDetailss.orderItems.reduce((a, c) => a + c.price * c.qty, 0)).toLocaleString('it-IT', {
                                                 style: 'currency',
                                                 currency: 'VND',
-                                            })} <span className="information__cart__item__total__dollor"> VNĐ</span>
+                                            })}
                                         </div>
                                     </div>
                                     <div className="information__cart__fee__ship">
@@ -189,7 +189,7 @@ const OrderDetails = (props) => {
                                         {(orderDetailss.orderItems.reduce((a, c) => a + c.price * c.qty, 0)).toLocaleString('it-IT', {
                                             style: 'currency',
                                             currency: 'VND',
-                                        })} <span className="information__cart__item__total__dollor"> VNĐ</span>
+                                        })}
                                     </div>
                                 </div>
                             </div>
@@ -269,7 +269,7 @@ const OrderDetails = (props) => {
                                             {(orderDetailss.orderItems.reduce((a, c) => a + c.price * c.qty, 0)).toLocaleString('it-IT', {
                                                 style: 'currency',
                                                 currency: 'VND',
-                                            })} <span className="information__cart__item__total__dollor"> VNĐ</span>
+                                            })}
                                         </div>
                                     </div>
                                     <div className="information__cart__fee__ship">
@@ -290,7 +290,7 @@ const OrderDetails = (props) => {
                                         {(orderDetailss.orderItems.reduce((a, c) => a + c.price * c.qty, 0)).toLocaleString('it-IT', {
                                             style: 'currency',
                                             currency: 'VND',
-                                        })} <span className="information__cart__item__total__dollor"> VNĐ</span>
+                                        })}
                                     </div>
                                 </div>
                             </div></div>

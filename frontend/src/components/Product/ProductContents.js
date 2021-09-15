@@ -3,9 +3,6 @@ import React, { useState } from "react";
 import { BsFillStarFill, BsStar, BsStarHalf } from 'react-icons/bs';
 import MessageBox from "../Message/MessageBox";
 const ProductContents = ({ name, price, ratingStar, addCart }) => {
-    const formate = (price) => {
-        return `${price}.000`;
-    }
     const [openMess, setOpenMess] = useState({ open: false, tittle: '', content: '', type: '', duration: 0 });
 
     const sendData = () => {
