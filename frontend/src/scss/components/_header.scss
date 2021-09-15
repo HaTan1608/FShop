@@ -27,8 +27,8 @@
         font-size:2rem;
         @include responsive(medium){
            font-size:1.7rem;
-           margin-top:-.8rem;
         }
+        
        
         a{ 
             text-decoration: none;
@@ -119,6 +119,8 @@
         width:50%;
         @include align(flex,center,center,null);
         position: relative;
+        
+        margin-left:5rem;
         @include responsive(medium){
             width:40%;
         }
@@ -235,7 +237,7 @@
         color:$white;
         position: relative;
         @include responsive(medium){
-            font-size: 1.9rem;
+            font-size: 1.8rem;
 
         }
         @include responsive(small){

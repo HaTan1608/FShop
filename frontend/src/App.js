@@ -19,6 +19,7 @@ import OrderListScreen from './pages/OrderListScreen.';
 import HomePage from './pages/HomePages';
 import SearchScreen from './pages/SearchScreen';
 import LoadingBox from './components/Message/LoadingBox';
+import NotFound from './pages/NotFound';
 function App() {
   return (
 
@@ -59,6 +60,7 @@ function App() {
         <Route path="/payment" exact component={PaymentScreen} />
         <Route path="/order/:id" exact component={OrderDetails} />
         <Route path='/loading' excart component={LoadingBox} />
+        <Route component={NotFound} />
       </Switch>
     </Router>
 

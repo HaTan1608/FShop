@@ -1,6 +1,21 @@
 @use "../abstracts" as *;
 .footer{
     width:100%;
+    &__logo{
+        a{
+            font-family: "Leckerli One";
+            text-decoration: none;
+            div{
+                font-size:5rem;
+                color:$main2;
+                @include responsive(small){
+                    font-size:4rem;
+                }
+                @include responsive(xsmall){
+                    font-size:3rem;
+                }}
+        } 
+    }
     &__container{
         width:100%;
         &__block{
@@ -24,6 +39,12 @@
             width:80%;
             font-weight: 400;
             line-height: 2.5rem;
+            @include responsive(small){
+                font-size:1.4rem;
+            }
+            @include responsive(xsmall){
+                font-size:1.3rem;
+            }
         }
     }
     &__heading{
@@ -32,6 +53,12 @@
         font-size: 1.6rem;
         letter-spacing:.2rem;
         margin-bottom: 2rem;
+        @include responsive(small){
+            font-size:1.4rem;
+        }
+        @include responsive(xsmall){
+            font-size:1.3rem;
+        }
     }
     &__ul{
         list-style: none;
@@ -48,6 +75,12 @@
                 margin-left:.5rem;
                 text-transform: capitalize;
 
+                @include responsive(small){
+                    font-size:1.3rem;
+                }
+                @include responsive(xsmall){
+                    font-size:1.2rem;
+                }
             }
         }
     }

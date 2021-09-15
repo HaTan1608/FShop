@@ -33,6 +33,9 @@ const ProductList = ({ getToggleChild, category, gender, price }) => {
             })
         );
 
+
+        window.scrollTo(0, 0);
+
     }, [category, dispatch, price, orderBy, gender, page]);
     return (<>
         <div className="products__heading__toggle">

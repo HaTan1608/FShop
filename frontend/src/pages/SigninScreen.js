@@ -30,15 +30,15 @@ const SigninScreen = (props) => {
 
             <Header />
             <div className="signin">
-                <div className="container">
+                <div className="container width100">
                     <div className='row'>
-                        <div className="col-6">
+                        <div className="col-6 m-6 s-0 sx-0">
                             <div className="homepage__banner">
                                 <LazyLoadImage src={image} alt="image" />
                             </div>
 
                         </div>
-                        <div className="col-6 ">
+                        <div className="col-6 m-6 s-12 sx-12">
                             <div className="signin__form">
                                 <form className="signin__form__contents" onSubmit={submitHandler}>
                                     <h2 className="signin__form__contents__heading">Đăng nhập</h2>

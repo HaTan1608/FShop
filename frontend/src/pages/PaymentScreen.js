@@ -11,15 +11,9 @@ const PaymentScreen = (props) => {
     const userSignin = useSelector((state) => state.userSignin);
     const { userInfo } = userSignin;
     const cart = useSelector((state) => state.cart);
-    const { cartItems } = cart;
-    const { shippingAddress } = cart;
+    const { shippingAddress, cartItems } = cart;
     const dispatch = useDispatch();
-    const formate = (price) => {
-        return `${price}.000`;
-    }
-    if (!shippingAddress.address) {
-        props.history.push('/checkout');
-    }
+
     const orderCreate = useSelector(state => state.orderCreate);
     const { success, order } = orderCreate;
     const [sdkReady, setSdkReady] = useState(false);
@@ -56,13 +50,18 @@ const PaymentScreen = (props) => {
         if (success) {
             props.history.push(`/order/${order._id}`);
         }
-    }, [success])
+        if (cartItems.length === 0) {
+            props.history.push('/cart');
+        }
+    }, [success, cartItems])
+    const [toggle, setToggle] = useState(false);
+
     return (
         <div className="information ">
             <div className="container">
                 <div className="row">
                     <div className="col-1 m-0"></div>
-                    <div className="col-5 m-6 pr-3">
+                    <div className="col-5 m-6">
                         <div className="links__back xs-0 s-0"><Link to='/checkout'>Quay về</Link></div>
                         <h1>FShop</h1>
                         {userInfo ? (
@@ -72,7 +71,7 @@ const PaymentScreen = (props) => {
                                 </div>
                                 <div className="information__heading__user">
                                     <div className="information__heading__user__name"><span>Liên hệ:</span>{shippingAddress.phone}</div>
-                                    <div className="information__heading__user__name"><span>Giao tới:</span>{shippingAddress.address + shippingAddress.city}</div>
+                                    <div className="information__heading__user__name"><span>Giao tới:</span>{shippingAddress.address}&nbsp; {shippingAddress.city}</div>
                                 </div>
                             </>
                         ) : (
@@ -105,10 +104,21 @@ const PaymentScreen = (props) => {
 
                         </div>
                     </div>
-                    <div className="col-5 m-6 pl-3">
+
+                    <div className="col-5 m-6 s-0">
                         <CartInformation />
                     </div>
-                    <div className="col-1 m-0"></div>
+                    <div className="information__heading__show">
+                        <div className={toggle ? 'information__toggle-close' : 'information__toggle-open'} onClick={() => setToggle(!toggle)}>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div><span className="information__heading__show__text">Thông tin giỏ hàng</span>
+                    </div>
+                    <div className="col-5 m-6 s-12">
+                        <div className={toggle ? 'information__cart-open' : 'information__cart-close'}><CartInformation /></div>
+                    </div>
+                    <div className="col-1 m-0 s-0"></div>
                 </div>
 
             </div>

@@ -1,18 +1,19 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 
 import { LazyLoadImage } from 'react-lazy-load-image-component'
-const FooterIntro =()=>{
+import { Link } from 'react-router-dom'
+const FooterIntro = () => {
     const [state] = useState({
-        logo:'/assets/footer/logo.png',
-        intro:'Travel friends is a traveling agency, we arrange tours to the world famous and most beautiful countries, Since 2005 we provide high quality services to our vaulable customers',
-     })
-     return(
+        logo: '/assets/footer/logo.png',
+        intro: 'Fshop chuyên phân phối sản phẩm chính hãng của Bitis, mang đến chất lượng dịch vụ tốt nhất cho bạn',
+    })
+    return (
         <div className="footer__intro">
-            <div className="footer__intro__img">
-                <LazyLoadImage src={state.logo} alt="footer logo"/>
+            <div className="footer__logo">
+                <Link to='/'> <div>Fshop</div></Link>
             </div>
             <p className="footer__intro__msg">{state.intro}</p>
-            </div>
-    )   
+        </div>
+    )
 }
 export default FooterIntro

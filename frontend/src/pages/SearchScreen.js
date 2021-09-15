@@ -9,8 +9,6 @@ import { Link } from "react-router-dom";
 import { addToCart } from "../actions/cartActions";
 import { useParams } from "react-router";
 import LoadingBox from "../components/Message/LoadingBox";
-import ProductBanner from "../components/Product/ProductBanner";
-import ProductList from "../components/Product/ProductList";
 const SearchScreen = () => {
     const dispatch = useDispatch();
     const productList = useSelector((state) => state.productList);

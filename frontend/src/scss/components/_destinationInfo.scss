@@ -142,7 +142,6 @@
     
 }
 .signin {
-    margin: 0rem 10rem;
     &__image{
         
         width:100%;
@@ -159,7 +158,26 @@
        height: 99.5%;
        background:linear-gradient(to right,#1c1b20,#585659) ;
        @include align(flex,center,center,null);
+       @include responsive(medium){
        
+       }
+       @include responsive(small){
+        background-image:url('https://file.hstatic.net/1000230642/file/the_red_snow_1.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        object-fit: cover;
+        margin-top:1rem;
+        min-height: 30rem;
+    }
+    @include responsive(xsmall){
+        margin-top:1rem;
+        background-image:url('https://file.hstatic.net/1000230642/file/the_red_snow_1.png');
+        background-size: contain;
+        object-fit: cover;
+        background-size: 100%;
+  background-repeat: no-repeat;
+  min-height: 30rem;
+    }
        &__contents{
            width:30rem;
            height:auto;
@@ -171,15 +189,31 @@
                 justify-content: center;
                 text-transform:uppercase;
                 margin-bottom: 1.5rem;
+                @include responsive(small){
+                    font-size:2rem;
+                    margin-top:1rem;
+                }
+                @include responsive(xsmall){
+                    font-size:2rem;
+                    
+                    margin-top:1rem;
+                }
            }
            &__email{
                @include align(flex,space-between,null,null);
                &__text{
                    font-size:2.1rem;
+                   @include responsive(small){
+                    font-size:1.6rem;
+                }
+                @include responsive(xsmall){
+                    font-size:1.6rem;
+                }
                }
                margin-bottom: 1.5rem;
                &__input{
                 width:65%;
+                
             }
            }
            &__password{
@@ -187,6 +221,12 @@
             margin-bottom: 1.5rem;
             &__text{
                 font-size:2.1rem;
+                @include responsive(small){
+                    font-size:1.6rem;
+                }
+                @include responsive(xsmall){
+                    font-size:1.6rem;
+                }
             }
             &__input{
                 width:65%;
@@ -339,13 +379,20 @@
            left:15rem;
            font-size:1.5rem;
            font-weight: 600;
-           width:60%;
+           
            @include responsive(medium){
             width: 50%;
     }
            @include responsive(small){
                width: 40%;
                 top:3rem;
+        }
+        @include responsive(xsmall){
+            width: 50% !important;;
+        top: 2rem;
+           overflow: hidden;
+           text-overflow: ellipsis;
+           white-space: nowrap;
         }
        }
        &__price{
@@ -364,7 +411,7 @@
        }
        @include responsive(small){
         position: absolute;
-        top:-5.5rem;
+        top:-4.5rem;
         left:18rem;
    }}
        &__total{
@@ -384,16 +431,17 @@
            position: absolute;
            top:4.5rem;
            right:23rem;
-           @include responsive(medium){
-            right:22rem;
-            width:12rem;
-       }
-       @include responsive(small){
-        width:13rem;
-   }
-   @include responsive(xsmall){
-    width:10rem;
-}
+            @include responsive(medium){
+                right:22rem;
+                width:12rem;
+            }
+            @include responsive(small){
+                width:13rem;
+            }        
+            @include responsive(xsmall){
+                width: 10rem
+              
+            }
          
        }
        &__delete{
@@ -412,7 +460,7 @@
        }
        @include responsive(xsmall){
         position: absolute;
-        top:-6rem;
+        top:-9rem;
         right:-3.3rem;
         svg{
             width:10rem;
@@ -429,6 +477,10 @@
             position: absolute;
             top:-16rem;
             right:-21rem;
+       }
+       @include responsive(xsmall){
+           top:-14rem;
+        right:-14rem !important;
        }
        }
     }

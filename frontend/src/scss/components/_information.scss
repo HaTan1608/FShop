@@ -2,6 +2,14 @@
 .information{
     margin-top: 10rem;
     position: relative;
+    @include responsive(small){
+            
+       margin-top:2rem;
+    }
+    @include responsive(xsmall){
+       
+        margin-top:2rem;
+    }
     &__review{
        
         &__rating{
@@ -35,6 +43,14 @@
             right:0;
             width: 50%;
         }
+        @include responsive(small){
+            
+            width: 100%;
+        }
+        @include responsive(xsmall){
+           
+            width: 100%;
+        }
         background-color: #FAFAFA;
         height: 100%;
         width:100%;
@@ -67,15 +83,28 @@
            &__name{
                margin-left:1rem;
                font-size:1.7rem;
-               width:40%
+               width:40%;
+               @include responsive(small){
+                    
+               }
+               @include responsive(xsmall){
+                width:100%;
+                margin-bottom: 3rem;
+            }
            }
            &__total{
                position: absolute;
                right:2rem;
                font-size:1.7rem;
-               &__dollor{
-                   font-size:1.3rem;
-               }
+               @include responsive(small){
+                    
+            }
+            @include responsive(xsmall){
+             width:100%;
+             margin-top: 5rem;
+             text-align: right;
+         }
+               
            }
         }
         &__fee{
@@ -118,9 +147,21 @@
                 font-weight: 600;
             }
         }
+        &-open{
+            @include responsive(small){
+                display:block;
+            }
+            @include responsive(xsmall){
+                display:block;
+            }
+        }
+        &-close{
+            display:none;
+          
+        }
     }
     &__heading{
-        @include align(flex,space-between,null,null);
+        
         margin:2rem 0;
         &__homepage{
             text-align: right;
@@ -128,6 +169,15 @@
                 text-decoration: none;
                 color:cornflowerblue;
                 font-size:1.7rem;
+            }
+            @include responsive(small){
+            
+                margin:2rem 0rem;
+                text-align: left;
+            }
+            @include responsive(xsmall){
+                margin:2rem 0rem;
+                text-align: left;
             }
         }
         &__text{
@@ -203,6 +253,38 @@
                 margin-bottom: 1rem;
                 color:$white;
             }
+        }
+        &__show{
+            display:none;
+           @include responsive(small){
+               display:flex;
+               align-items: center;
+            position: relative;
+           }
+           @include responsive(xsmall){
+            display:flex;
+               align-items: center;
+            position: relative;
+           }
+           &__text{
+            @include responsive(small){
+                padding:1rem;
+                margin-left:4rem;
+                font-size:1.3rem;
+                margin-top:.2rem;
+                color:$main1;
+                
+                font-weight: 600;
+            }
+            @include responsive(xsmall){
+                padding:1rem;
+                margin-left:4rem;
+                font-weight: 600;
+                color:$main1;
+                font-size:1.3rem;
+                margin-top:.2rem;
+            }  
+           }
         }
     }
 }

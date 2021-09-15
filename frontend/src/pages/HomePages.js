@@ -75,9 +75,9 @@ const HomePage = () => {
                     </div>
 
                 </div>
-                <div className="homepage__banner">
-                    <ReactPlayer url='https://cdn.shopify.com/s/files/1/0565/9931/4585/files/output_compress-video-online.com_1.mp4?v=1629797501' playing={true} loop={true} muted={true} width='100%'
-                        height='100%' />
+                <div className="homepage__banner__center">
+                    <ReactPlayer url='https://cdn.shopify.com/s/files/1/0565/9931/4585/files/output_compress-video-online.com_1.mp4?v=1629797501' playing={true} loop={true} muted={true} width='70%'
+                        height='70%' />
                 </div>
 
                 <div className="container">

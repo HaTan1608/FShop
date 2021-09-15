@@ -409,6 +409,9 @@ font-weight: 900!important;
     top: 15rem;
     right: 2rem;
     z-index: 999999;
+    @include responsive(xsmall){
+      top:5rem;
+    }
   }
   
   .toast {
@@ -422,6 +425,10 @@ font-weight: 900!important;
     border-left: 4px solid;
     box-shadow: 0 5px 8px rgba(0, 0, 0, 0.08);
     transition: all linear 0.3s;
+    @include responsive(xsmall){
+      min-width: 300px;
+      max-width: 350px;
+    }
   }
   
   @keyframes slideInLeft {

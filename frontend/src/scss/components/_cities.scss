@@ -1,12 +1,10 @@
 @use '../abstracts' as *;
-.cities{
-    margin:2rem 0;
+.cities{   
     background:$silverLight-40;
     &__heading{
         @include align(flex,space-between,center,null);
         margin:0rem 1rem;
         margin-top:-1rem!important;
-
         &__result{
             font-size:1.7rem;
         }

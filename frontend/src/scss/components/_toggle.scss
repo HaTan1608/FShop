@@ -183,3 +183,80 @@
    
 
 }
+
+
+
+.information__toggle-open{
+    cursor: pointer;
+    z-index:5;
+    display:none;
+    
+      @include responsive(small){
+        
+        @include position(absolute,1.5rem,1.8rem,null,null,null,null);
+        span:nth-child(1){
+            @include toggleSpans($main1,2.5rem,.3rem,null)
+        }
+        span:nth-child(2){
+            @include toggleSpans($main1,2.5rem,.3rem,.5rem)
+        }
+        span:nth-child(3){
+            @include toggleSpans($main1,2.5rem,.3rem,.5rem)
+        }
+        display:block ;
+      }
+      @include responsive(xsmall){
+        @include position(absolute,.6rem,1rem,null,null,null,null);
+        span:nth-child(1){
+            @include toggleSpans($main1,2.5rem,.3rem,null)
+        }
+        span:nth-child(2){
+            @include toggleSpans($main1,2.5rem,.3rem,.5rem)
+        }
+        span:nth-child(3){
+            @include toggleSpans($main1,2.5rem,.3rem,.5rem)
+        }
+    @include position(absolute,.6rem,1rem,null,null,null,null);
+        display:block ;
+      }
+ 
+}
+
+.information__toggle-close{
+    
+    cursor: pointer;
+    z-index:5;
+    @include responsive(small){
+        
+        @include position(absolute,1.8rem,1.8rem,null,null,null,null);
+        span:nth-child(1){
+            @include toggleSpans($main1,3rem,1.5px,.5rem);
+            transform:rotate(-45deg) translateY(.5rem);
+        }
+        span:nth-child(2){
+           display :none;
+        }
+        span:nth-child(3){
+            @include toggleSpans($main1,3rem,1.5px,.5rem);
+            transform:rotate(45deg) translateY(-.5rem);
+        }
+        display:block ;
+      }
+    @include responsive(xsmall){
+        @include position(absolute,.9rem,.4rem,null,null,null,null);
+        span:nth-child(1){
+            @include toggleSpans($main1,3rem,1.5px,.5rem);
+            transform:rotate(-45deg) translateY(.5rem);
+        }
+        span:nth-child(2){
+           display :none;
+        }
+        span:nth-child(3){
+            @include toggleSpans($main1,3rem,1.5px,.5rem);
+            transform:rotate(45deg) translateY(-.5rem);
+        }
+ 
+        display:block ;
+      }
+   
+}
