@@ -16,7 +16,7 @@ productRouter.get(
         const category = req.query.category || '';
         const gender = req.query.gender || '';
         const order = req.query.order || '';
-        const size = req.query.size || [];
+        const size = req.query.size || '';
         const min =
             req.query.min && Number(req.query.min) !== 0 ? Number(req.query.min) : 0;
         const max =
