@@ -23,11 +23,6 @@ const descriptionSchema = new mongoose.Schema(
         description: { type: String, required: true },
     }
 );
-const sizeSchema = new mongoose.Schema(
-    {
-        size: { type: Number, required: true },
-    }
-);
 const productSchema = new mongoose.Schema(
     {
         name: { type: String, required: true, unique: true },
@@ -40,7 +35,6 @@ const productSchema = new mongoose.Schema(
         rating: { type: Number, required: true },
         numReviews: { type: Number, required: true },
         reviews: [reviewSchema],
-        size: [sizeSchema],
     },
     {
         timestamps: true,

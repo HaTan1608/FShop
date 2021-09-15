@@ -4,8 +4,6 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import Footer from '../components/Footer/Footer';
 import Header from '../components/Header';
 import { register } from '../actions/registerActions';
-
-import { Helmet } from "react-helmet-async";
 const RegisterScreen = (props) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -28,10 +26,7 @@ const RegisterScreen = (props) => {
     }, [props.history, redirect, userInfo]);
     return (
         <>
-            <Helmet>
-                <title>Đăng kí</title>
 
-            </Helmet>
             <Header />
             <div className="signin">
                 <div className="container">

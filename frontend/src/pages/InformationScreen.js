@@ -74,6 +74,7 @@ const InformationScreen = (props) => {
                         ) : (
                             <div className="information__heading">
                                 <div className="information__heading__text">Thông tin liên hệ</div>
+                                <div className="information__heading__link">Đã có tài khoản? <Link>Đăng nhập</Link></div>
                             </div>
                         )}
 

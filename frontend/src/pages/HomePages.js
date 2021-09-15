@@ -1,8 +1,6 @@
 import Header from "../components/Header"
 import React, { useEffect, useState } from "react"
 import ReactPlayer from 'react-player'
-
-import { Helmet } from "react-helmet-async";
 import ProductImage from "../components/Product/ProductImage";
 import ProductContents from "../components/Product/ProductContents";
 import Footer from "../components/Footer/Footer";
@@ -32,9 +30,9 @@ const HomePage = () => {
         }
 
     }
-    const addToCartHandler = (productId, index) => {
+    const addToCartHandler = (productId) => {
 
-        dispatch(addToCart(productId, 1, product3[index].size[0]));
+        dispatch(addToCart(productId, 1));
     }
 
 
@@ -46,11 +44,6 @@ const HomePage = () => {
 
     return (
         <>
-            <Helmet>
-                <title>Welcome Fshop!</title>
-                <meta name="description" content="Giày Bitis chính hãng" />
-                <meta name='keywords' content='giày, bitis, bitis hunter, sandals' />
-            </Helmet>
             <Header />
             <div className="homepage">
                 <div className="homepage__banner">
@@ -96,13 +89,13 @@ const HomePage = () => {
                     </div>
                     {loading ? '' : (
                         <div className="row">
-                            {product3.length > 2 ? product3.map((product, index) => (
+                            {product3.length > 2 ? product3.map((product) => (
                                 <div className="col-4 p-15" key={product._id}>
                                     <div className="cities__body">
                                         <Link to={`/product/${product._id}`}>
                                             <ProductImage img={product.images[0].image} />
                                         </Link>
-                                        <ProductContents ratingStar={product.rating} name={product.name} price={product.price} addCart={() => addToCartHandler(product._id, index)} />
+                                        <ProductContents ratingStar={product.rating} name={product.name} price={product.price} addCart={() => addToCartHandler(product._id)} />
 
 
                                     </div>

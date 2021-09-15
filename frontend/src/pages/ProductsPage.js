@@ -5,8 +5,6 @@ import { useParams } from "react-router";
 import Menu from "../components/Menu/Menu";
 import ProductList from "../components/Product/ProductList";
 import ProductBanner from "../components/Product/ProductBanner";
-
-import { Helmet } from "react-helmet-async";
 const ProductsPage = () => {
 
     let { gender } = useParams();
@@ -30,11 +28,6 @@ const ProductsPage = () => {
     }, [])
     return (
         <>
-            <Helmet>
-                <title>Giày {gender}</title>
-                <meta name="description" content={`Giày ${gender}`} />
-                <meta name='keywords' content={`giày, bitis, bitis hunter, sandals,`} />
-            </Helmet>
             <Header />
             <div className='cities'>
                 <div className='container'>

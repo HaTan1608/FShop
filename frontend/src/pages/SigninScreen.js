@@ -5,8 +5,6 @@ import { signin } from '../actions/signinActions';
 import Footer from '../components/Footer/Footer';
 import Header from '../components/Header';
 import { Link } from 'react-router-dom';
-
-import { Helmet } from "react-helmet-async";
 const SigninScreen = (props) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -21,7 +19,6 @@ const SigninScreen = (props) => {
     const submitHandler = (e) => {
         e.preventDefault();
         dispatch(signin(email, password));
-
     }
     useEffect(() => {
         if (userInfo) {
@@ -30,10 +27,7 @@ const SigninScreen = (props) => {
     }, [props.history, redirect, userInfo]);
     return (
         <>
-            <Helmet>
-                <title>Đăng nhập</title>
 
-            </Helmet>
             <Header />
             <div className="signin">
                 <div className="container width100">

@@ -9,8 +9,6 @@ import LoadingBox from '../components/Message/LoadingBox';
 import MessageBox from '../components/Message/MessageBox';
 import { USER_UPDATE_PROFILE_RESET } from '../types/userTypes';
 
-import { Helmet } from "react-helmet-async";
-
 export default function ProfileScreen() {
     const userSignin = useSelector((state) => state.userSignin);
     const { userInfo } = userSignin;
@@ -66,10 +64,6 @@ export default function ProfileScreen() {
     };
     return (
         <>
-            <Helmet>
-                <title>Thông tin tài khoản</title>
-
-            </Helmet>
             <Header />
 
             <div className="profile">
