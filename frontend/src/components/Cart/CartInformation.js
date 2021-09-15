@@ -30,6 +30,9 @@ const CartInformation = (props) => {
                         <div className="information__cart__item__name">
                             {item.name}
                         </div>
+                        <div className="information__cart__item__size">
+                            Size: {item.size}
+                        </div>
                         <div className="information__cart__item__total">
                             {(item.price * item.qty).toLocaleString('it-IT', {
                                 style: 'currency',

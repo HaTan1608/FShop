@@ -96,14 +96,41 @@
             @include align(flex,center,center,null);
             
             svg{
-                width: 8%;
+                @include responsive(medium){
+                    width: 7%;
+                    padding:0rem -2rem;
+                }
                 @include responsive(small){
                     
-                    width: 10%;
+                    width: 5%;
+                    
+                }
+                @include responsive(xsmall){
+                    
+                    width: 7%;
+                }
+    
+            }&__rating{
+                margin-top:1rem;
+                width:100%;
+                svg{
+                width: 5%;
+                @include responsive(medium){
+                    width: 7%;
+                    padding:0rem -2rem;
+                }
+                @include responsive(small){
+                    
+                    width: 5%;
+                    
+                }
+                @include responsive(xsmall){
+                    
+                    width: 7%;
                     
                 }
     
-            }
+            }}
         
         }
         &__price{
@@ -124,6 +151,37 @@
                 color:red;
             }
         }
+        &__size{
+            margin:1rem 0rem;
+                form{
+                    @include align(flex,space-between,center,null);
+                    width:90%;
+
+        }
+        &__text{
+            font-size:2rem;
+            letter-spacing: .1rem;
+            font-weight: 700;
+            span{
+                font-weight: 400;
+                padding-right: 1rem;
+            }
+        }
+                    
+            
+        }
+        &__span{
+            @include align(flex,space-between,center,null);
+            input{
+                width:2.5rem;
+                height: 2.5rem;
+            }
+            label{
+                font-size:1.7rem;
+               
+                margin-left:.5rem;
+            }
+    }
         &__description__heading{
             border-top: 1px dotted $silverLight-50;
             padding:1rem 0rem;
@@ -379,7 +437,8 @@
            left:15rem;
            font-size:1.5rem;
            font-weight: 600;
-           
+           top:3.5rem;
+           width:60%;
            @include responsive(medium){
             width: 50%;
     }
@@ -388,13 +447,28 @@
                 top:3rem;
         }
         @include responsive(xsmall){
-            width: 50% !important;;
+            width:40% !important;;
         top: 2rem;
-           overflow: hidden;
-           text-overflow: ellipsis;
-           white-space: nowrap;
         }
        }
+       &__size{
+        position: absolute;
+        left:15rem;
+        font-size:1.5rem;
+        font-weight: 600;
+        bottom:3.5rem;
+        width:60%;
+        @include responsive(medium){
+         width: 50%;
+ }
+        @include responsive(small){
+             top:7rem;
+     }
+     @include responsive(xsmall){
+        
+     top: 7rem;
+     }
+    }
        &__price{
         font-size:1.5rem;
         font-weight: 500;

@@ -16,6 +16,7 @@ productRouter.get(
         const category = req.query.category || '';
         const gender = req.query.gender || '';
         const order = req.query.order || '';
+        const size = req.query.size || [];
         const min =
             req.query.min && Number(req.query.min) !== 0 ? Number(req.query.min) : 0;
         const max =
@@ -25,6 +26,7 @@ productRouter.get(
         const nameFilter = name ? { name: { $regex: name, $options: 'i' } } : {};
         const priceFilter = min && max ? { price: { $gte: min, $lte: max } } : {};
         const genderFilter = gender ? { gender } : {};
+        const sizeFilter = size ? { size } : {};
         const sortOrder =
             order === 'lowest'
                 ? { price: 1 }
@@ -34,10 +36,10 @@ productRouter.get(
                         ? { rating: -1 }
                         : { _id: -1 };
         const count = await Product.count({
-            ...nameFilter, ...categoryFilter, ...priceFilter, ...genderFilter
+            ...nameFilter, ...categoryFilter, ...priceFilter, ...genderFilter, ...sizeFilter
         });
         const products = await Product.find({
-            ...nameFilter, ...categoryFilter, ...priceFilter, ...genderFilter
+            ...nameFilter, ...categoryFilter, ...priceFilter, ...genderFilter, ...sizeFilter
         }).sort(sortOrder).skip(pageSize * (page - 1))
             .limit(pageSize);
         console.log(pageSize)

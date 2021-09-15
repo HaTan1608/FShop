@@ -9,6 +9,8 @@ import { addToCart } from '../actions/cartActions';
 import LoadingBox from '../components/Message/LoadingBox';
 import MessageBox from '../components/Message/MessageBox';
 import SlideImage from '../components/Product/SlideImage';
+
+import { Helmet } from "react-helmet-async";
 export default function ProductScreen(props) {
     const dispatch = useDispatch();
     const productId = props.match.params.id;
@@ -16,15 +18,10 @@ export default function ProductScreen(props) {
     const { loading, product } = productDetails;
     const [qty, setQty] = useState(1);
     const [openMess, setOpenMess] = useState({ open: false, tittle: '', content: '', type: '', duration: 0 });
-
-
-    const formate = (price) => {
-        return `${price}.000`;
-    }
-
+    const [size, setSize] = useState(product && product.size[0])
     const ctrl = (number) => {
+        document.getElementById("qty-input").value = parseInt(qty) + parseInt(number);
 
-        document.getElementById("qty-input").value = qty + number;
         setQty(parseInt(qty + number));
     }
     const rating1 = (number, size) => {
@@ -53,8 +50,13 @@ export default function ProductScreen(props) {
         }
     }
     const addToCartHandler = (id, qty) => {
-        setOpenMess({ ...openMess, open: true, title: 'Thành công', content: 'Đã thêm sản phẩm vào giỏ hàng', type: 'success' })
-        dispatch(addToCart(id, qty));
+
+        if (qty > 0) {
+            setOpenMess({ ...openMess, open: true, title: 'Thành công', content: 'Đã thêm sản phẩm vào giỏ hàng', type: 'success' })
+            dispatch(addToCart(id, qty, size));
+        } else {
+            setOpenMess({ ...openMess, open: true, title: 'Thất bại', content: 'Số lượng cần lớn hơn 0', type: 'error' })
+        }
     }
 
     useEffect(() => {
@@ -66,7 +68,11 @@ export default function ProductScreen(props) {
 
     return (
         <>
-
+            {product && <Helmet>
+                <title>{product.name}</title>
+                <meta name="description" content={product.name} />
+                <meta name='keywords' content={`giày, bitis, bitis hunter, sandals, ${product.name}`} />
+            </Helmet>}
             <Header />
             <div className="product__details">
                 {loading ? (
@@ -77,18 +83,19 @@ export default function ProductScreen(props) {
                         <div className="row ">
                             <div className="col-6">
 
-                                <SlideImage image={product.images[mainImage].image} getIndex={getIndexImage} />
-                                <div className="product__details__slide">
-                                    {product.images.map((image, index) => (
-                                        <div className="product__details__slide__img" onClick={() => setMainImage(index)} key={index}>
-                                            <LazyLoadImage
-                                                src={image.image}
-                                                alt={image.image}
-                                            />
-                                        </div>
-                                    ))}
+                                {product.images && (<>
+                                    <SlideImage image={product.images[mainImage].image} getIndex={getIndexImage} />
+                                    <div className="product__details__slide">
+                                        {product.images.map((image, index) => (
+                                            <div className="product__details__slide__img" onClick={() => setMainImage(index)} key={index}>
+                                                <LazyLoadImage
+                                                    src={image.image}
+                                                    alt={image.image}
+                                                />
+                                            </div>
+                                        ))}
 
-                                </div>
+                                    </div></>)}
                             </div>
                             <div className="col-6">
                                 <div className="product__details__contents">
@@ -101,7 +108,7 @@ export default function ProductScreen(props) {
                                     <h2 className="product__details__contents__price"> {(product.price).toLocaleString('it-IT', {
                                         style: 'currency',
                                         currency: 'VND',
-                                    })}<span className="product__details__contents__price__dollor">VNĐ</span></h2>
+                                    })}</h2>
 
                                     <div className="product__details__contents__status">
                                         {product.countInStock > 0 ? (
@@ -110,13 +117,31 @@ export default function ProductScreen(props) {
                                             <div className="product__details__contents__status--false">Hết hàng</div>
                                         )}
                                     </div>
+                                    <div className="product__details__contents__size__text"><span>SIZE</span>{size}</div>
+                                    <div className="product__details__contents__size">
+                                        <div className="wrapperRadio" >
+                                            {product.size && product.size.map((size, index) => (
+                                                (index === 0 ? (<input type="radio" name="select" id={`option-${index + 1}`} defaultChecked value={size} onClick={(e) => setSize(e.target.value)} />) : (<input type="radio" name="select" id={`option-${index + 1}`} value={size} onClick={(e) => setSize(e.target.value)} />))
+
+                                            ))}
+                                            {product.size && product.size.map((size, index) => (
+
+                                                <label htmlFor={`option-${index + 1}`} className={`option option-${index + 1}`} >
+
+                                                    <span>{size}</span>
+                                                </label>
+
+                                            ))}
+
+                                        </div>
+                                    </div>
+
                                     {product.countInStock > 0 ? (
                                         <>
                                             <span className='ctrl'>
                                                 <div className='ctrl__button ctrl__button--decrement' onClick={() => ctrl(-1)}>&ndash;</div>
                                                 <div className='ctrl__counter'>
-                                                    <input className='ctrl__counter-input' type='text' id='qty-input' defaultValue={1} onChange={(e) => setQty(parseInt(e.target.value))} />
-                                                </div>
+                                                    <input className='ctrl__counter-input' type='text' id='qty-input' defaultValue={1} onChange={(e) => setQty(e.target.value)} /> </div>
                                                 <div className='ctrl__button ctrl__button--increment ' onClick={() => ctrl(1)}>+</div>
                                                 <button className="btn-dark ml-2" onClick={() => addToCartHandler(product._id, qty)}>Thêm vào giỏ hàng</button>
                                             </span>

@@ -2,7 +2,7 @@ import Axios from 'axios';
 import { CART_ADD_ITEM, CART_REMOVE_ITEM, CART_SAVE_SHIPPING_ADDRESS } from '../types/cartTypes';
 
 
-export const addToCart = (productId, qty) => async (dispatch, getState) => {
+export const addToCart = (productId, qty, size) => async (dispatch, getState) => {
     const { data } = await Axios.get(`/api/products/${productId}`);
     dispatch({
         type: CART_ADD_ITEM,
@@ -13,6 +13,7 @@ export const addToCart = (productId, qty) => async (dispatch, getState) => {
             countInStock: data.countInStock,
             product: data._id,
             qty,
+            size,
 
         },
     });

@@ -1,4 +1,6 @@
 import React from 'react';
+
+import { HelmetProvider } from "react-helmet-async";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import ProductsPage from './pages/ProductsPage';
 import ProductScreen from './pages/ProductScreen';
@@ -23,8 +25,9 @@ import NotFound from './pages/NotFound';
 function App() {
   return (
 
-    <Router>
+    <Router><HelmetProvider>
       <Switch>
+
         <Route path="/" exact component={HomePage} />
         <Route path="/register" exact component={RegisterScreen} />
         <Route path="/signin" exact component={SigninScreen} />
@@ -61,7 +64,8 @@ function App() {
         <Route path="/order/:id" exact component={OrderDetails} />
         <Route path='/loading' excart component={LoadingBox} />
         <Route component={NotFound} />
-      </Switch>
+
+      </Switch></HelmetProvider>
     </Router>
 
   );

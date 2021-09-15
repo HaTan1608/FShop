@@ -20,7 +20,7 @@ const ProductList = ({ getToggleChild, category, gender, price }) => {
         getToggleChild();
         setToggle(!toggle);
     }
-    const [page, setPage] = useState(0);
+    const [page, setPage] = useState(1);
     useEffect(() => {
         dispatch(
             listProducts({
@@ -78,7 +78,7 @@ const ProductList = ({ getToggleChild, category, gender, price }) => {
                 </div>
                 <div className="product__pagination">
                     {[...Array(products.pages).keys()].map((x, index) => (
-                        <div className={x === page ? "product__pagination__number--active" : "product__pagination__number"} onClick={() => setPage(x)} key={index}>{x + 1}
+                        <div className={x === page - 1 ? "product__pagination__number--active" : "product__pagination__number"} onClick={() => setPage(parseInt(x) + 1)} key={index + 1}>{x + 1}
                         </div>
                     ))}
                 </div>

@@ -9,7 +9,7 @@ import { listProducts } from "../actions/productActions";
 import { Link } from "react-router-dom";
 import { addToCart } from "../actions/cartActions";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-
+import { Helmet } from "react-helmet-async";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 const HomePage = () => {
@@ -30,9 +30,9 @@ const HomePage = () => {
         }
 
     }
-    const addToCartHandler = (productId) => {
+    const addToCartHandler = (productId, index) => {
 
-        dispatch(addToCart(productId, 1));
+        dispatch(addToCart(productId, 1, product3[index].size[0]));
     }
 
 
@@ -44,6 +44,12 @@ const HomePage = () => {
 
     return (
         <>
+
+            <Helmet>
+                <title>Welcome Fshop!</title>
+                <meta name="description" content="Giày Bitis chính hãng" />
+                <meta name='keywords' content='giày, bitis, bitis hunter, sandals' />
+            </Helmet>
             <Header />
             <div className="homepage">
                 <div className="homepage__banner">
@@ -89,13 +95,13 @@ const HomePage = () => {
                     </div>
                     {loading ? '' : (
                         <div className="row">
-                            {product3.length > 2 ? product3.map((product) => (
+                            {product3.length > 2 ? product3.map((product, index) => (
                                 <div className="col-4 p-15" key={product._id}>
                                     <div className="cities__body">
                                         <Link to={`/product/${product._id}`}>
                                             <ProductImage img={product.images[0].image} />
                                         </Link>
-                                        <ProductContents ratingStar={product.rating} name={product.name} price={product.price} addCart={() => addToCartHandler(product._id)} />
+                                        <ProductContents ratingStar={product.rating} name={product.name} price={product.price} addCart={() => addToCartHandler(product._id, index)} />
 
 
                                     </div>
