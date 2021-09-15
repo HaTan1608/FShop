@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { createOrder } from '../actions/orderActions';
 import InformationScreen from './InformationScreen';
+
+import { Helmet } from "react-helmet-async";
 import CartInformation from '../components/Cart/CartInformation';
 const PaymentScreen = (props) => {
     const userSignin = useSelector((state) => state.userSignin);
@@ -50,13 +52,17 @@ const PaymentScreen = (props) => {
         if (success) {
             props.history.push(`/order/${order._id}`);
         }
-        if (cartItems.length === 0) {
-            props.history.push('/cart');
+        if (!cartItems || cartItems.length === 0) {
+            props.history.push('/');
         }
     }, [success, cartItems])
     const [toggle, setToggle] = useState(false);
 
-    return (
+    return (<>
+        <Helmet>
+            <title>Thanh toán</title>
+
+        </Helmet>
         <div className="information ">
             <div className="container">
                 <div className="row">
@@ -77,7 +83,6 @@ const PaymentScreen = (props) => {
                         ) : (
                             <div className="information__heading">
                                 <div className="information__heading__text">Thông tin liên hệ</div>
-                                <div className="information__heading__link">Đã có tài khoản? <Link>Đăng nhập</Link></div>
                             </div>
                         )}
 
@@ -122,7 +127,7 @@ const PaymentScreen = (props) => {
                 </div>
 
             </div>
-        </div >
+        </div ></>
     )
 }
 export default PaymentScreen

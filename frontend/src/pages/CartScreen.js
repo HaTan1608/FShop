@@ -7,6 +7,7 @@ import Footer from '../components/Footer/Footer';
 import Header from '../components/Header';
 import { Link } from 'react-router-dom';
 
+import { Helmet } from "react-helmet-async";
 export default function CartScreen(props) {
     const productId = props.match.params.id;
     const cart = useSelector((state) => state.cart);
@@ -15,9 +16,13 @@ export default function CartScreen(props) {
         logo: '/assets/images/emptycart.png',
     })
     const ctrl = (id, number) => {
+
         const newQty = parseInt(document.getElementById(`qty-input-${id}`).value) + number;
-        document.getElementById(`qty-input-${id}`).value = newQty;
-        dispatch(addToCart(id, number))
+        if (newQty > 0) {
+            document.getElementById(`qty-input-${id}`).value = newQty;
+            dispatch(addToCart(id, number))
+        }
+
     }
     const removeFromCartHandler = (id) => {
         dispatch(removeFromCart(id));
@@ -31,6 +36,10 @@ export default function CartScreen(props) {
     }, []);
     return (
         <>
+            <Helmet>
+                <title>Giỏ hàng</title>
+
+            </Helmet>
             <Header />
             <div className="cart">
                 <div className="container">
@@ -63,6 +72,9 @@ export default function CartScreen(props) {
                                                     </div>
                                                     <div className="cart__infomation__name">
                                                         {item.name}
+                                                    </div>
+                                                    <div className="cart__infomation__size">
+                                                        Size {item.size}
                                                     </div>
                                                 </div>
                                                 <div className="col-6 cart__infomation">

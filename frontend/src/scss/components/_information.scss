@@ -84,6 +84,7 @@
                margin-left:1rem;
                font-size:1.7rem;
                width:40%;
+               margin-bottom: 1rem;
                @include responsive(small){
                     
                }
@@ -92,6 +93,20 @@
                 margin-bottom: 3rem;
             }
            }
+           &__size{
+            left:10rem;
+            bottom: .5rem;
+            font-size:1.7rem;
+            width:40%;
+            position: absolute;
+            @include responsive(small){
+                 
+            }
+            @include responsive(xsmall){
+             width:100%;
+             margin-bottom: 3rem;
+         }
+        }
            &__total{
                position: absolute;
                right:2rem;
@@ -269,9 +284,9 @@
            &__text{
             @include responsive(small){
                 padding:1rem;
-                margin-left:4rem;
+                margin-left:5.5rem;
                 font-size:1.3rem;
-                margin-top:.2rem;
+                margin-top:1.2rem;
                 color:$main1;
                 
                 font-weight: 600;

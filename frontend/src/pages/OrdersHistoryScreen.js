@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { listOrderMine } from '../actions/orderActions';
 import Footer from '../components/Footer/Footer';
 import Header from '../components/Header';
-
+import { Helmet } from "react-helmet-async";
 export default function OrdersHistoryScreen(props) {
     const orderMineList = useSelector((state) => state.orderMineList);
     const { loading, error, orders } = orderMineList;
@@ -19,7 +19,9 @@ export default function OrdersHistoryScreen(props) {
     }, [dispatch, orders]);
     return (
         <>
-
+            <Helmet>
+                <title>Danh sách đơn hàng</title>
+            </Helmet>
             <Header />
             {loading ? (
                 ""

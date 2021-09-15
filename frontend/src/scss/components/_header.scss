@@ -120,7 +120,6 @@
         @include align(flex,center,center,null);
         position: relative;
         
-        margin-left:5rem;
         @include responsive(medium){
             width:40%;
         }
