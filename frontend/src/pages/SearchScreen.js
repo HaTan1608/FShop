@@ -19,9 +19,9 @@ const SearchScreen = () => {
         name = 'all',
 
     } = useParams();
-    const addToCartHandler = (productId) => {
+    const addToCartHandler = (productId, index) => {
 
-        dispatch(addToCart(productId, 1));
+        dispatch(addToCart(productId, 1, products[index].size[0].size));
 
     }
     const [page, setPage] = useState(0)
@@ -64,7 +64,7 @@ const SearchScreen = () => {
                                     </div>
                                     <div className="row">
 
-                                        {products.products ? (products.products.length > 0 ? products.products.map((product) => (
+                                        {products.products ? (products.products.length > 0 ? products.products.map((product, index) => (
                                             <div className="col-4 p-15" key={product._id}>
                                                 <div className="cities__body">
                                                     <div className="cities__body__image1">
@@ -72,7 +72,7 @@ const SearchScreen = () => {
                                                             <ProductImage img={product.images[0].image} />
                                                         </Link></div>
 
-                                                    <ProductContents ratingStar={product.rating} name={product.name} price={product.price} addCart={() => addToCartHandler(product._id)} />
+                                                    <ProductContents ratingStar={product.rating} name={product.name} price={product.price} addCart={() => addToCartHandler(product._id, index)} />
                                                 </div>
                                             </div>
                                         )) : '') : ''}

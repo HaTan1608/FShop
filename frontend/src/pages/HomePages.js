@@ -32,7 +32,7 @@ const HomePage = () => {
     }
     const addToCartHandler = (productId, index) => {
 
-        dispatch(addToCart(productId, 1, product3[index].size[0]));
+        dispatch(addToCart(productId, 1, product3[index].size[0].size));
     }
 
 
