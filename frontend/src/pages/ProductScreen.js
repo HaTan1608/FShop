@@ -18,7 +18,7 @@ export default function ProductScreen(props) {
     const { loading, product } = productDetails;
     const [qty, setQty] = useState(1);
     const [openMess, setOpenMess] = useState({ open: false, tittle: '', content: '', type: '', duration: 0 });
-    const [size, setSize] = useState(product && product.size[0])
+    const [size, setSize] = useState(product && product.size[0].size)
     const ctrl = (number) => {
         document.getElementById("qty-input").value = parseInt(qty) + parseInt(number);
 
@@ -121,14 +121,13 @@ export default function ProductScreen(props) {
                                     <div className="product__details__contents__size">
                                         <div className="wrapperRadio" >
                                             {product.size && product.size.map((size, index) => (
-                                                (index === 0 ? (<input type="radio" name="select" id={`option-${index + 1}`} defaultChecked value={size} onClick={(e) => setSize(e.target.value)} />) : (<input type="radio" name="select" id={`option-${index + 1}`} value={size} onClick={(e) => setSize(e.target.value)} />))
-
+                                                (index === 0 ? (<input type="radio" name="select" key={index} id={`option-${index + 1}`} defaultChecked value={size.size} onClick={(e) => setSize(e.target.value)} />) : (<input type="radio" name="select" id={`option-${index + 1}`} value={size.size} onClick={(e) => setSize(e.target.value)} />))
                                             ))}
                                             {product.size && product.size.map((size, index) => (
 
                                                 <label htmlFor={`option-${index + 1}`} className={`option option-${index + 1}`} >
 
-                                                    <span>{size}</span>
+                                                    <span>{size.size}</span>
                                                 </label>
 
                                             ))}

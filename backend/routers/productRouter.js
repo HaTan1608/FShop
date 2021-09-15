@@ -42,8 +42,8 @@ productRouter.get(
             ...nameFilter, ...categoryFilter, ...priceFilter, ...genderFilter, ...sizeFilter
         }).sort(sortOrder).skip(pageSize * (page - 1))
             .limit(pageSize);
-        console.log(pageSize)
-        console.log(count)
+        console.log(size)
+        console.log(sizeFilter)
         res.send({ products, count, page, pages: Math.ceil(count / pageSize) });
     })
 );
