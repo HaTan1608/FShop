@@ -50,6 +50,8 @@ export default function ProductScreen(props) {
         }
     }
     const addToCartHandler = (id, qty) => {
+        console.log(size)
+        console.log(product.size[0].size)
         if (!size) {
             if (qty > 0) {
                 setOpenMess({ ...openMess, open: true, title: 'Thành công', content: 'Đã thêm sản phẩm vào giỏ hàng', type: 'success' })
