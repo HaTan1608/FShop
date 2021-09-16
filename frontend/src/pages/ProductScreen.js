@@ -53,6 +53,7 @@ export default function ProductScreen(props) {
         console.log(size)
         console.log(product.size[0].size)
         if (!size) {
+            console.log('Khong co ne')
             if (qty > 0) {
                 setOpenMess({ ...openMess, open: true, title: 'Thành công', content: 'Đã thêm sản phẩm vào giỏ hàng', type: 'success' })
                 dispatch(addToCart(id, qty, product.size[0].size));
@@ -61,6 +62,7 @@ export default function ProductScreen(props) {
             }
         }
         else {
+            console.log('Co ne')
             if (qty > 0) {
                 setOpenMess({ ...openMess, open: true, title: 'Thành công', content: 'Đã thêm sản phẩm vào giỏ hàng', type: 'success' })
                 dispatch(addToCart(id, qty, size));
