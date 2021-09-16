@@ -35,7 +35,7 @@ export const cartReducers = (state = { cartItems: [] }, action) => {
                 shippingAddress: action.payload,
             }
         case CART_EMPTY:
-            return {};
+            return { ...state, cartItems: [] };
         default:
             return state;
     }

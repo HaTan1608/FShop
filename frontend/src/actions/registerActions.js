@@ -3,7 +3,7 @@ import { REGISTER_FAIL, REGISTER_REQUEST, REGISTER_SUCCESS } from '../types/regi
 import { SIGNIN_SUCCESS } from '../types/signinTypes';
 
 
-export const register = (name, email, password) => async (dispatch) => {
+export const register = (email, password, name) => async (dispatch) => {
     dispatch({ type: REGISTER_REQUEST, payload: { email, password } });
     try {
         const { data } = await axios.post('/api/users/register', {

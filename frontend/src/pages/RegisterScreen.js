@@ -25,7 +25,7 @@ const RegisterScreen = (props) => {
         if (password !== confirmPassword) {
             setOpenMess({ ...openMess, open: true, title: 'Thất bại', content: 'Mật khẩu xác nhận không đúng', type: 'error' })
         } else {
-            dispatch(register('', email, password));
+            dispatch(register(email, password, ''));
 
             setOpenMess({ ...openMess, open: true, title: 'Thành công', content: 'Tạo tài khoản thành công', type: 'success' })
 
