@@ -21,8 +21,8 @@ export default function CartScreen(props) {
             dispatch(addToCart(id, number, size))
         }
     }
-    const removeFromCartHandler = (id) => {
-        dispatch(removeFromCart(id));
+    const removeFromCartHandler = (id, size) => {
+        dispatch(removeFromCart(id, parseInt(size)));
     }
     const checkoutHandler = () => {
         props.history.push('/checkout');
@@ -101,7 +101,7 @@ export default function CartScreen(props) {
                                                         })}
                                                     </div>
                                                     <div className="cart__infomation__delete">
-                                                        <MdDeleteForever size={30} onClick={() => removeFromCartHandler(item.product)} />
+                                                        <MdDeleteForever size={30} onClick={() => removeFromCartHandler(item.product, item.size)} />
                                                     </div>
                                                 </div>
                                             </div>
