@@ -22,7 +22,7 @@ export default function CartScreen(props) {
         }
     }
     const removeFromCartHandler = (id, size) => {
-        dispatch(removeFromCart(id, parseInt(size)));
+        dispatch(removeFromCart(id, parseFloat(size)));
     }
     const checkoutHandler = () => {
         props.history.push('/checkout');
