@@ -18,7 +18,7 @@ export default function CartScreen(props) {
         const newQty = parseInt(document.getElementById(`qty-input-${index}`).value) + number;
         if (newQty > 0) {
             document.getElementById(`qty-input-${index}`).value = newQty;
-            dispatch(addToCart(id, number, size))
+            dispatch(addToCart(id, number, size, 'yes'))
         }
     }
     const removeFromCartHandler = (id, size) => {
@@ -87,7 +87,7 @@ export default function CartScreen(props) {
                                                             <div className='ctrl__counter'>
                                                                 <input className='ctrl__counter-input' type='text' id={`qty-input-${index}`} defaultValue={item.qty} onChange={(e) =>
                                                                     dispatch(
-                                                                        addToCart(item.product, Number(e.target.value), item.size)
+                                                                        addToCart(item.product, Number(e.target.value), item.size, 'no')
                                                                     )
                                                                 } />
                                                             </div>

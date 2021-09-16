@@ -26,10 +26,22 @@ const InformationScreen = (props) => {
     const submitHandler = (e) => {
         e.preventDefault();
 
-        dispatch(
-            saveShippingAddress({ fullName, address, city, phone })
-        );
-        props.history.push('/payment');
+        var vnf_regex = /((09|03|07|08|05)+([0-9]{8})\b)/g;
+
+        if (phone !== '') {
+            if (vnf_regex.test(phone) == false) {
+                alert('Số điện thoại của bạn không đúng định dạng!');
+            } else {
+                dispatch(
+                    saveShippingAddress({ fullName, address, city, phone })
+                );
+                props.history.push('/payment');
+            }
+        } else {
+            alert('Bạn chưa điền số điện thoại!');
+        }
+
+
     };
     useEffect(() => {
         if (cartItems.length === 0) {

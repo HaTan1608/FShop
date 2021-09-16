@@ -9,7 +9,7 @@ import { Helmet } from "react-helmet-async";
 const SigninScreen = (props) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [image] = useState('/assets/signin/sign.jpg');
+    const [image] = useState('https://file.hstatic.net/1000230642/file/banner-main_72c5a4c7e3be459585e93d0cb037a47c.jpg');
     const dispatch = useDispatch();
     const redirect = props.location.search
         ? props.location.search.split('=')[1]
@@ -34,15 +34,17 @@ const SigninScreen = (props) => {
             </Helmet>
             <Header />
             <div className="signin">
-                <div className="container width100">
-                    <div className='row'>
-                        <div className="col-6 m-6 s-0 sx-0">
-                            <div className="homepage__banner">
-                                <LazyLoadImage src={image} alt="image" />
-                            </div>
+                <div className="col-12 m-12 s-12 sx-12">
+                    <div className="signin__image">
+                        <LazyLoadImage src={image} alt="image" />
+                    </div>
 
-                        </div>
-                        <div className="col-6 m-6 s-12 sx-12">
+                </div>
+                <div className="container width100">
+
+                    <div className='row'>
+
+                        <div className="col-12 m-12 s-12 sx-12">
                             <div className="signin__form">
                                 <form className="signin__form__contents" onSubmit={submitHandler}>
                                     <h2 className="signin__form__contents__heading">Đăng nhập</h2>

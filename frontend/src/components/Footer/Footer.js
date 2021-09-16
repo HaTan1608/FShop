@@ -17,13 +17,13 @@ const Footer = () => {
                             </div>
 
                         </div>
+
                     </div>
 
-
                 </div>
-            </div>
-            <div className="footer__bottom">
-                <p>&copy; Copy right Fshop {new Date().getFullYear()}</p>
+                <div className="footer__bottom">
+                    <p>&copy; Copy right Fshop {new Date().getFullYear()}</p>
+                </div>
             </div>
         </footer>
     )

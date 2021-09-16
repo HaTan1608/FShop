@@ -5,10 +5,13 @@ export const cartReducers = (state = { cartItems: [] }, action) => {
     switch (action.type) {
         case CART_ADD_ITEM:
             const item = action.payload;
+            const stt = action.payload.stt;
             if (state.cartItems) {
                 const existItem = state.cartItems.find((x) => (x.product === item.product && x.size === item.size));
                 if (existItem) {
-                    existItem.qty = existItem.qty + item.qty;
+                    if (stt === 'yes') {
+                        existItem.qty = existItem.qty + item.qty;
+                    }
                     return {
                         ...state,
                         cartItems: state.cartItems.map((x) =>

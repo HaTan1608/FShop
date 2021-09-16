@@ -56,7 +56,7 @@ export default function ProductScreen(props) {
             console.log('Khong co ne')
             if (qty > 0) {
                 setOpenMess({ ...openMess, open: true, title: 'Thành công', content: 'Đã thêm sản phẩm vào giỏ hàng', type: 'success' })
-                dispatch(addToCart(id, qty, product.size[0].size));
+                dispatch(addToCart(id, qty, product.size[0].size), 'yes');
             } else {
                 setOpenMess({ ...openMess, open: true, title: 'Thất bại', content: 'Số lượng cần lớn hơn 0', type: 'error' })
             }
@@ -65,7 +65,7 @@ export default function ProductScreen(props) {
             console.log('Co ne')
             if (qty > 0) {
                 setOpenMess({ ...openMess, open: true, title: 'Thành công', content: 'Đã thêm sản phẩm vào giỏ hàng', type: 'success' })
-                dispatch(addToCart(id, qty, parseInt(size)));
+                dispatch(addToCart(id, qty, parseFloat(size), 'yes'));
             } else {
                 setOpenMess({ ...openMess, open: true, title: 'Thất bại', content: 'Số lượng cần lớn hơn 0', type: 'error' })
             }

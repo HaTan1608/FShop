@@ -200,8 +200,13 @@
     
 }
 .signin {
+    position: relative;
+    
+    max-height: 54rem;
     &__image{
         
+       
+      
         width:100%;
         height: auto;
         img{
@@ -209,44 +214,61 @@
             height:auto;
             object-fit: cover;
             cursor: pointer;
+            
+        min-height: 48rem!important;
         }
    }
    &__form{
-       width: 100%;
-       height: 99.5%;
-       background:linear-gradient(to right,#1c1b20,#585659) ;
-       @include align(flex,center,center,null);
-       @include responsive(medium){
        
-       }
+       position: absolute;
+       width:40%;
+       height: auto;
+       left:30%;
+       top:38%;
+       background:linear-gradient(to right,$main1,$main2) ;
+       padding-top:2rem;
+       border-radius: 4rem;
+       @include responsive(medium){
+        top:37%;
+    }
        @include responsive(small){
-        background-image:url('https://file.hstatic.net/1000230642/file/the_red_snow_1.png');
-        background-size: 100%;
-        background-repeat: no-repeat;
-        object-fit: cover;
-        margin-top:1rem;
-        min-height: 30rem;
+        top:37%;
+        left:17.5%;
+        width:65%;
     }
     @include responsive(xsmall){
-        margin-top:1rem;
-        background-image:url('https://file.hstatic.net/1000230642/file/the_red_snow_1.png');
-        background-size: contain;
-        object-fit: cover;
-        background-size: 100%;
-  background-repeat: no-repeat;
-  min-height: 30rem;
+        top:40%;
+        left:10%;
+        width:80%;
     }
+       @include align(flex,center,center,null);
+    
        &__contents{
-           width:30rem;
+           width:70%;
            height:auto;
         margin-bottom: 5rem;
            color:$white;
+           @include responsive(medium){
+            width:90%;
+            margin-bottom: 3rem;
+        }
+        @include responsive(xsmall){
+            width:70%;
+            margin-bottom: 3rem;
+        }
+        @include responsive(small){
+            width:90%;
+            margin-bottom: 3rem;
+        }
            &__heading{
                font-size: 3rem;
                display: flex;
                 justify-content: center;
                 text-transform:uppercase;
                 margin-bottom: 1.5rem;
+                @include responsive(medium){
+                    font-size:2.5rem;
+                }
                 @include responsive(small){
                     font-size:2rem;
                     margin-top:1rem;
@@ -261,6 +283,9 @@
                @include align(flex,space-between,null,null);
                &__text{
                    font-size:2.1rem;
+                   @include responsive(small){
+                    font-size:1.8rem;
+                }
                    @include responsive(small){
                     font-size:1.6rem;
                 }
@@ -280,6 +305,9 @@
             &__text{
                 font-size:2.1rem;
                 @include responsive(small){
+                    font-size:1.8rem;
+                }
+                @include responsive(small){
                     font-size:1.6rem;
                 }
                 @include responsive(xsmall){
@@ -295,15 +323,36 @@
        }
        &__button{
            @include align(flex,space-between,center,null);
+          
         &__button{
-            margin-left:2rem;
+            margin-left:15%;
+            @include responsive(medium){
+                margin-left:5%;
+            }
+            @include responsive(small){
+                margin-left:10%;
+                font-size:1.3rem!important;
+                
+                padding:0rem 2rem!important;
+            }
+            @include responsive(xsmall){
+                margin-left:10%;
+                font-size:1.1rem!important;
+                padding:0rem 1.5rem!important;
+            }
         }
         &__new{
             font-size:1.7rem;
             margin-right:2rem;
+            @include responsive(xsmall){
+                margin-right:1rem;
+            }
             a {
                 color: inherit;
                  text-decoration: none;
+                 @include responsive(xsmall){
+                    font-size:1.4rem!important;
+                }
                 }
         }
     }
