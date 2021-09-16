@@ -71,7 +71,7 @@ export default function CartScreen(props) {
                                                         {item.name}
                                                     </div>
                                                     <div className="cart__infomation__size">
-                                                        Size {item.size.size}
+                                                        Size {item.size}
                                                     </div>
                                                 </div>
                                                 <div className="col-6 cart__infomation">
