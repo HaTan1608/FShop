@@ -64,14 +64,14 @@ export default function CartScreen(props) {
                                             <div className="row" key={index}>
                                                 <div className="col-6 cart__infomation">
 
-                                                    <div className="cart__infomation__image">
+                                                    <div className="cart__infomation__image" onClick={() => console.log(item.size.size)}>
                                                         <LazyLoadImage src={item.image} />
                                                     </div>
                                                     <div className="cart__infomation__name">
                                                         {item.name}
                                                     </div>
                                                     <div className="cart__infomation__size">
-                                                        Size {item.size}
+                                                        Size
                                                     </div>
                                                 </div>
                                                 <div className="col-6 cart__infomation">
