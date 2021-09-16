@@ -44,8 +44,11 @@
             }
             @include responsive(xsmall){
                 font-size:1.3rem;
+                margin-top:1rem;
+                width:100%;
             }
         }
+        
     }
     &__heading{
         color:$black;
@@ -54,10 +57,11 @@
         letter-spacing:.2rem;
         margin-bottom: 2rem;
         @include responsive(small){
-            font-size:1.4rem;
+            font-size:1.4rem;margin-bottom: 1.5rem;
         }
         @include responsive(xsmall){
             font-size:1.3rem;
+            margin-bottom: 1rem;
         }
     }
     &__ul{

@@ -421,6 +421,18 @@
         position: relative;
         background: $silverLight-40;
         margin-top:1rem;
+        &__aa{
+            @include align(flex,space-between,center,null);
+            position: relative;
+            background: $silverLight-40;
+            margin-top:1rem;
+            @include responsive(xsmall){
+                margin-top:0rem;
+            min-height: 6rem;
+            background: $silverLight-40;
+            position: relative;
+            }
+        }
         &__image{
             border-radius: 52rem;
             padding: 1rem;
@@ -447,8 +459,8 @@
                 top:3rem;
         }
         @include responsive(xsmall){
-            width:40% !important;;
-        top: 2rem;
+            width:50% !important;;
+                top: 2rem;
         }
        }
        &__size{
@@ -456,7 +468,7 @@
         left:15rem;
         font-size:1.5rem;
         font-weight: 600;
-        bottom:3.5rem;
+        bottom:2.8rem;
         width:60%;
         @include responsive(medium){
          width: 50%;
@@ -466,7 +478,7 @@
      }
      @include responsive(xsmall){
         
-     top: 7rem;
+        top:9rem;
      }
     }
        &__price{
@@ -480,13 +492,13 @@
        }
         @include responsive(small){
             position: absolute;
-            top:-7rem;
+            top:-4.5rem;
             left:18rem;
        }
-       @include responsive(small){
-        position: absolute;
-        top:-4.5rem;
-        left:18rem;
+       @include responsive(xsmall){
+        position:absolute;
+        top:1.2rem;
+        left:4.5rem;
    }}
        &__total{
         font-size:1.5rem;
@@ -500,6 +512,9 @@
         @include responsive(small){
             display:none;
        }
+       @include responsive(xsmall){
+        display:none;
+   }
        }
        &__stepper{
            position: absolute;
@@ -513,8 +528,10 @@
                 width:13rem;
             }        
             @include responsive(xsmall){
-                width: 10rem
-              
+                position:absolute;
+                top:0rem;
+                left:5rem;
+                width:12rem;
             }
          
        }
@@ -533,9 +550,9 @@
                 right:-.3rem;
        }
        @include responsive(xsmall){
-        position: absolute;
-        top:-9rem;
-        right:-3.3rem;
+        position:absolute;
+        right:-4rem;
+        top:.5rem;
         svg{
             width:10rem;
         }
@@ -553,8 +570,9 @@
             right:-21rem;
        }
        @include responsive(xsmall){
-           top:-14rem;
-        right:-14rem !important;
+        position: absolute;
+        top:0rem;
+        left:25%;
        }
        }
     }

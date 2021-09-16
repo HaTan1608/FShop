@@ -62,7 +62,7 @@ export default function CartScreen(props) {
                                     {
                                         cartItems.map((item, index) => (
                                             <div className="row" key={index}>
-                                                <div className="col-6 cart__infomation">
+                                                <div className="col-6 xs-12 cart__infomation">
 
                                                     <div className="cart__infomation__image" onClick={() => console.log(item.size)}>
                                                         <LazyLoadImage src={item.image} />
@@ -74,7 +74,7 @@ export default function CartScreen(props) {
                                                         Size {item.size}
                                                     </div>
                                                 </div>
-                                                <div className="col-6 cart__infomation">
+                                                <div className="col-6 xs-12 cart__infomation__aa">
                                                     <div className="cart__infomation__price">
                                                         {(item.price).toLocaleString('it-IT', {
                                                             style: 'currency',
@@ -119,7 +119,7 @@ export default function CartScreen(props) {
                                         })}</div>
                                         <div className="cart__checkout__qty">  ( {cartItems.reduce((a, c) => a + c.qty, 0)} sản phẩm ) </div>
                                         <div className="cart__checkout__button">
-                                            <button type='button' onClick={checkoutHandler} className="btn-dark">Checkout</button>
+                                            <button type='button' onClick={checkoutHandler} className="btn-dark">Xác nhận</button>
                                         </div>
                                     </div>
                                 </div></>)
