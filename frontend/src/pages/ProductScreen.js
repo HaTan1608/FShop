@@ -65,7 +65,7 @@ export default function ProductScreen(props) {
             console.log('Co ne')
             if (qty > 0) {
                 setOpenMess({ ...openMess, open: true, title: 'Thành công', content: 'Đã thêm sản phẩm vào giỏ hàng', type: 'success' })
-                dispatch(addToCart(id, qty, size));
+                dispatch(addToCart(id, qty, parseInt(size)));
             } else {
                 setOpenMess({ ...openMess, open: true, title: 'Thất bại', content: 'Số lượng cần lớn hơn 0', type: 'error' })
             }
