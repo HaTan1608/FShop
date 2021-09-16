@@ -14,7 +14,8 @@ const ProductList = ({ getToggleChild, category, gender, price }) => {
     const { loading, products, pages, count } = productList;
     const [toggle, setToggle] = useState(false);
     const addToCartHandler = (productId, index) => {
-        dispatch(addToCart(productId, 1, products[index].size[0].size));
+        console.log(products.products[index].size[0])
+        dispatch(addToCart(productId, 1, products.products[index].size[0].size));
     }
     const sendToggle = () => {
         getToggleChild();

@@ -58,8 +58,8 @@ const Header = () => {
                                                     <div>Sản phẩm</div>
                                                     <div>Số lượng</div>
                                                 </div>
-                                                {cartItems.map(item => (
-                                                    <div className="header__cart__items" key={item.product}>
+                                                {cartItems.map((item, index) => (
+                                                    <div className="header__cart__items" key={index}>
                                                         <div className="header__cart__items__name">
                                                             <LazyLoadImage src={item.image} alt={item.image} />
                                                             <div className="header__cart__items__name--name">{item.name}</div>

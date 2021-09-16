@@ -14,11 +14,11 @@ export default function CartScreen(props) {
     const [empty] = useState({
         logo: '/assets/images/emptycart.png',
     })
-    const ctrl = (id, number) => {
-        const newQty = parseInt(document.getElementById(`qty-input-${id}`).value) + number;
+    const ctrl = (id, number, size, index) => {
+        const newQty = parseInt(document.getElementById(`qty-input-${index}`).value) + number;
         if (newQty > 0) {
-            document.getElementById(`qty-input-${id}`).value = newQty;
-            dispatch(addToCart(id, number))
+            document.getElementById(`qty-input-${index}`).value = newQty;
+            dispatch(addToCart(id, number, size))
         }
     }
     const removeFromCartHandler = (id) => {
@@ -60,8 +60,8 @@ export default function CartScreen(props) {
                                         </div>
                                     </div>
                                     {
-                                        cartItems.map((item) => (
-                                            <div className="row" key={item.product}>
+                                        cartItems.map((item, index) => (
+                                            <div className="row" key={index}>
                                                 <div className="col-6 cart__infomation">
 
                                                     <div className="cart__infomation__image">
@@ -83,15 +83,15 @@ export default function CartScreen(props) {
                                                     </div>
                                                     <div className="cart__infomation__qty ">
                                                         <span className='ctrl cart__infomation__stepper'>
-                                                            <div className='ctrl__button ctrl__button--decrement' onClick={(e) => ctrl(item.product, -1)}>&ndash;</div>
+                                                            <div className='ctrl__button ctrl__button--decrement' onClick={(e) => ctrl(item.product, -1, item.size)}>&ndash;</div>
                                                             <div className='ctrl__counter'>
-                                                                <input className='ctrl__counter-input' type='text' id={`qty-input-${item.product}`} defaultValue={item.qty} onChange={(e) =>
+                                                                <input className='ctrl__counter-input' type='text' id={`qty-input-${index}`} defaultValue={item.qty} onChange={(e) =>
                                                                     dispatch(
-                                                                        addToCart(item.product, Number(e.target.value))
+                                                                        addToCart(item.product, Number(e.target.value), item.size)
                                                                     )
                                                                 } />
                                                             </div>
-                                                            <div className='ctrl__button ctrl__button--increment ' onClick={(e) => ctrl(item.product, 1)}>+</div>
+                                                            <div className='ctrl__button ctrl__button--increment ' onClick={(e) => ctrl(item.product, 1, item.size, index)}>+</div>
                                                         </span>
                                                     </div>
                                                     <div className="cart__infomation__total">

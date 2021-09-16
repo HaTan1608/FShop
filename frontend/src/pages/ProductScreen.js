@@ -50,13 +50,23 @@ export default function ProductScreen(props) {
         }
     }
     const addToCartHandler = (id, qty) => {
-
-        if (qty > 0) {
-            setOpenMess({ ...openMess, open: true, title: 'Thành công', content: 'Đã thêm sản phẩm vào giỏ hàng', type: 'success' })
-            dispatch(addToCart(id, qty, size));
-        } else {
-            setOpenMess({ ...openMess, open: true, title: 'Thất bại', content: 'Số lượng cần lớn hơn 0', type: 'error' })
+        if (!size) {
+            if (qty > 0) {
+                setOpenMess({ ...openMess, open: true, title: 'Thành công', content: 'Đã thêm sản phẩm vào giỏ hàng', type: 'success' })
+                dispatch(addToCart(id, qty, product.size[0].size));
+            } else {
+                setOpenMess({ ...openMess, open: true, title: 'Thất bại', content: 'Số lượng cần lớn hơn 0', type: 'error' })
+            }
         }
+        else {
+            if (qty > 0) {
+                setOpenMess({ ...openMess, open: true, title: 'Thành công', content: 'Đã thêm sản phẩm vào giỏ hàng', type: 'success' })
+                dispatch(addToCart(id, qty, size));
+            } else {
+                setOpenMess({ ...openMess, open: true, title: 'Thất bại', content: 'Số lượng cần lớn hơn 0', type: 'error' })
+            }
+        }
+
     }
 
     useEffect(() => {
@@ -117,7 +127,7 @@ export default function ProductScreen(props) {
                                             <div className="product__details__contents__status--false">Hết hàng</div>
                                         )}
                                     </div>
-                                    <div className="product__details__contents__size__text"><span>SIZE</span>{size}</div>
+                                    <div className="product__details__contents__size__text"><span>SIZE</span>{!product.size ? size : product.size[0].size}</div>
                                     <div className="product__details__contents__size">
                                         <div className="wrapperRadio" >
                                             {product.size && product.size.map((size, index) => (
