@@ -650,7 +650,7 @@
     }
     @include responsive(xsmall){
       
-        left:-18rem;
+        left:-24rem;
     }
 }
 
@@ -683,7 +683,7 @@
     background-color:$silverLight-40;
     transform: translateX(-50%) rotate(45deg);
     @include responsive(xsmall){
-        left:18.8rem;
+        left:25rem;
     }
 }
 
