@@ -9,28 +9,46 @@ import { Link } from "react-router-dom";
 import { addToCart } from "../actions/cartActions";
 import { useParams } from "react-router";
 import LoadingBox from "../components/Message/LoadingBox";
+import Menu from "../components/Menu/Menu";
 const SearchScreen = () => {
     const dispatch = useDispatch();
     const productList = useSelector((state) => state.productList);
     const { loading, products, pages, count } = productList;
-
+    const [checkPrice, setCheckPrice] = useState({ min: 0, max: 1000000 })
+    const getPrice = (price) => {
+        setCheckPrice({ ...checkPrice, min: price.min, max: price.max })
+    }
+    const [category, setCategory] = useState('all');
+    const getCategory = (category) => {
+        setCategory(category);
+    }
+    const [toggle, setToggle] = useState(false);
     const [orderBy, setOrderBy] = useState('');
     const {
         name = 'all',
 
     } = useParams();
     const addToCartHandler = (productId, index) => {
-
-        dispatch(addToCart(productId, 1, products[index].size[0].size));
+        dispatch(addToCart(productId, 1, products.products[index].size[0].size, 'yes'));
 
     }
     const [page, setPage] = useState(0)
     useEffect(() => {
-        dispatch(listProducts({
-            name, page
-        }));
-    }, [dispatch, name, page]);
-    const [toggle, setToggle] = useState(false);
+        dispatch(
+            listProducts({
+                name,
+                category: category !== 'all' ? category : '',
+                order: orderBy,
+                min: checkPrice.min,
+                max: checkPrice.max,
+                page: page
+            })
+        );
+
+
+        window.scrollTo(0, 0);
+
+    }, [category, dispatch, checkPrice, orderBy, page]);
 
 
     return (
@@ -40,8 +58,11 @@ const SearchScreen = () => {
                 <div className='container'>
 
                     <div className="row mr-minus-15 ml-minus-15">
-                        <div className="col-12 p-15 m-12 ">
-                            <div className="products__heading__toggle  pb-2 mb-2">
+                        <div className={toggle ? "menu__small" : "col-2 p-15 m-0"}>
+                            <Menu getCategoryChild={getCategory} getPriceChild={getPrice} />
+                        </div>
+                        <div className="col-10 p-15 m-12 ">
+                            <div className="products__heading__toggle  pb-2 mb-2 m-12 ">
 
                                 <div className={toggle ? 'products__toggle-close ' : 'products__toggle-open'} onClick={() => setToggle(!toggle)}>
                                     <span></span>
@@ -49,6 +70,7 @@ const SearchScreen = () => {
                                     <span></span>
                                 </div>
                             </div>
+
                             {loading ? <LoadingBox /> : (
                                 <>
                                     <div className="cities__heading">
@@ -65,7 +87,7 @@ const SearchScreen = () => {
                                     <div className="row">
 
                                         {products.products ? (products.products.length > 0 ? products.products.map((product, index) => (
-                                            <div className="col-4 p-15" key={product._id}>
+                                            <div className="col-4 p-15" key={index}>
                                                 <div className="cities__body">
                                                     <div className="cities__body__image1">
                                                         <Link to={`/product/${product._id}`}>

@@ -131,7 +131,7 @@ export default function ProductScreen(props) {
                                             <div className="product__details__contents__status--false">Hết hàng</div>
                                         )}
                                     </div>
-                                    <div className="product__details__contents__size__text"><span>SIZE</span>{product.size ? size : product.size[0].size}</div>
+                                    <div className="product__details__contents__size__text"><span>SIZE</span>{product.size ? (size ? size : product.size[0].size) : ''}</div>
                                     <div className="product__details__contents__size">
                                         <div className="wrapperRadio" >
                                             {product.size && product.size.map((size, index) => (

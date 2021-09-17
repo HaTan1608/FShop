@@ -48,14 +48,10 @@ const SigninScreen = (props) => {
                             <div className="signin__form">
                                 <form className="signin__form__contents" onSubmit={submitHandler}>
                                     <h2 className="signin__form__contents__heading">Đăng nhập</h2>
-                                    <div className="signin__form__contents__email">
-                                        <span className="signin__form__contents__email__text">Email</span>
-                                        <input className="signin__form__contents__email__input" type="email" id="email" required onChange={(e) => setEmail(e.target.value)} />
-                                    </div>
-                                    <div className="signin__form__contents__password">
-                                        <span className="signin__form__contents__password__text">Mật khẩu</span>
-                                        <input className="signin__form__contents__password__input" type="password" id="password" required onChange={(e) => setPassword(e.target.value)} />
-                                    </div>
+                                    <input type="email" className="information__heading__form__input" onChange={(e) => setEmail(e.target.value)} required />
+                                    <div className="information__heading__form__text">Email</div>
+                                    <input type="password" className="information__heading__form__input" onChange={(e) => setPassword(e.target.value)} required />
+                                    <div className="information__heading__form__text">Mật khẩu</div>
                                     <div className="signin__form__button">
                                         <button className="btn-dark signin__form__button__button" type="submit">Đăng nhập</button>
                                         <span className="signin__form__button__new"><Link to={`/register?redirect=${redirect}`}> Tạo tài khoản</Link></span>

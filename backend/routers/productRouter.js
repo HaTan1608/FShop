@@ -42,8 +42,6 @@ productRouter.get(
             ...nameFilter, ...categoryFilter, ...priceFilter, ...genderFilter, ...sizeFilter
         }).sort(sortOrder).skip(pageSize * (page - 1))
             .limit(pageSize);
-        console.log(size)
-        console.log(sizeFilter)
         res.send({ products, count, page, pages: Math.ceil(count / pageSize) });
     })
 );
@@ -53,6 +51,15 @@ productRouter.get(
     expressAsyncHandler(async (req, res) => {
         const categories = await Product.find().distinct('category');
         res.send(categories);
+    })
+);
+
+productRouter.get(
+    '/home',
+    expressAsyncHandler(async (req, res) => {
+        const male = await Product.find({ gender: 'male' }).limit(3);
+        const famale = await Product.find({ gender: 'famale' }).limit(3);
+        res.send({ male, famale });
     })
 );
 

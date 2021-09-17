@@ -5,7 +5,7 @@ import ProductImage from "../components/Product/ProductImage";
 import ProductContents from "../components/Product/ProductContents";
 import Footer from "../components/Footer/Footer";
 import { useDispatch, useSelector } from "react-redux";
-import { listProducts } from "../actions/productActions";
+import { listProducts, listProductsHome } from "../actions/productActions";
 import { Link } from "react-router-dom";
 import { addToCart } from "../actions/cartActions";
 import { LazyLoadImage } from "react-lazy-load-image-component";
@@ -18,26 +18,32 @@ const HomePage = () => {
         image2: 'https://fshop-app.s3.us-east-2.amazonaws.com/bitis2.PNG',
     })
     const dispatch = useDispatch();
-    const [category, setCategory] = '';
-    const productList = useSelector((state) => state.productList);
+    const productList = useSelector((state) => state.productListHome);
     const { loading, products } = productList;
-    const cart = useSelector((state) => state.cart);
-    const { cartItems } = cart;
     let product3 = [];
+    let product4 = [];
     if (!loading) {
-        if (products.products) {
-            product3 = products.products.slice(0, 3);
+
+        if (products.male) {
+            products.male.map(product => product3.push(product))
+        }
+        if (products.famale) {
+            products.famale.map(product => product4.push(product))
+        }
+    }
+
+    const addToCartHandler = (productId, gender, index) => {
+        if (gender === 'male') {
+            dispatch(addToCart(productId, 1, product3[index].size[0].size, 'yes'));
+        } else {
+            dispatch(addToCart(productId, 1, product4[index].size[0].size, 'yes'));
         }
 
-    }
-    const addToCartHandler = (productId, index) => {
-
-        dispatch(addToCart(productId, 1, product3[index].size[0].size, 'yes'));
     }
 
 
     useEffect(() => {
-        dispatch(listProducts({}));
+        dispatch(listProductsHome());
         window.scrollTo(0, 0);
     }, [dispatch]);
 
@@ -52,7 +58,7 @@ const HomePage = () => {
             </Helmet>
             <Header />
             <div className="homepage">
-                <div className="homepage__banner">
+                <div className="homepage__banner" onClick={() => console.log(products)}>
 
                     <Carousel showThumbs={false} autoPlay={true} interval={2000} infiniteLoop={true} emulateTouch={true}>
                         <div>
@@ -101,7 +107,7 @@ const HomePage = () => {
                                         <Link to={`/product/${product._id}`}>
                                             <ProductImage img={product.images[0].image} />
                                         </Link>
-                                        <ProductContents ratingStar={product.rating} name={product.name} price={product.price} addCart={() => addToCartHandler(product._id, index)} />
+                                        <ProductContents ratingStar={product.rating} name={product.name} price={product.price} addCart={() => addToCartHandler(product._id, 'male', index)} />
 
 
                                     </div>
@@ -120,13 +126,13 @@ const HomePage = () => {
                     </div>
                     {loading ? '' : (
                         <div className="row">
-                            {product3.length > 0 ? product3.map((product) => (
+                            {product4.length > 0 ? product4.map((product, index) => (
                                 <div className="col-4 p-15" key={product._id}>
                                     <div className="cities__body">
                                         <Link to={`/product/${product._id}`}>
                                             <ProductImage img={product.images[0].image} />
                                         </Link>
-                                        <ProductContents ratingStar={product.rating} name={product.name} price={product.price} addCart={() => addToCartHandler(product._id)} />
+                                        <ProductContents ratingStar={product.rating} name={product.name} price={product.price} addCart={() => addToCartHandler(product._id, 'famale', index)} />
 
 
                                     </div>

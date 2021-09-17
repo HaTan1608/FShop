@@ -25,6 +25,11 @@ const Header = () => {
     const getToggle = () => {
         setOpenToggle(!openToggle);
     }
+    const getLastName = (name) => {
+        const a = name.split(" ");
+        const b = a.length;
+        return a[b - 1];
+    }
     return (
         <div className="header">
             <div className="container">
@@ -143,7 +148,7 @@ const Header = () => {
 
                                     </div>
                                     <div className="header__right__name">
-                                        {userInfo.name}
+                                        {getLastName(userInfo.name)}
                                     </div>
                                 </div >
                             </div >

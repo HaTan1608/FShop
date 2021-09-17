@@ -1,5 +1,5 @@
 import axios from "axios";
-import { PRODUCT_CREATE_FAIL, PRODUCT_CREATE_REQUEST, PRODUCT_CREATE_SUCCESS, PRODUCT_DELETE_FAIL, PRODUCT_DELETE_REQUEST, PRODUCT_DELETE_SUCCESS, PRODUCT_DETAILS_FAIL, PRODUCT_DETAILS_REQUEST, PRODUCT_DETAILS_SUCCESS, PRODUCT_LIST_FAIL, PRODUCT_LIST_REQUEST, PRODUCT_LIST_SUCCESS, PRODUCT_REVIEW_CREATE_FAIL, PRODUCT_REVIEW_CREATE_REQUEST, PRODUCT_REVIEW_CREATE_SUCCESS, PRODUCT_UPDATE_FAIL, PRODUCT_UPDATE_REQUEST, PRODUCT_UPDATE_SUCCESS } from "../types/productTypes"
+import { PRODUCT_CREATE_FAIL, PRODUCT_CREATE_REQUEST, PRODUCT_CREATE_SUCCESS, PRODUCT_DELETE_FAIL, PRODUCT_DELETE_REQUEST, PRODUCT_DELETE_SUCCESS, PRODUCT_DETAILS_FAIL, PRODUCT_DETAILS_REQUEST, PRODUCT_DETAILS_SUCCESS, PRODUCT_HOME_FAIL, PRODUCT_HOME_REQUEST, PRODUCT_HOME_SUCCESS, PRODUCT_LIST_FAIL, PRODUCT_LIST_REQUEST, PRODUCT_LIST_SUCCESS, PRODUCT_REVIEW_CREATE_FAIL, PRODUCT_REVIEW_CREATE_REQUEST, PRODUCT_REVIEW_CREATE_SUCCESS, PRODUCT_UPDATE_FAIL, PRODUCT_UPDATE_REQUEST, PRODUCT_UPDATE_SUCCESS } from "../types/productTypes"
 
 export const listProducts = ({ name = '', category = '', gender = '', size = [], order = '', min = 0, max = 0, page = 0 }) => async (dispatch) => {
     dispatch({
@@ -21,7 +21,25 @@ export const listProducts = ({ name = '', category = '', gender = '', size = [],
     }
 }
 
-
+export const listProductsHome = () => async (dispatch) => {
+    dispatch({
+        type: PRODUCT_HOME_REQUEST
+    });
+    try {
+        const { data } = await axios.get(
+            '/api/products/home'
+        );
+        dispatch({
+            type: PRODUCT_HOME_SUCCESS,
+            payload: data
+        })
+    } catch (error) {
+        dispatch({
+            type: PRODUCT_HOME_FAIL,
+            payload: error.message,
+        })
+    }
+}
 
 export const detailsProduct = (productId) => async (dispatch) => {
     dispatch({
