@@ -466,10 +466,25 @@
         }
     }
     &__infomation{
-        @include align(flex,space-between,center,null);
-        position: relative;
+        @include align(flex,center,center,null);
         background: $silverLight-40;
         margin-top:1rem;
+        position: relative;
+        @include responsive(small){
+            position: unset;
+        }
+            &__name__size{
+                position: relative;
+                background: $silverLight-40;
+                margin-top:1rem;
+                align-items: center;
+                justify-content: center;
+                @include responsive(xsmall){
+                    margin-top:0rem;
+                    padding-left:1rem;
+                }
+
+        }
         &__aa{
             @include align(flex,space-between,center,null);
             position: relative;
@@ -495,64 +510,81 @@
        }
        &__name{
            position: absolute;
-           left:15rem;
            font-size:1.5rem;
            font-weight: 600;
            top:3.5rem;
-           width:60%;
+           left:1rem;
            @include responsive(medium){
-            width: 50%;
+          
     }
            @include responsive(small){
-               width: 40%;
                 top:3rem;
         }
         @include responsive(xsmall){
-            width:50% !important;;
-                top: 2rem;
+            position:unset;
+           
         }
        }
        &__size{
         position: absolute;
-        left:15rem;
         font-size:1.5rem;
         font-weight: 600;
         bottom:2.8rem;
-        width:60%;
+        left:1rem;
         @include responsive(medium){
          width: 50%;
  }
         @include responsive(small){
-             top:7rem;
+            bottom:4rem;
      }
      @include responsive(xsmall){
         
-        top:9rem;
+        position:unset;
      }
     }
        &__price{
+        
         font-size:1.5rem;
         font-weight: 500;
-        margin-left:-3rem;
         @include responsive(medium){
-            position: absolute;
-            top:6rem;
-            left:0rem;
+            
        }
         @include responsive(small){
-            position: absolute;
-            top:-4.5rem;
-            left:18rem;
+           position:absolute;
+           bottom: 1.5rem;
        }
        @include responsive(xsmall){
-        position:absolute;
-        top:1.2rem;
-        left:4.5rem;
+       
    }}
+   &__price__b{
+       
+    font-size:1.5rem;
+    font-weight: 500;
+    display:none;
+    @include responsive(small){
+        display:block;
+       position:absolute;
+       bottom: 1.5rem;
+       left:1rem;
+   }
+   @include responsive(xsmall){
+    display:block;
+    position: unset;
+    padding-top:1rem;
+    
+}}
+
+&__qty{
+    @include responsive(xsmall){
+        margin-top: 0rem;
+        width:100%;
+        @include align(flex,space-between,center,6rem);
+    }
+}
        &__total{
         font-size:1.5rem;
         font-weight: 500;
-        margin-right:-10rem;
+        margin-right:2rem;
         @include responsive(medium){
             position: absolute;
             right:12rem;
@@ -566,32 +598,25 @@
    }
        }
        &__stepper{
-           position: absolute;
-           top:4.5rem;
-           right:23rem;
+           margin-top:1.5rem;
             @include responsive(medium){
-                right:22rem;
-                width:12rem;
+               
             }
             @include responsive(small){
-                width:13rem;
+              
             }        
             @include responsive(xsmall){
-                position:absolute;
-                top:0rem;
-                left:5rem;
-                width:12rem;
+              margin-left:2rem;
             }
          
        }
        &__delete{
-           margin-right:2rem;
+           bottom: 1rem;
            cursor: pointer;
-           
+           position: absolute;
            @include responsive(medium){
-            position: absolute;
-            top:9rem;
-            right:-1.8rem;
+           margin-left: 11rem;
+           display:block;
        }
             @include responsive(small){
                 position: absolute;
@@ -603,31 +628,43 @@
         right:-4rem;
         top:.5rem;
         svg{
-            width:10rem;
+            width:20rem;
         }
+ 
+}
+&__b{
+    display: none;
+    @include responsive(medium){
+        display:block;
+        text-align: right;
+       
+    }
+         @include responsive(small){
+             display:block;
+           
+             text-align: right;
+    }
+    @include responsive(xsmall){
+        display:block;
+ 
+        
+       svg{
+           
+               width:10rem;
+           
+       }
+}
 }
        }
-       &__qty{
-        @include responsive(medium){
-            position: absolute;
-            top:.6rem;
-            right:-8rem;
-       }
-        @include responsive(small){
-            position: absolute;
-            top:-16rem;
-            right:-21rem;
-       }
-       @include responsive(xsmall){
-        position: absolute;
-        top:0rem;
-        left:25%;
-       }
-       }
+     
     }
 
 }
-
+.cart__infomation.qty__delete{
+    @include responsive(xsmall){
+        margin-top:0rem;
+    }
+}
 .wrapper .icon{
     position: relative;
 }
@@ -646,11 +683,12 @@
         left:-30rem;
     }
     @include responsive(small){
-        left:-31.5rem;
+        
+        display:none;
     }
     @include responsive(xsmall){
       
-        left:-24rem;  
+        display:none;
     }
 }
 
