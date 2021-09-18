@@ -6,6 +6,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import Rating from '../components/Product/Rating';
 import { ORDER_PAY_RESET } from '../types/orderTypes';
 import { PRODUCT_REVIEW_CREATE_RESET } from '../types/productTypes';
+import { ORDER_CREATE_RESET } from '../types/orderTypes';
 import { createReview } from '../actions/productActions';
 import { Helmet } from "react-helmet-async";
 const OrderDetails = (props) => {
@@ -58,6 +59,7 @@ const OrderDetails = (props) => {
             dispatch({ type: PRODUCT_REVIEW_CREATE_RESET });
         }
         dispatch({ type: ORDER_PAY_RESET })
+        dispatch({ type: ORDER_CREATE_RESET })
     }, [])
 
     const [toggle, setToggle] = useState(false);
