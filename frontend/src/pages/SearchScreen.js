@@ -48,7 +48,7 @@ const SearchScreen = () => {
 
         window.scrollTo(0, 0);
 
-    }, [category, dispatch, checkPrice, orderBy, page]);
+    }, [name, category, dispatch, checkPrice, orderBy, page]);
 
 
     return (
