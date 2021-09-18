@@ -38,6 +38,11 @@
                 }
                 &__rating{
                     margin-top:.5rem;
+                    @include responsive(medium){
+                        svg{
+                            width: 5rem;
+                        }
+                    }
                     &__icon{
                         margin-left:.2rem;
                         &:first-child{

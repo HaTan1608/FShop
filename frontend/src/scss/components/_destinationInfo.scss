@@ -39,6 +39,23 @@
            font-size:1.5rem;
            font-weight: 400;
        }
+       &__rating{
+        @include responsive(medium){
+            svg{
+                width: 2rem;
+            }
+        }
+        @include responsive(small){
+            svg{
+                width: 2rem;
+            }
+        }
+        @include responsive(xsmall){
+            svg{
+                width: 2rem;
+            }
+        }
+       }
    }
 }
 .product__details{

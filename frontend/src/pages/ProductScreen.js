@@ -174,14 +174,14 @@ export default function ProductScreen(props) {
                             Mô tả sản phẩm
                         </div>
                         <ul className="product__details__contents__description__msg">
-                            {product.descriptions.map((x, index) => (<li key={index}> {x.text} </li>))}
+                            {product.descriptions.map((x, index) => (<li key={index} className="animation"> {x.text} </li>))}
                         </ul></div>
-                        <div className="product__reviews"><h2 className="heading">Nhận xét & đánh giá</h2>
+                        <div className="product__reviews animation"><h2 className="heading">Nhận xét & đánh giá</h2>
                             {product.reviews.length === 0 && (
                                 <div className="product__reviews__review__comment">Chưa có nhận xét đánh giá nào</div>
                             )}
                             {product.reviews.map((review) => (
-                                <div className="product__reviews__review">
+                                <div className="product__reviews__review animation">
                                     <div className="product__reviews__review__name">
                                         {review.name}
                                         <span className="product__reviews__review__date">
