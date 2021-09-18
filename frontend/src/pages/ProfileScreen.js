@@ -62,6 +62,7 @@ export default function ProfileScreen() {
 
             setOpenMess({ ...openMess, open: true, title: 'Thành công', content: 'Cập nhật thông tin thành công', type: 'success' })
         }
+
     };
     return (
         <>

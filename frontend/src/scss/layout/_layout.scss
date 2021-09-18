@@ -5,15 +5,3 @@
     flex-wrap: wrap;
 }
 
-.col-0{
-    display:none;
-    @include responsive(small){
-        display:block;
-    }
-}
-@for $i from 1 through 12 {
-    .col-#{$i}{
-        width: math.div(100%, 12) * $i;
-        
-    }
-}
