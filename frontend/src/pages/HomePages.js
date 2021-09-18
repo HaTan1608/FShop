@@ -62,7 +62,6 @@ const HomePage = () => {
             </Helmet>
             <Header />
             <div className="homepage">
-                <MessageBox messData={openMess} />
                 <div className="homepage__banner" >
 
                     <Carousel showThumbs={false} autoPlay={true} interval={2000} infiniteLoop={true} emulateTouch={true}>
