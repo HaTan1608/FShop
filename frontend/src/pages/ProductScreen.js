@@ -95,7 +95,7 @@ export default function ProductScreen(props) {
                     <MessageBox messData={openMess} />
                     <div className="container">
                         <div className="row ">
-                            <div className="col-6">
+                            <div className="col-6 m-6 s-12 xs-12">
 
                                 {product.images && (<>
                                     <SlideImage image={product.images[mainImage].image} getIndex={getIndexImage} />
@@ -111,7 +111,7 @@ export default function ProductScreen(props) {
 
                                     </div></>)}
                             </div>
-                            <div className="col-6">
+                            <div className="col-6 m-6 s-12 xs-12">
                                 <div className="product__details__contents">
                                     <div className="product__details__contents__name">
                                         <h1>{product.name}</h1>
