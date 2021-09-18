@@ -152,7 +152,7 @@ const HomePage = () => {
                                             </div>
 
                                             <div className="cities__body__contents__button">
-                                                <button className='btn-default' onClick={() => addToCartHandler(product.product, product.gender, index)} >Thêm vào giỏ hàng</button>
+                                                <button className='btn-default' onClick={() => addToCartHandler(product._id, product.gender, index)} >Thêm vào giỏ hàng</button>
                                             </div>
                                         </div>
 
