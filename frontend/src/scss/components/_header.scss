@@ -453,3 +453,87 @@ svg{
     }
     
 }
+
+.notfound__contents {
+    @include position(absolute, 0, 0, null, null, 100%, 100%);
+   
+    &__video {
+        img {
+
+            width: 100%;
+            
+
+            object-fit: cover;
+            image-rendering: pixelated;
+            animation: headerImage .5s linear;
+            @keyframes headerImage {
+                from {
+                    opacity: 0;
+                } to {
+                    opacity: 1;
+                }
+            }
+        }
+    
+    }
+    &__text {
+        @include align(flex, center, center,100%);
+        
+        &__child {
+            &__h1 {
+                color:$white;
+                text-transform: uppercase;
+                font-weight: 900;
+                font-size: 4.2rem;
+                line-height: 3rem;
+                @include animation(heading, 1s, ease-in, -8rem, 0);
+                @include responsive(medium) {
+                    font-size: 4rem;
+                }
+                @include responsive(small) {
+                    font-size: 3rem;
+                }
+                @include responsive(xsmall) {
+                    font-size: 2rem;
+                }
+                
+               
+            }
+            &__p {
+                margin-top: 1rem;
+                color:$white;
+                font-size: 1.5rem;
+                @include animation(subHeading, 1s, ease-out, -10rem, 0);
+                @include responsive(small){
+                    margin-top: .5rem;
+                    font-size: 1.4rem;
+                    font-weight: 600;
+                    line-height: 2rem;
+                }
+               
+            }
+            &__link {
+                margin-top: 1rem;
+                @include animation(headerButton, 1s, ease-in, 8rem, 0);
+                a{
+                    text-decoration: none;
+                    color:white;
+                    font-weight: 600;
+                    font-size: 1.4rem;
+                }
+            }
+        }
+    }
+}
+
+.homepage__banner.notfound{
+    max-height: 54.85rem;
+    position: relative;
+    border-radius: unset;
+    div{
+        img{
+            min-height: 20rem;
+        }
+    }
+    
+}

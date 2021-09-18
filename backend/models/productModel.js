@@ -14,18 +14,18 @@ const reviewSchema = new mongoose.Schema(
 
 const imageSchema = new mongoose.Schema(
     {
-        image: { type: String, required: true },
+        image: { type: String },
     }
 );
 
 const descriptionSchema = new mongoose.Schema(
     {
-        description: { type: String, required: true },
+        description: { type: String },
     }
 );
 const sizeSchema = new mongoose.Schema(
     {
-        size: { type: Number, required: true },
+        size: { type: Number },
     }
 );
 const productSchema = new mongoose.Schema(

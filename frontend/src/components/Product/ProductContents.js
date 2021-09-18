@@ -29,7 +29,7 @@ const ProductContents = ({ name, price, ratingStar, addCart }) => {
     }
     return (<>
         <MessageBox messData={openMess} />
-        <div className="cities__body__contents">
+        <div className="cities__body__contents ">
 
 
             <div className="cities__body__contents__top">

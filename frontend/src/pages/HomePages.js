@@ -43,8 +43,9 @@ const HomePage = () => {
 
 
     useEffect(() => {
-        dispatch(listProductsHome());
         window.scrollTo(0, 0);
+        dispatch(listProductsHome());
+
     }, [dispatch]);
 
 
@@ -103,7 +104,7 @@ const HomePage = () => {
                         <div className="row">
                             {product3.length > 2 ? product3.map((product, index) => (
                                 <div className="col-4 p-15" key={product._id}>
-                                    <div className="cities__body">
+                                    <div className="cities__body animation">
                                         <Link to={`/product/${product._id}`}>
                                             <ProductImage img={product.images[0].image} />
                                         </Link>
@@ -128,7 +129,7 @@ const HomePage = () => {
                         <div className="row">
                             {product4.length > 0 ? product4.map((product, index) => (
                                 <div className="col-4 p-15" key={product._id}>
-                                    <div className="cities__body">
+                                    <div className="cities__body animation">
                                         <Link to={`/product/${product._id}`}>
                                             <ProductImage img={product.images[0].image} />
                                         </Link>

@@ -66,7 +66,7 @@ const ProductList = ({ getToggleChild, category, gender, price }) => {
 
                     {products.products ? (products.products.length > 0 ? products.products.map((product, index) => (
                         <div className="col-4 p-15" key={product._id}>
-                            <div className="cities__body">
+                            <div className={index < 3 ? `cities__body` : `cities__body animation`}>
                                 <div className="cities__body__image1">
                                     <Link to={`/product/${product._id}`}>
                                         <ProductImage img={product.images[0].image} />

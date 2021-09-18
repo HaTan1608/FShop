@@ -22,11 +22,15 @@ import HomePage from './pages/HomePages';
 import SearchScreen from './pages/SearchScreen';
 import LoadingBox from './components/Message/LoadingBox';
 import NotFound from './pages/NotFound';
+import AnimationsProvider from './animations/AnimationsProvider';
+import Header from './components/Header';
+import Footer from './components/Footer/Footer';
 function App() {
   return (
 
-    <Router><HelmetProvider>
+    <Router>  <AnimationsProvider><HelmetProvider>
       <Switch>
+
 
         <Route path="/" exact component={HomePage} />
         <Route path="/register" exact component={RegisterScreen} />
@@ -65,7 +69,10 @@ function App() {
         <Route path='/loading' excart component={LoadingBox} />
         <Route component={NotFound} />
 
-      </Switch></HelmetProvider>
+
+
+
+      </Switch></HelmetProvider>   </AnimationsProvider>
     </Router>
 
   );

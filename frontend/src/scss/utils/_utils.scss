@@ -647,3 +647,12 @@ font-weight: 900!important;
   #option-6:checked:checked ~ .option-6 span{
     color: #fff;
   }
+.animation{
+    transform:translateY(-10rem);
+    opacity: 0;
+    transition: all 1s linear;
+}
+  .animate{
+    transform:translateY(0);
+    opacity:1;
+  }
