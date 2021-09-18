@@ -52,6 +52,7 @@ const OrderDetails = (props) => {
         }
     };
     useEffect(() => {
+        dispatch({ type: ORDER_CREATE_RESET })
         dispatch(detailsOrder(props.match.params.id))
         if (successReviewCreate) {
             setRating('');
@@ -59,7 +60,6 @@ const OrderDetails = (props) => {
             dispatch({ type: PRODUCT_REVIEW_CREATE_RESET });
         }
         dispatch({ type: ORDER_PAY_RESET })
-        dispatch({ type: ORDER_CREATE_RESET })
     }, [])
 
     const [toggle, setToggle] = useState(false);
