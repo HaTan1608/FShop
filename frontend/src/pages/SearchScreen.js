@@ -87,7 +87,7 @@ const SearchScreen = () => {
                                     <div className="row">
 
                                         {products.products ? (products.products.length > 0 ? products.products.map((product, index) => (
-                                            <div className="col-4 p-15" key={index}>
+                                            <div className="col-4 m-4 s-6 xs-12 p-15" key={index}>
                                                 <div className="cities__body">
                                                     <div className="cities__body__image1">
                                                         <Link to={`/product/${product._id}`}>
