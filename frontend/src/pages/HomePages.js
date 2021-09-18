@@ -12,6 +12,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Helmet } from "react-helmet-async";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
+import MessageBox from "../components/Message/MessageBox";
 const HomePage = () => {
     const [imageBitis] = useState({
         image1: 'https://cdn.shopify.com/s/files/1/0565/9931/4585/files/z2584381159043_cf151161ee8677aae2f15686c3a75531_c00ba712-f330-47d9-8554-f2b3e6fe9673.jpg?v=1625049290',
@@ -31,11 +32,13 @@ const HomePage = () => {
             products.famale.map(product => product4.push(product))
         }
     }
-
+    const [openMess, setOpenMess] = useState('')
     const addToCartHandler = (productId, gender, index) => {
         if (gender === 'male') {
+            setOpenMess({ ...openMess, open: true, title: 'Thành công', content: 'Đã thêm sản phẩm vào giỏ hàng', type: 'success' })
             dispatch(addToCart(productId, 1, product3[index].size[0].size, 'yes'));
         } else {
+            setOpenMess({ ...openMess, open: true, title: 'Thành công', content: 'Đã thêm sản phẩm vào giỏ hàng', type: 'success' })
             dispatch(addToCart(productId, 1, product4[index].size[0].size, 'yes'));
         }
 
@@ -59,7 +62,8 @@ const HomePage = () => {
             </Helmet>
             <Header />
             <div className="homepage">
-                <div className="homepage__banner" onClick={() => console.log(products)}>
+                <MessageBox messData={openMess} />
+                <div className="homepage__banner" >
 
                     <Carousel showThumbs={false} autoPlay={true} interval={2000} infiniteLoop={true} emulateTouch={true}>
                         <div>
@@ -103,7 +107,7 @@ const HomePage = () => {
                     {loading ? '' : (
                         <div className="row">
                             {product3.length > 2 ? product3.map((product, index) => (
-                                <div className="col-4 p-15" key={product._id}>
+                                <div className="col-4 m-4 s-6 xs-12 p-15" key={product._id}>
                                     <div className="cities__body animation">
                                         <Link to={`/product/${product._id}`}>
                                             <ProductImage img={product.images[0].image} />
