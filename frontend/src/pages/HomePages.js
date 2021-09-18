@@ -7,6 +7,8 @@ import Footer from "../components/Footer/Footer";
 import { useDispatch, useSelector } from "react-redux";
 import { listProducts, listProductsHome } from "../actions/productActions";
 import { Link } from "react-router-dom";
+
+import { BsFillStarFill, BsStar, BsStarHalf } from 'react-icons/bs';
 import { addToCart } from "../actions/cartActions";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Helmet } from "react-helmet-async";
@@ -23,6 +25,24 @@ const HomePage = () => {
     const { loading, products } = productList;
     let product3 = [];
     let product4 = [];
+    const rating = (number) => {
+        let container = [];
+        for (let i = 1; i <= 5; i++) {
+            if (i <= number) {
+                container.push(<BsFillStarFill key={i} size={20} color="#df2189" className="reviews__body__contents__info__rating__icon" />)
+            } else {
+                if (number + 1 - i > 0) {
+                    container.push(<BsStarHalf key={i} size={20} color="#df2189" className="reviews__body__contents__info__rating__icon" />)
+                }
+                else {
+                    container.push(<BsStar key={i} size={20} color="#df2189" className="reviews__body__contents__info__rating__icon" />)
+                }
+
+
+            }
+        }
+        return container;
+    }
     if (!loading) {
 
         if (products.male) {
@@ -112,7 +132,29 @@ const HomePage = () => {
                                         <Link to={`/product/${product._id}`}>
                                             <ProductImage img={product.images[0].image} />
                                         </Link>
-                                        <ProductContents ratingStar={product.rating} name={product.name} price={product.price} addCart={() => addToCartHandler(product._id, 'male', index)} />
+                                        <div className="cities__body__contents ">
+
+
+                                            <div className="cities__body__contents__top">
+                                                <div className="cities__body__contents__top__name">{product.name}</div>
+
+                                            </div>
+                                            <div className="product__details__contents__rating">
+                                                {rating(product.ratingStar)}
+                                            </div>
+                                            <div className="cities__body__contents__price">
+                                                {(product.price).toLocaleString('it-IT', {
+                                                    style: 'currency',
+                                                    currency: 'VND',
+                                                })}
+
+
+                                            </div>
+
+                                            <div className="cities__body__contents__button">
+                                                <button className='btn-default' onClick={() => addToCartHandler(product.product, product.gender, index)} >Thêm vào giỏ hàng</button>
+                                            </div>
+                                        </div>
 
 
                                     </div>
@@ -131,13 +173,35 @@ const HomePage = () => {
                     </div>
                     {loading ? '' : (
                         <div className="row">
-                            {product4.length > 0 ? product4.map((product, index) => (
-                                <div className="col-4 p-15" key={product._id}>
+                            {product4.length > 2 ? product4.map((product, index) => (
+                                <div className="col-4 m-4 s-6 xs-12 p-15" key={product._id}>
                                     <div className="cities__body animation">
                                         <Link to={`/product/${product._id}`}>
                                             <ProductImage img={product.images[0].image} />
                                         </Link>
-                                        <ProductContents ratingStar={product.rating} name={product.name} price={product.price} addCart={() => addToCartHandler(product._id, 'famale', index)} />
+                                        <div className="cities__body__contents ">
+
+
+                                            <div className="cities__body__contents__top">
+                                                <div className="cities__body__contents__top__name">{product.name}</div>
+
+                                            </div>
+                                            <div className="product__details__contents__rating">
+                                                {rating(product.ratingStar)}
+                                            </div>
+                                            <div className="cities__body__contents__price">
+                                                {(product.price).toLocaleString('it-IT', {
+                                                    style: 'currency',
+                                                    currency: 'VND',
+                                                })}
+
+
+                                            </div>
+
+                                            <div className="cities__body__contents__button">
+                                                <button className='btn-default' onClick={() => addToCartHandler(product.product, product.gender, index)} >Thêm vào giỏ hàng</button>
+                                            </div>
+                                        </div>
 
 
                                     </div>
