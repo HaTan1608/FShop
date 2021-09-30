@@ -9,7 +9,6 @@ import { addToCart } from '../actions/cartActions';
 import LoadingBox from '../components/Message/LoadingBox';
 import MessageBox from '../components/Message/MessageBox';
 import SlideImage from '../components/Product/SlideImage';
-
 import { Helmet } from "react-helmet-async";
 export default function ProductScreen(props) {
     const dispatch = useDispatch();
@@ -21,7 +20,6 @@ export default function ProductScreen(props) {
     const [size, setSize] = useState(product && product.size[0].size)
     const ctrl = (number) => {
         document.getElementById("qty-input").value = parseInt(qty) + parseInt(number);
-
         setQty(parseInt(qty + number));
     }
     const rating1 = (number, size) => {
@@ -70,16 +68,12 @@ export default function ProductScreen(props) {
                 setOpenMess({ ...openMess, open: true, title: 'Thất bại', content: 'Số lượng cần lớn hơn 0', type: 'error' })
             }
         }
-
     }
-
     useEffect(() => {
         dispatch(detailsProduct(productId));
 
         window.scrollTo(0, 0);
-
     }, [dispatch, productId]);
-
     return (
         <>
             {product && <Helmet>
@@ -95,8 +89,7 @@ export default function ProductScreen(props) {
                     <MessageBox messData={openMess} />
                     <div className="container">
                         <div className="row ">
-                            <div className="col-6 m-6 s-12 xs-12   ">
-
+                            <div className="col-6 m-6 s-12 xs-12">
                                 {product.images && (<>
                                     <SlideImage image={product.images[mainImage].image} getIndex={getIndexImage} />
                                     <div className="product__details__slide">
@@ -108,7 +101,6 @@ export default function ProductScreen(props) {
                                                 />
                                             </div>
                                         ))}
-
                                     </div></>)}
                             </div>
                             <div className="col-6 m-6 s-12 xs-12  ">
@@ -123,7 +115,6 @@ export default function ProductScreen(props) {
                                         style: 'currency',
                                         currency: 'VND',
                                     })}</h2>
-
                                     <div className="product__details__contents__status">
                                         {product.countInStock > 0 ? (
                                             <div className="product__details__contents__status--true">Còn hàng</div>
@@ -143,12 +134,9 @@ export default function ProductScreen(props) {
 
                                                     <span>{size.size}</span>
                                                 </label>
-
                                             ))}
-
                                         </div>
                                     </div>
-
                                     {product.countInStock > 0 ? (
                                         <>
                                             <span className='ctrl'>
@@ -164,7 +152,6 @@ export default function ProductScreen(props) {
                                             <button className="btn-dark mb-2" disabled>Thêm vào giỏ hàng</button>
                                         </>
                                     )}
-
                                 </div>
                             </div>
                         </div>
@@ -199,13 +186,10 @@ export default function ProductScreen(props) {
                         </div>
                     </div>
                     </div>
-
-
                 </>
                 )}
             </div>
             <Footer />
         </>
-
     );
 }

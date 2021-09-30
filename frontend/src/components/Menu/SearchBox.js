@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import { BsSearch } from 'react-icons/bs';
-import ProductsPage from '../../pages/ProductsPage';
 const SearchBox = (props) => {
 
     const [name, setName] = useState('');

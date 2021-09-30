@@ -9,13 +9,11 @@ import LoadingBox from '../components/Message/LoadingBox';
 import MessageBox from '../components/Message/MessageBox';
 import { USER_UPDATE_PROFILE_RESET } from '../types/userTypes';
 import { Helmet } from "react-helmet-async";
-
 export default function ProfileScreen() {
     const userSignin = useSelector((state) => state.userSignin);
     const { userInfo } = userSignin;
     const userDetails = useSelector((state) => state.userDetails);
     const { loading, error, user } = userDetails;
-
     const orderMineList = useSelector((state) => state.orderMineList);
     const { loading: loadingOrders, orders } = orderMineList;
     const [name, setName] = useState('');
@@ -47,22 +45,17 @@ export default function ProfileScreen() {
             setName(user.name);
             setEmail(user.email);
             dispatch(listOrderMine());
-
         }
-
     }, [dispatch, userInfo._id, user]);
     const [openMess, setOpenMess] = useState({ open: false, tittle: '', content: '', type: '', duration: 0 });
-
     const submitHandler = (e) => {
         e.preventDefault();
         if (password !== confirmPassword) {
             setOpenMess({ ...openMess, open: true, title: 'Thất bại', content: 'Mật khẩu xác nhận không đúng', type: 'error' })
         } else {
             dispatch(updateUserProfile({ userId: user._id, name, email, password }));
-
             setOpenMess({ ...openMess, open: true, title: 'Thành công', content: 'Cập nhật thông tin thành công', type: 'success' })
         }
-
     };
     return (
         <>
@@ -71,11 +64,7 @@ export default function ProfileScreen() {
 
             </Helmet>
             <Header />
-
             <div className="profile">
-
-
-
                 {loading ? (
                     <LoadingBox />
                 ) : error ? (
@@ -89,7 +78,6 @@ export default function ProfileScreen() {
                         {successUpdate && (
                             <MessageBox messData={openMess} />
                         )}
-
                         <div className="container">
                             <div className="row">
                                 <div className="col-1 m-0 s-0 xs-0"></div>
@@ -132,20 +120,16 @@ export default function ProfileScreen() {
                                                 <div className="profile__body__text">Chưa giao</div>
                                                 <div className="profile__body__data">{count(orders, false)}</div>
                                             </div>
-
                                         </>
                                     )}
                                 </div>
                                 <div className="col-1 m-0 s-0 xs-0"></div>
                             </div>
-
-
                         </div>
                     </>
                 )}
             </div>
             <Footer />
-
         </>
     );
 }

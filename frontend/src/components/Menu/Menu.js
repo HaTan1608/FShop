@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 const Menu = ({ getCategoryChild, getPriceChild }) => {
     const sendData = () => {
         if (document.getElementById('bitis').checked === true && document.getElementById('sandals').checked === true) {

@@ -3,11 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { addToCart } from '../../actions/cartActions';
 import { listProducts } from '../../actions/productActions';
-import Toggle from '../Menu/Toggle';
 import LoadingBox from '../Message/LoadingBox';
 import ProductContents from './ProductContents';
 import ProductImage from './ProductImage';
-const ProductList = ({ getToggleChild, category, gender, price }) => {
+const ProductList = ({ getToggleChild,getNewPage, category, gender, price ,newPage}) => {
     const dispatch = useDispatch();
     const [orderBy, setOrderBy] = useState('');
     const productList = useSelector((state) => state.productList);
@@ -22,7 +21,14 @@ const ProductList = ({ getToggleChild, category, gender, price }) => {
         setToggle(!toggle);
     }
     const [page, setPage] = useState(1);
+    const sendNewPage = () => {
+        getNewPage();
+        
+    }
     useEffect(() => {
+        if(newPage){
+        setPage(1);
+    }
         dispatch(
             listProducts({
                 category: category !== 'all' ? category : '',
@@ -33,10 +39,8 @@ const ProductList = ({ getToggleChild, category, gender, price }) => {
                 page: page
             })
         );
-
-
+            sendNewPage();
         window.scrollTo(0, 0);
-
     }, [category, dispatch, price, orderBy, gender, page]);
     return (<>
         <div className="products__heading__toggle">
@@ -54,8 +58,8 @@ const ProductList = ({ getToggleChild, category, gender, price }) => {
                 <div className="cities__heading">
                     {products.products ? (products.products.length > 0 ? (<div className="cities__heading__result">Có {products.count} sản phẩm</div>) : '') : ''}
 
-                    <div className="cities__heading__select">
-                        <select onChange={(e) => setOrderBy(e.target.value)}>
+                    <div className="cities__heading__select" id="select">
+                        <select onChange={(e) => setOrderBy(e.target.value) + setPage(1)}>
                             <option value="all">Sắp xếp</option>
                             <option value="lowest" >Rẻ nhất</option>
                             <option value="highest">Mắc nhất</option>
@@ -63,7 +67,6 @@ const ProductList = ({ getToggleChild, category, gender, price }) => {
                     </div>
                 </div>
                 <div className="row">
-
                     {products.products ? (products.products.length > 0 ? products.products.map((product, index) => (
                         <div className="col-4 m-4 s-6 xs-12 p-15" key={product._id}>
                             <div className={index < 3 ? `cities__body` : `cities__body animation`}>

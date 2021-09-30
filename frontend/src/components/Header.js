@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { signout } from '../actions/signinActions';
 import Toggle from './Menu/Toggle';
 import SearchBox from './Menu/SearchBox';
-
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 const Header = () => {
     const [state] = useState({
@@ -36,14 +35,10 @@ const Header = () => {
                 <div className="row header__container">
                     <Toggle getOpen={getToggle} />
                     <BsSearch className="search" onClick={() => setOpenSearch(!openSearch)} />
-
                     {openSearch ? <div className='navLayer zi-10' onClick={() => setOpenSearch(!openSearch)}></div> : ''}
-
                     <div className={openSearch ? 'header__search__small header__search__small--open' : 'header__search__small header__search__small--close'} >
-
                         <SearchBox />
                     </div>
-
                     <div className="header__logo">
                         <Link to='/'>
                             <div className='header__logo__text'>Fshop</div></Link>
@@ -56,7 +51,6 @@ const Header = () => {
                             <div className="wrapper">
                                 <div className="icon">
                                     <div className="tooltip mt-1  w-30 r-3">
-
                                         {cartItems && (cartItems.length > 0 ? (
                                             <>
                                                 <div className="header__cart__heading">
@@ -86,9 +80,7 @@ const Header = () => {
                                                     <LazyLoadImage src={state.logoEmpty} alt={state.logoEmpty} />
                                                 </div>
                                             )
-
                                         )}
-
                                     </div>
                                     {cartItems && (cartItems.length > 0 ? (
                                         <div className="header__cart__count">{cartItems.reduce((a, c) => a + c.qty, 0)}</div>
@@ -98,7 +90,6 @@ const Header = () => {
                             </div>
                         </div>
                         {userInfo ? userInfo.isAdmin ? (
-
                             <div className="wrapper">
                                 <div className="icon">
                                     <div className="tooltip mt-5">
@@ -120,16 +111,12 @@ const Header = () => {
                                                 Đăng xuất
                                             </div>
                                         </div>
-
                                     </div>
                                     <div className="header__right__name">
                                         {userInfo.name}
                                     </div>
                                 </div >
                             </div >
-
-
-
                         ) : (
                             <div className="wrapper">
                                 <div className="icon">
@@ -173,12 +160,11 @@ const Header = () => {
 
                             <div>
                                 <Link to=''>Khuyến mãi</Link></div>
-                            <div className="header__links__small__add"> <Link to=''>Đăng nhập</Link></div>
-                            <div className="header__links__small__add"> <Link to=''>Tạo tài khoản</Link></div>
+                            <div className="header__links__small__add"> <Link to='/signin'>Đăng nhập</Link></div>
+                            <div className="header__links__small__add"> <Link to='/register'>Tạo tài khoản</Link></div>
                         </div>
                     </div>
                 </div>
-
             </div >
         </div >
     )

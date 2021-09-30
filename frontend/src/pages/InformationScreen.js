@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { saveShippingAddress } from '../actions/cartActions';
@@ -15,7 +14,6 @@ const InformationScreen = (props) => {
     const [phone, setPhone] = useState(shippingAddress.phone);
     const [city, setCity] = useState(shippingAddress.city);
     const dispatch = useDispatch();
-
     const [toggle, setToggle] = useState(false)
     const abc = (e) => {
         let index = e.target.selectedIndex;
@@ -25,9 +23,7 @@ const InformationScreen = (props) => {
     };
     const submitHandler = (e) => {
         e.preventDefault();
-
         var vnf_regex = /((09|03|07|08|05)+([0-9]{8})\b)/g;
-
         if (phone !== '') {
             if (vnf_regex.test(phone) == false) {
                 alert('Số điện thoại của bạn không đúng định dạng!');
@@ -40,14 +36,12 @@ const InformationScreen = (props) => {
         } else {
             alert('Bạn chưa điền số điện thoại!');
         }
-
-
     };
     useEffect(() => {
         if (cartItems.length === 0) {
             props.history.push('/cart');
         }
-        fetch("https://dc.tintoc.net/app/api-customer/public/provinces")
+        fetch("https://provinces.open-api.vn/api/?depth=3")
             .then(res => res.json())
             .then(
                 (result) => {
@@ -56,19 +50,14 @@ const InformationScreen = (props) => {
                     document.getElementById("select").selectedIndex = "8";
                     setCity(result[8].name);
                 },
-                // Note: it's important to handle errors here
-                // instead of a catch() block so that we don't swallow
-                // exceptions from actual bugs in components.
                 (error) => {
                 }
             )
     }, [cartItems])
-
     return (
         <div className="information ">
             <div className="container">
                 <div className="row">
-
                     <div className="col-1 m-0"></div>
                     <div className="col-5 m-6">
                         <div className="links__back xs-0 s-0"><Link to='/cart'>Quay về</Link></div>
@@ -88,7 +77,6 @@ const InformationScreen = (props) => {
                                 <div className="information__heading__text">Thông tin liên hệ</div>
                             </div>
                         )}
-
                         <div className="information__heading">
                             <div className="information__heading__text">Địa chỉ giao hàng</div>
                         </div>
@@ -132,7 +120,6 @@ const InformationScreen = (props) => {
                     </div>
                     <div className="col-1 m-0 s-0"></div>
                 </div>
-
             </div>
         </div >
     )

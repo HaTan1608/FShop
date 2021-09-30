@@ -10,7 +10,6 @@ import { ORDER_CREATE_RESET } from '../types/orderTypes';
 import { createReview } from '../actions/productActions';
 import { Helmet } from "react-helmet-async";
 const OrderDetails = (props) => {
-
     const orderDetailss = useSelector((state) => state.orderDetails.orderDetails);
     const dispatch = useDispatch();
     const productReviewCreate = useSelector((state) => state.productReviewCreate);
@@ -19,7 +18,6 @@ const OrderDetails = (props) => {
     }
     const [rating, setRating] = useState(0);
     const [comment, setComment] = useState('');
-
     const userSignin = useSelector((state) => state.userSignin);
     const { userInfo } = userSignin;
     const [productId, setProductId] = useState('');
@@ -40,7 +38,6 @@ const OrderDetails = (props) => {
             document.getElementById(id).className = '';
         }
     }
-
     const submitHandler = (e) => {
         e.preventDefault();
         if (comment && rating) {
@@ -61,7 +58,6 @@ const OrderDetails = (props) => {
         }
         dispatch({ type: ORDER_PAY_RESET })
     }, [])
-
     const [toggle, setToggle] = useState(false);
     return (
         <>
@@ -89,7 +85,6 @@ const OrderDetails = (props) => {
                                 ) : (
                                     <div className="information__heading__user__name">Thanh toán trực tiếp ( COD )</div>
                                 )}
-
                                 <div className="information__heading__text mt-2">Trạng thái vận chuyển</div>
                                 {orderDetailss.isDelivered !== true ? (
 
@@ -97,7 +92,6 @@ const OrderDetails = (props) => {
                                 ) : (
                                     <div className="information__heading__user__name">Đã giao</div>
                                 )}
-
                             </div>
                             <div className="information__heading__homepage"><Link to="/" >Tiếp tục mua sắm</Link></div>
                         </div>
@@ -124,12 +118,8 @@ const OrderDetails = (props) => {
                                         </div>
                                         {orderDetailss && (<div className="informartion__review">
                                             <div className="information__review__rating">{orderDetailss.isDelivered ? <button className="btn-dark" onClick={() => openReview(item.product)} >Nhận xét</button> : ''}</div>
-
-
                                             {userInfo ? (
-
                                                 <form className="hidden" onSubmit={submitHandler} id={item.product}>
-
                                                     <div className="information__review__rating">
                                                         <span className="pr-2">Đánh giá</span>
                                                         <Rating sendRateChild={getRate} />
@@ -225,12 +215,8 @@ const OrderDetails = (props) => {
                                         </div>
                                         {orderDetailss && (<div className="informartion__review">
                                             <div className="information__review__rating">{orderDetailss.isDelivered ? <button className="btn-dark" onClick={() => openReview(item.product)} >Nhận xét</button> : ''}</div>
-
-
                                             {userInfo ? (
-
                                                 <form className="hidden" onSubmit={submitHandler} id={item.product}>
-
                                                     <div className="information__review__rating">
                                                         <span className="pr-2">Đánh giá</span>
                                                         <Rating sendRateChild={getRate} />
@@ -281,7 +267,6 @@ const OrderDetails = (props) => {
                                             Miễn phí
                                         </div>
                                     </div>
-
                                 </div>
                                 <div className="information__cart__total">
                                     <div className="information__cart__total__text">
@@ -298,7 +283,6 @@ const OrderDetails = (props) => {
                         </div>
                         <div className="col-1 m-0 s-0"></div>
                     </div>
-
                 </div>) : ('')}
 
             </div ></>

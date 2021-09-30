@@ -4,24 +4,20 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { detailsUser, updateUser } from '../actions/userActions';
 import { USER_UPDATE_RESET } from '../types/userTypes';
-
 export default function UserEditScreen(props) {
     const userId = props.match.params.id;
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [isSeller, setIsSeller] = useState(false);
     const [isAdmin, setIsAdmin] = useState(false);
-
     const userDetails = useSelector((state) => state.userDetails);
     const { loading, error, user } = userDetails;
-
     const userUpdate = useSelector((state) => state.userUpdate);
     const {
         loading: loadingUpdate,
         error: errorUpdate,
         success: successUpdate,
     } = userUpdate;
-
     const dispatch = useDispatch();
     useEffect(() => {
         if (successUpdate) {

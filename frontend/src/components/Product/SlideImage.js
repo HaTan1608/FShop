@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
-
 import { GrPrevious, GrNext } from 'react-icons/gr'
 const SlideImage = ({ image, getIndex }) => {
     const nextClick = () => {
@@ -16,7 +15,6 @@ const SlideImage = ({ image, getIndex }) => {
                 alt={image}
             />
             <span className="previous" onClick={() => previousClick()} ><GrPrevious size={22} /> </span>
-
             <span className="next" onClick={() => nextClick()} ><GrNext size={22} /> </span>
         </div>
     )

@@ -26,11 +26,9 @@ const SearchScreen = () => {
     const [orderBy, setOrderBy] = useState('');
     const {
         name = 'all',
-
     } = useParams();
     const addToCartHandler = (productId, index) => {
         dispatch(addToCart(productId, 1, products.products[index].size[0].size, 'yes'));
-
     }
     const [page, setPage] = useState(0)
     useEffect(() => {
@@ -44,49 +42,43 @@ const SearchScreen = () => {
                 page: page
             })
         );
-
-
         window.scrollTo(0, 0);
-
     }, [name, category, dispatch, checkPrice, orderBy, page]);
-
-
     return (
         <>
             <Header />
             <div className='cities'>
                 <div className='container'>
-
                     <div className="row mr-minus-15 ml-minus-15">
-                        <div className={toggle ? "menu__small" : "col-2 p-15 m-0"}>
+                    {loading ? <LoadingBox /> : (<>
+
+                        {products.products ? (products.products.length > 0) ? (
+                            <><div className={toggle ? "menu__small" : "col-2 p-15 m-0"}>
                             <Menu getCategoryChild={getCategory} getPriceChild={getPrice} />
                         </div>
                         <div className="col-10 p-15 m-12 ">
-                            <div className="products__heading__toggle  pb-2 mb-2 m-12 ">
-
+                     
+                           
+                                   <div className="products__heading__toggle  pb-2 mb-2 m-12 ">
                                 <div className={toggle ? 'products__toggle-close ' : 'products__toggle-open'} onClick={() => setToggle(!toggle)}>
                                     <span></span>
                                     <span></span>
                                     <span></span>
                                 </div>
                             </div>
-
-                            {loading ? <LoadingBox /> : (
-                                <>
                                     <div className="cities__heading">
-                                        {products.products ? (products.products.length > 0 ? (<div className="cities__heading__result">Có {products.count} sản phẩm</div>) : '') : ''}
-
-                                        <div className="cities__heading__select">
+                                       <div className="cities__heading__result">Có {products.count} sản phẩm</div> <div className="cities__heading__select">
                                             <select onChange={(e) => setOrderBy(e.target.value)}>
                                                 <option value="all">Sắp xếp</option>
                                                 <option value="lowest" >Rẻ nhất</option>
                                                 <option value="highest">Mắc nhất</option>
                                             </select>
                                         </div>
+
+                                       
                                     </div>
                                     <div className="row">
-
-                                        {products.products ? (products.products.length > 0 ? products.products.map((product, index) => (
+                                        {products.products.map((product, index) => (
                                             <div className="col-4 m-4 s-6 xs-12 p-15" key={index}>
                                                 <div className="cities__body">
                                                     <div className="cities__body__image1">
@@ -97,7 +89,7 @@ const SearchScreen = () => {
                                                     <ProductContents ratingStar={product.rating} name={product.name} price={product.price} addCart={() => addToCartHandler(product._id, index)} />
                                                 </div>
                                             </div>
-                                        )) : '') : ''}
+                                        ))}
                                     </div>
                                     <div className="product__pagination">
                                         {[...Array(products.pages).keys()].map((x) => (
@@ -105,12 +97,13 @@ const SearchScreen = () => {
                                             </div>
                                         ))}
                                     </div>
-                                </>
-                            )
-                            }
-                        </div>
+                               
+                        </div></>
+                        ):(<div className="cities__notfound"><p>Xin lỗi không tìm thấy sản phẩm bạn cần tìm :(.</p></div>):('')}
+                        
+                    </>)}
+                        
                     </div>
-
                 </div>
             </div>
             <Footer />

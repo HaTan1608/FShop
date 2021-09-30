@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteOrder, listOrders } from '../actions/orderActions';
 import { ORDER_DELETE_RESET } from '../types/orderTypes';
-
 export default function OrderListScreen(props) {
     const orderList = useSelector((state) => state.orderList);
     const { loading, error, orders } = orderList;
@@ -14,7 +13,6 @@ export default function OrderListScreen(props) {
     } = orderDelete;
     const dispatch = useDispatch();
     useEffect(() => {
-
         dispatch({ type: ORDER_DELETE_RESET });
         dispatch(listOrders());
     }, [dispatch, successDelete]);

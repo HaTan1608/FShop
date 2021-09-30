@@ -1,539 +1,508 @@
 @use "../abstracts" as *;
 .header {
-    width:100%;
-    height: 80%;
-    background: linear-gradient(to right, $main1,$main2);
-    padding-top:2rem;
-    @include responsive(medium){
-           padding-top: 1.5rem;
+  width: 100%;
+  height: 80%;
+  background: linear-gradient(to right, $main1, $main2);
+  padding-top: 2rem;
+  @include responsive(medium) {
+    padding-top: 1.5rem;
+  }
+  @include responsive(small) {
+    padding-top: 0rem;
+    min-height: 6rem;
+  }
+  @include responsive(xsmall) {
+    padding-top: 0rem;
+    min-height: 4rem;
+  }
+  &__links {
+    margin-top: -2rem;
+    padding: 2rem 0rem;
+    width: 50%;
+    margin-left: 23%;
+    font-weight: 700;
+    font-size: 2rem;
+    @include responsive(medium) {
+      font-size: 1.7rem;
+      width: 70%;
+      margin-left: 13%;
     }
-    @include responsive(small){
-        
-        padding-top: 0rem;
-        min-height: 6rem;
-    }
-    @include responsive(xsmall){
-        
-        padding-top: 0rem;
-        min-height: 4rem;
-    }
-    &__links{
-       
-            
-        margin-top: -2rem;
-        padding:2rem 0rem;
-        width:100%;
-        font-weight: 700;
-        font-size:2rem;
-        @include responsive(medium){
-           font-size:1.7rem;
-        }
-        
-       
-        a{ 
-            text-decoration: none;
-            text-transform: uppercase;
-            color:$white;
-            margin-top: -1rem!important;
-            margin:0rem 2rem;
-            &:hover{
-            color:#ffca55;
-            }
-            @include responsive(small){
-                width:100%;
-            }
-            @include responsive(xsmall){
-                
-                width:100%;
-            }
-         }
-         @include responsive(small){
-             z-index: 4;
-            transition: all .3s linear;
-            position: fixed;
-            display:block;
-            width:65%;
-            height:100%;
-            left:0;
-            top:0;
-            background: $silverDark;
-        
-             &--open{
-               
-                transform: translateX(0);
-             }
-             &--close{
-                transform: translateX(-100%);
-             }
-          
-           
-        }
-        @include responsive(xsmall){
-            
-            z-index: 4;
-            transition: all .3s linear;
-            position: fixed;
-            display:block;
-            width:65%;
-            height:100%;
-            left:0;
-            top:0;
-            background: $silverDark;
-            &--open{
-                transform: translateX(0);
-             }
-             &--close{
-                
-                transform: translateX(-100%);
-             }
-           
-        }
-        &__small{
-             @include align(flex,center,center,null);
-            @include responsive(small){
-                display:block;
-                margin-top:5rem;
-                div{
-                    padding: .5rem 0rem;
-                    border-bottom:dotted 1px $white;
-                }
-            }
-                @include responsive(xsmall){
-                    
-                display:block;
-                    margin-top:4rem;
-                }
 
-            &__add{
-                display:none;
-                @include responsive(small){
-                    display:block;
-                }
-                    @include responsive(xsmall){
-                        display:block;
-                    }
-            }    
-        }
+    a {
+      text-decoration: none;
+      text-transform: uppercase;
+      color: $white;
+      margin-top: -1rem !important;
+      margin: 0rem 2rem;
+      &:hover {
+        color: #ffca55;
+      }
+      @include responsive(medium) {
+        margin: 0rem 1rem;
+      }
+      @include responsive(small) {
+        width: 100%;
+      }
+      @include responsive(xsmall) {
+        width: 100%;
+      }
     }
-    &__search{
-        width:50%;
-        @include align(flex,center,center,null);
-        position: relative;
+    @include responsive(small) {
+      z-index: 4;
+      transition: all 0.3s linear;
+      position: fixed;
+      display: block;
+      width: 65%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      background: $silverDark;
+      margin-left: 0;
+      &--open {
+        transform: translateX(0);
+      }
+      &--close {
+        transform: translateX(-100%);
+      }
+    }
+    @include responsive(xsmall) {
+      margin-left: 0;
+      z-index: 4;
+      transition: all 0.3s linear;
+      position: fixed;
+      display: block;
+      width: 65%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      background: $silverDark;
+      &--open {
+        transform: translateX(0);
+      }
+      &--close {
+        transform: translateX(-100%);
+      }
+    }
+    &__small {
+      @include align(flex, center, center, null);
+      @include responsive(small) {
+        display: block;
+        margin-top: 5rem;
+        div {
+          padding: 0.5rem 0rem;
+          border-bottom: dotted 1px $white;
+        }
+      }
+      @include responsive(xsmall) {
+        display: block;
+        margin-top: 4rem;
+      }
 
-        @include responsive(medium){
-            width:40%;
+      &__add {
+        display: none;
+        @include responsive(small) {
+          display: block;
         }
-        @include responsive(small){
-            display: none;
+        @include responsive(xsmall) {
+          display: block;
         }
-        @include responsive(xsmall){
-            display:none;
-        }
-        &__input{
-            width:100%;
-            padding:1rem;
-            border-radius: .5rem;
-            border-top-style: hidden;
-        border-right-style: hidden;
-        border-left-style: hidden;
-        border-bottom-style: groove;
-        }
-        &__button{
-            position: absolute;
-            right:1rem;
-            a{
-                color:$main1;
-            }
-            @include responsive(medium){
-                right:-1.3rem;
-            }
-        }
-      
+      }
     }
-    &__container{
-       @include align(flex,space-between,center,null);
-    }
-    &__logo{
-   
-        @include responsive(medium){
-            font-size: 4rem;
-            margin-top:1.2rem;
-            margin-left: 1.6rem;
-        }
-        @include responsive(small){
-            font-size: 3rem;
-            margin-top:.9rem;
-            margin-left: 1.2rem;
-            
-            width: 100%;
-            position: relative;
-        }
-        @include responsive(xsmall){
-            font-size: 2rem;
-            margin-top:.6rem;
-            margin-left: .8rem;
-        
-            width: 100%;
-            position: relative;
-        }
-        &__text{
-            font-family: "Leckerli One";
-            font-size:5rem;
-            @include responsive(medium){
-                font-size: 4rem;
+  }
+  &__search {
+    width: 50%;
+    @include align(flex, center, center, null);
+    position: relative;
 
-            }
-            @include responsive(small){
-                font-size: 3rem;
-                
-            position: absolute;
-                left:45%;
-            }
-            @include responsive(xsmall){
-                font-size: 2rem;    
-                position: absolute;
-            
-                left:45%;
-            }
-        color:white;
-        }
-        a{
-            text-decoration: none;
-          
-        }
-      
+    @include responsive(medium) {
+      width: 40%;
     }
-    &__cart__count{
+    @include responsive(small) {
+      display: none;
+    }
+    @include responsive(xsmall) {
+      display: none;
+    }
+    &__input {
+      width: 100%;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      border-top-style: hidden;
+      border-right-style: hidden;
+      border-left-style: hidden;
+      border-bottom-style: groove;
+    }
+    &__button {
+      position: absolute;
+      right: 1rem;
+      a {
+        color: $main1;
+      }
+      @include responsive(medium) {
+        right: -1.3rem;
+      }
+    }
+  }
+  &__container {
+    @include align(flex, space-between, center, null);
+  }
+  &__logo {
+    @include responsive(medium) {
+      font-size: 4rem;
+      margin-top: 1.2rem;
+      margin-left: 1.6rem;
+    }
+    @include responsive(small) {
+      font-size: 3rem;
+      margin-top: 0.9rem;
+      margin-left: 1.2rem;
+
+      width: 100%;
+      position: relative;
+    }
+    @include responsive(xsmall) {
+      font-size: 2rem;
+      margin-top: 0.6rem;
+      margin-left: 0.8rem;
+
+      width: 100%;
+      position: relative;
+    }
+    &__text {
+      font-family: "Leckerli One";
+      font-size: 5rem;
+      @include responsive(medium) {
+        font-size: 4rem;
+      }
+      @include responsive(small) {
+        font-size: 3rem;
+
         position: absolute;
-        left:2.2rem;
-        bottom:2.5rem;
-        font-size:1.7rem;
-        padding:.1rem .3rem;
-        border-radius: 1rem;
-        color:$main1;
-        background: $white;
-        @include responsive(medium){
-            font-size: 1.5rem;
-            left:4rem;
-        bottom:2.2rem;
-        }
-        @include responsive(small){
-            font-size: 1.5rem;
-            left:2.5rem;
-        bottom:2.2rem;
-        
-        }
-        @include responsive(xsmall){
-            font-size: 1rem;
-            left:1.5rem;
-        bottom:2rem;
-        }
-    }
-    &__right{
-        @include align(flex,space-between,center,null);
-        font-weight:900 ;
-        font-size: 2.2rem;
-        color:$white;
-        position: relative;
-        @include responsive(medium){
-            font-size: 1.8rem;
-
-        }
-        @include responsive(small){
-            font-size: 1.6rem;
-            min-height: 6rem;
-            position: absolute;
-            right:1rem;
-            margin-top:4rem;
-        }
-        @include responsive(xsmall){
-            font-size: 1.3rem;    
-            min-height: 4rem;
-            position: absolute;
-            right:1rem;
-            margin-bottom: 2rem;
-        }
-        a {
-            
-            color: inherit;
-             text-decoration: none;
-            }
-            a:nth-child(2){
-                margin-right: 0rem!important;
-            }
-        &__heading{
-            font-size:1.5rem;
-        }
-        &__name{
-            
-            margin-top:2rem;
-        }
-        &__text{
-            border-top: dotted 1px $silverLight-40;
-            font-size:1.5rem;
-            padding-top: 1rem;
-            margin-top:1rem;
-        }
-        &__cart__icon{
-            margin-right:4rem;
-            margin-top:1.5rem;
-            @include responsive(medium){
-                margin-right:1rem;
-                font-size:1rem;
-            }
-            @include responsive(small){
-                margin-right:2rem;
-                margin-top:2rem;
-                font-size:1rem;
-            }
-            @include responsive(xsmall){
-                margin-right: 1.5rem;
-            }
-        }
-        &__user{
-            
-            color:$silverDark;
-            font-size:1.7rem;
-            &__heading{
-                margin-top:1.5rem;
-            }
-            &__child{
-                padding-top:1rem;
-                border-top: dotted 1px $silverDark;
-                margin:1rem 0rem;
-            }
-        }
-    }
-    &__cart__items{
-        width:100%;
-        margin:1rem .2rem;
-        font-size:1.7rem;
-        color:$silverDark!important;
-        @include align(flex,space-between,center,null);
-        img{
-            width: 5rem;
-        }
-        &__empty{
-            width:100%;
-            img{
-                
-            border-radius: 2rem;
-                width: 100%;
-            }
-        }
-        &__name{
-            @include align(flex,space-between,center,null);
-            &--name{
-                margin-left:1rem;
-            }
-        }
-    }
-    &__cart__total{
-        margin-top: 1rem;
-        padding-top:1rem;
-        border-top:dotted 1px $silverDark;
-        @include align(flex,space-between,null,null);
-        
-        color:$silverDark!important;
-        &__text{
-            font-size: 1.7rem;
-        }
-        &__price{
-            font-size: 1.7rem;
-            &__dollor{
-                font-size:1.3rem;
-            }
-        }
-    }
-    &__cart__heading{
-        font-size: 1.7rem;
-        color:$silverDark!important;
-        @include align(flex,space-between,null,null);
-    }
-    
-&__search__small{
-    display:none;
-    
-    
-     @include responsive(small){
-        display:block;
-        width:100%;
-        top:4rem;
-        left:0;
-        position: fixed;
-        
-        transition: all .3s linear;
-        .header__search{
-            display:block;
-            margin-top:.5rem;
-            width:100%;
-            padding:1rem;
-          
-            .header__search__button{
-                margin-right:2.5rem;
-                margin-top:.7rem;
-            }
-        }
-        &--open{
-            z-index:99999;
-            transform: translateY(0);
-         }
-         &--close{
-            transform: translateY(-100rem);
-         }
+        left: 45%;
       }
-      @include responsive(xsmall){
-         
-        width:100%;
-    top:4rem;
-    left:0;
-    position: fixed;
-    display:block;
-    
-    transition: all .3s linear;
-    .header__search{
-        display:block;
-        margin-top:.5rem;
-        width:100%;
-        padding:1rem;
-      
-        .header__search__button{
-            margin-right:2.5rem;
-            margin-top:.7rem;
-        }
+      @include responsive(xsmall) {
+        font-size: 2rem;
+        position: absolute;
+
+        left: 45%;
+      }
+      color: white;
     }
-    transition: all .3s linear;
-    &--open{
-               
+    a {
+      text-decoration: none;
+    }
+  }
+  &__cart__count {
+    position: absolute;
+    left: 2.2rem;
+    bottom: 2.5rem;
+    font-size: 1.7rem;
+    padding: 0.1rem 0.3rem;
+    border-radius: 1rem;
+    color: $main1;
+    background: $white;
+    @include responsive(medium) {
+      font-size: 1.5rem;
+      left: 4rem;
+      bottom: 2.2rem;
+    }
+    @include responsive(small) {
+      font-size: 1.5rem;
+      left: 2.5rem;
+      bottom: 2.2rem;
+    }
+    @include responsive(xsmall) {
+      font-size: 1rem;
+      left: 1.5rem;
+      bottom: 2rem;
+    }
+  }
+  &__right {
+    @include align(flex, space-between, center, null);
+    font-weight: 900;
+    font-size: 2.2rem;
+    color: $white;
+    position: relative;
+    @include responsive(medium) {
+      font-size: 1.8rem;
+    }
+    @include responsive(small) {
+      font-size: 1.6rem;
+      min-height: 6rem;
+      position: absolute;
+      right: 1rem;
+      margin-top: 4rem;
+    }
+    @include responsive(xsmall) {
+      font-size: 1.3rem;
+      min-height: 4rem;
+      position: absolute;
+      right: 1rem;
+      margin-bottom: 2rem;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    a:nth-child(2) {
+      margin-right: 0rem !important;
+    }
+    &__heading {
+      font-size: 1.5rem;
+    }
+    &__name {
+      margin-top: 2rem;
+    }
+    &__text {
+      border-top: dotted 1px $silverLight-40;
+      font-size: 1.5rem;
+      padding-top: 1rem;
+      margin-top: 1rem;
+    }
+    &__cart__icon {
+      margin-right: 4rem;
+      margin-top: 1.5rem;
+      @include responsive(medium) {
+        margin-right: 1rem;
+        font-size: 1rem;
+      }
+      @include responsive(small) {
+        margin-right: 2rem;
+        margin-top: 2rem;
+        font-size: 1rem;
+      }
+      @include responsive(xsmall) {
+        margin-right: 1.5rem;
+      }
+    }
+    &__user {
+      color: $silverDark;
+      font-size: 1.7rem;
+      &__heading {
+        margin-top: 1.5rem;
+      }
+      &__child {
+        padding-top: 1rem;
+        border-top: dotted 1px $silverDark;
+        margin: 1rem 0rem;
+      }
+    }
+  }
+  &__cart__items {
+    width: 100%;
+    margin: 1rem 0.2rem;
+    font-size: 1.7rem;
+    color: $silverDark !important;
+    @include align(flex, space-between, center, null);
+    img {
+      width: 5rem;
+    }
+    &__empty {
+      width: 100%;
+      img {
+        border-radius: 2rem;
+        width: 100%;
+      }
+    }
+    &__name {
+      @include align(flex, space-between, center, null);
+      &--name {
+        margin-left: 1rem;
+      }
+    }
+  }
+  &__cart__total {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: dotted 1px $silverDark;
+    @include align(flex, space-between, null, null);
+
+    color: $silverDark !important;
+    &__text {
+      font-size: 1.7rem;
+    }
+    &__price {
+      font-size: 1.7rem;
+      &__dollor {
+        font-size: 1.3rem;
+      }
+    }
+  }
+  &__cart__heading {
+    font-size: 1.7rem;
+    color: $silverDark !important;
+    @include align(flex, space-between, null, null);
+  }
+
+  &__search__small {
+    display: none;
+
+    @include responsive(small) {
+      display: block;
+      width: 100%;
+      top: 4rem;
+      left: 0;
+      position: fixed;
+
+      transition: all 0.3s linear;
+      .header__search {
+        display: block;
+        margin-top: 0.5rem;
+        width: 100%;
+        padding: 1rem;
+
+        .header__search__button {
+          margin-right: 2.5rem;
+          margin-top: 0.7rem;
+        }
+      }
+      &--open {
+        z-index: 99999;
         transform: translateY(0);
-     }
-     &--close{
-        transform: translateY(-100rem);
-     }
       }
-}
+      &--close {
+        transform: translateY(-100rem);
+      }
+    }
+    @include responsive(xsmall) {
+      width: 100%;
+      top: 4rem;
+      left: 0;
+      position: fixed;
+      display: block;
+
+      transition: all 0.3s linear;
+      .header__search {
+        display: block;
+        margin-top: 0.5rem;
+        width: 100%;
+        padding: 1rem;
+
+        .header__search__button {
+          margin-right: 2.5rem;
+          margin-top: 0.7rem;
+        }
+      }
+      transition: all 0.3s linear;
+      &--open {
+        transform: translateY(0);
+      }
+      &--close {
+        transform: translateY(-100rem);
+      }
+    }
+  }
 }
 
-svg{
-    @include responsive(medium){
-        width:7rem;
-    }
-    @include responsive(small){
-        
-      width:4rem;
-    }
-    @include responsive(xsmall){
-       
-      width:2rem;
-    }
+svg {
+  @include responsive(medium) {
+    width: 7rem;
+  }
+  @include responsive(small) {
+    width: 4rem;
+  }
+  @include responsive(xsmall) {
+    width: 2rem;
+  }
 }
 
-.search{
-    color:$white;
-    
-    display:none;
-    @include responsive(small){
-        display:block;
-      position: absolute;
-      font-size:2.2rem;
-      font-weight: 900;
-      top:2rem;
-      left:7rem;
-   
-      
-    }
-    @include responsive(xsmall){
-        display:block;
-      
-      font-size:2rem;
-      top:1rem;
-      
-      left:6rem;
-      position: absolute;
-    }
-    
+.search {
+  color: $white;
+
+  display: none;
+  @include responsive(small) {
+    display: block;
+    position: absolute;
+    font-size: 2.2rem;
+    font-weight: 900;
+    top: 2rem;
+    left: 7rem;
+  }
+  @include responsive(xsmall) {
+    display: block;
+
+    font-size: 2rem;
+    top: 1rem;
+
+    left: 6rem;
+    position: absolute;
+  }
 }
 
 .notfound__contents {
-    @include position(absolute, 0, 0, null, null, 100%, 100%);
-   
-    &__video {
-        img {
+  @include position(absolute, 0, 0, null, null, 100%, 100%);
 
-            width: 100%;
-            
+  &__video {
+    img {
+      width: 100%;
 
-            object-fit: cover;
-            image-rendering: pixelated;
-            animation: headerImage .5s linear;
-            @keyframes headerImage {
-                from {
-                    opacity: 0;
-                } to {
-                    opacity: 1;
-                }
-            }
+      object-fit: cover;
+      image-rendering: pixelated;
+      animation: headerImage 0.5s linear;
+      @keyframes headerImage {
+        from {
+          opacity: 0;
         }
-    
-    }
-    &__text {
-        @include align(flex, center, center,100%);
-        
-        &__child {
-            &__h1 {
-                color:$white;
-                text-transform: uppercase;
-                font-weight: 900;
-                font-size: 4.2rem;
-                line-height: 3rem;
-                @include animation(heading, 1s, ease-in, -8rem, 0);
-                @include responsive(medium) {
-                    font-size: 4rem;
-                }
-                @include responsive(small) {
-                    font-size: 3rem;
-                }
-                @include responsive(xsmall) {
-                    font-size: 2rem;
-                }
-                
-               
-            }
-            &__p {
-                margin-top: 1rem;
-                color:$white;
-                font-size: 1.5rem;
-                @include animation(subHeading, 1s, ease-out, -10rem, 0);
-                @include responsive(small){
-                    margin-top: .5rem;
-                    font-size: 1.4rem;
-                    font-weight: 600;
-                    line-height: 2rem;
-                }
-               
-            }
-            &__link {
-                margin-top: 1rem;
-                @include animation(headerButton, 1s, ease-in, 8rem, 0);
-                a{
-                    text-decoration: none;
-                    color:white;
-                    font-weight: 600;
-                    font-size: 1.4rem;
-                }
-            }
+        to {
+          opacity: 1;
         }
+      }
     }
+  }
+  &__text {
+    @include align(flex, center, center, 100%);
+
+    &__child {
+      &__h1 {
+        color: $white;
+        text-transform: uppercase;
+        font-weight: 900;
+        font-size: 4.2rem;
+        line-height: 3rem;
+        @include animation(heading, 1s, ease-in, -8rem, 0);
+        @include responsive(medium) {
+          font-size: 4rem;
+        }
+        @include responsive(small) {
+          font-size: 3rem;
+        }
+        @include responsive(xsmall) {
+          font-size: 2rem;
+        }
+      }
+      &__p {
+        margin-top: 1rem;
+        color: $white;
+        font-size: 1.5rem;
+        @include animation(subHeading, 1s, ease-out, -10rem, 0);
+        @include responsive(small) {
+          margin-top: 0.5rem;
+          font-size: 1.4rem;
+          font-weight: 600;
+          line-height: 2rem;
+        }
+      }
+      &__link {
+        margin-top: 1rem;
+        @include animation(headerButton, 1s, ease-in, 8rem, 0);
+        a {
+          text-decoration: none;
+          color: white;
+          font-weight: 600;
+          font-size: 1.4rem;
+        }
+      }
+    }
+  }
 }
 
-.homepage__banner.notfound{
-    max-height: 54.85rem;
-    position: relative;
-    border-radius: unset;
-    div{
-        img{
-            min-height: 20rem;
-        }
+.homepage__banner.notfound {
+  max-height: 54.85rem;
+  position: relative;
+  border-radius: unset;
+  div {
+    img {
+      min-height: 20rem;
     }
-    
+  }
 }

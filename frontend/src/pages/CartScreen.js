@@ -22,7 +22,10 @@ export default function CartScreen(props) {
         }
     }
     const removeFromCartHandler = (id, size) => {
-        dispatch(removeFromCart(id, parseFloat(size)));
+        if (window.confirm("Xóa sản phẩm khỏi giỏ hàng?")) {
+            dispatch(removeFromCart(id, parseFloat(size)));
+}
+       
     }
     const checkoutHandler = () => {
         props.history.push('/checkout');
@@ -35,7 +38,6 @@ export default function CartScreen(props) {
         <>
             <Helmet>
                 <title>Giỏ hàng</title>
-
             </Helmet>
             <Header />
             <div className="cart">
@@ -43,14 +45,9 @@ export default function CartScreen(props) {
                     {cartItems.length > 0 && (<div className="cart__link">
                         <Link to='/'>Tiếp tục mua sắm</Link></div>)}
                     <div className="row">
-
-
                         {cartItems.length > 0
                             ? (<>
-
                                 <div className="col-10 m-12 s-12">
-
-
                                     <div className="row cart__title m-0">
                                         <div className="col-6 cart__title__product m-0">SẢN PHẨM</div>
                                         <div className="col-6 cart__title__atc m-0 ">
@@ -63,15 +60,11 @@ export default function CartScreen(props) {
                                         cartItems.map((item, index) => (
                                             <div className="row" key={index}>
                                                 <div className="col-2 m-2 s-3 xs-12 cart__infomation">
-
                                                     <div className="cart__infomation__image" onClick={() => console.log(item.size)}>
                                                         <LazyLoadImage src={item.image} />
                                                     </div>
-
                                                 </div>
                                                 <div className="col-4 m-4 s-6 xs-12 cart__infomation__name__size">
-
-
                                                     <div className="cart__infomation__name">
                                                         {item.name}
                                                     </div>
@@ -110,7 +103,6 @@ export default function CartScreen(props) {
                                                             <MdDeleteForever size={30} onClick={() => removeFromCartHandler(item.product, item.size)} />
                                                         </div>
                                                     </div>
-
                                                 </div>
                                                 <div className="col-2 m-0 s-0 cart__infomation">
                                                     <div className="cart__infomation__total">
@@ -125,7 +117,6 @@ export default function CartScreen(props) {
                                                 </div>
                                             </div>
                                         ))
-
                                     }
                                 </div>
                                 <div className="col-2 m-12 s-12 xs-12">
@@ -151,14 +142,9 @@ export default function CartScreen(props) {
                                     <Link to='/'>Tiếp tục mua sắm</Link>
                                 </div></>
                             )}
-
-
                     </div>
-
                 </div>
-
             </div>
-
             <Footer />
         </>
     );

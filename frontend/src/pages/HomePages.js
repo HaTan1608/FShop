@@ -2,12 +2,10 @@ import Header from "../components/Header"
 import React, { useEffect, useState } from "react"
 import ReactPlayer from 'react-player'
 import ProductImage from "../components/Product/ProductImage";
-import ProductContents from "../components/Product/ProductContents";
 import Footer from "../components/Footer/Footer";
 import { useDispatch, useSelector } from "react-redux";
-import { listProducts, listProductsHome } from "../actions/productActions";
+import { listProductsHome } from "../actions/productActions";
 import { Link } from "react-router-dom";
-
 import { BsFillStarFill, BsStar, BsStarHalf } from 'react-icons/bs';
 import { addToCart } from "../actions/cartActions";
 import { LazyLoadImage } from "react-lazy-load-image-component";
@@ -37,14 +35,11 @@ const HomePage = () => {
                 else {
                     container.push(<BsStar key={i} size={20} color="#df2189" className="reviews__body__contents__info__rating__icon" />)
                 }
-
-
             }
         }
         return container;
     }
     if (!loading) {
-
         if (products.male) {
             products.male.map(product => product3.push(product))
         }
@@ -61,20 +56,13 @@ const HomePage = () => {
             setOpenMess({ ...openMess, open: true, title: 'Thành công', content: 'Đã thêm sản phẩm vào giỏ hàng', type: 'success' })
             dispatch(addToCart(productId, 1, product4[index].size[0].size, 'yes'));
         }
-
     }
-
-
     useEffect(() => {
         window.scrollTo(0, 0);
         dispatch(listProductsHome());
-
     }, [dispatch]);
-
-
     return (
         <>
-
             <Helmet>
                 <title>Welcome Fshop!</title>
                 <meta name="description" content="Giày Bitis chính hãng" />
@@ -93,30 +81,23 @@ const HomePage = () => {
                             <LazyLoadImage src={imageBitis.image2} alt={imageBitis.image} />
                         </div>
                     </Carousel>
-
                 </div>
-
                 <div className="container">
-
                     <div className="homepage__heading">
                         <h1>
                             We are FSHOP
                         </h1>
-
                     </div>
                     <div className="homepage__text">
-
                         <div>
                             Chuyên cung cấp sản phẩm chính hãng của Biti's
                         </div>
                     </div>
-
                 </div>
                 <div className="homepage__banner__center">
                     <ReactPlayer url='https://cdn.shopify.com/s/files/1/0565/9931/4585/files/output_compress-video-online.com_1.mp4?v=1629797501' playing={true} loop={true} muted={true} width='70%'
                         height='70%' />
                 </div>
-
                 <div className="container">
 
                     <div className="homepage__heading">
@@ -133,30 +114,22 @@ const HomePage = () => {
                                             <ProductImage img={product.images[0].image} />
                                         </Link>
                                         <div className="cities__body__contents ">
-
-
                                             <div className="cities__body__contents__top">
                                                 <div className="cities__body__contents__top__name">{product.name}</div>
-
                                             </div>
                                             <div className="product__details__contents__rating">
-                                                {rating(product.ratingStar)}
+                                                {rating(product.rating)}
                                             </div>
                                             <div className="cities__body__contents__price">
                                                 {(product.price).toLocaleString('it-IT', {
                                                     style: 'currency',
                                                     currency: 'VND',
                                                 })}
-
-
                                             </div>
-
                                             <div className="cities__body__contents__button">
                                                 <button className='btn-default' onClick={() => addToCartHandler(product._id, product.gender, index)} >Thêm vào giỏ hàng</button>
                                             </div>
                                         </div>
-
-
                                     </div>
                                 </div>
                             )) : ''}
@@ -164,7 +137,6 @@ const HomePage = () => {
                     )}
                     <div className="homepage__button">
                         <button className='btn-orange' ><Link to='/products/male'>Xem thêm sản phẩm</Link></button>
-
                     </div>
                     <div className="homepage__heading">
                         <h1>
@@ -180,30 +152,22 @@ const HomePage = () => {
                                             <ProductImage img={product.images[0].image} />
                                         </Link>
                                         <div className="cities__body__contents ">
-
-
                                             <div className="cities__body__contents__top">
                                                 <div className="cities__body__contents__top__name">{product.name}</div>
-
                                             </div>
                                             <div className="product__details__contents__rating">
-                                                {rating(product.ratingStar)}
+                                                {rating(product.rating)}
                                             </div>
                                             <div className="cities__body__contents__price">
                                                 {(product.price).toLocaleString('it-IT', {
                                                     style: 'currency',
                                                     currency: 'VND',
                                                 })}
-
-
                                             </div>
-
                                             <div className="cities__body__contents__button">
                                                 <button className='btn-default' onClick={() => addToCartHandler(product.product, product.gender, index)} >Thêm vào giỏ hàng</button>
                                             </div>
                                         </div>
-
-
                                     </div>
                                 </div>
                             )) : ''}
@@ -211,9 +175,7 @@ const HomePage = () => {
                     )}
                     <div className="homepage__button">
                         <button className='btn-orange' ><Link to='/products/famale'>Xem thêm sản phẩm</Link></button>
-
                     </div>
-
                 </div>
             </div>
             <Footer />

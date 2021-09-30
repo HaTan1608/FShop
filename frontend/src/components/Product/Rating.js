@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { scryRenderedComponentsWithType } from "react-dom/test-utils";
-
 import { BsFillStarFill, BsStar } from 'react-icons/bs';
 const Rating = ({ sendRateChild }) => {
-
     const sendRate = () => {
         sendRateChild(rateReviews);
     }
@@ -15,7 +12,6 @@ const Rating = ({ sendRateChild }) => {
                 container.push(<div onMouseOver={() => setRateReviews(i)} key={i}><BsFillStarFill size={20} color="#df2189" className="reviews__body__contents__info__rating__icon" /></div>)
             } else {
                 container.push(<div onMouseOver={() => setRateReviews(i)} key={i}><BsStar size={20} color="#df2189" className="reviews__body__contents__info__rating__icon" /></div>)
-
             }
         }
         return container;

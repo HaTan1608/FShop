@@ -2,9 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import userRouter from './routers/userRouter.js';
 import productRouter from './routers/productRouter.js';
-
 import orderRouter from './routers/orderRouter.js';
-
 import path from 'path';
 import uploadRouter from './routers/uploadRouter.js';
 import dotenv from 'dotenv';

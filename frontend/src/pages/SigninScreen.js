@@ -6,6 +6,7 @@ import Footer from '../components/Footer/Footer';
 import Header from '../components/Header';
 import { Link } from 'react-router-dom';
 import { Helmet } from "react-helmet-async";
+import MessageBox from '../components/Message/MessageBox';
 const SigninScreen = (props) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -14,12 +15,13 @@ const SigninScreen = (props) => {
     const redirect = props.location.search
         ? props.location.search.split('=')[1]
         : '/';
-
     const userSignin = useSelector((state) => state.userSignin);
-    const { userInfo } = userSignin;
+    const { userInfo, error } = userSignin;
+    const [openMess, setOpenMess] = useState({ open: false, tittle: '', content: '', type: '', duration: 0 });
     const submitHandler = (e) => {
         e.preventDefault();
         dispatch(signin(email, password));
+     
     }
     useEffect(() => {
         if (userInfo) {
@@ -30,7 +32,6 @@ const SigninScreen = (props) => {
         <>
             <Helmet>
                 <title>Đăng nhập</title>
-
             </Helmet>
             <Header />
             <div className="signin">
@@ -38,12 +39,10 @@ const SigninScreen = (props) => {
                     <div className="signin__image">
                         <LazyLoadImage src={image} alt="image" />
                     </div>
-
                 </div>
+                {error&&<MessageBox messData={{open: true, title: 'Đăng nhập thất bại', content: 'Không tồn tại email hoặc sai mật khẩu', type: 'error'}}/>}
                 <div className="container width100">
-
                     <div className='row'>
-
                         <div className="col-12 m-12 s-12 sx-12">
                             <div className="signin__form">
                                 <form className="signin__form__contents" onSubmit={submitHandler}>

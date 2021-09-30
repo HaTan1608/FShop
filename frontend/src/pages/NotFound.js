@@ -31,7 +31,6 @@ const NotFound = () => {
 					)}
 				</div>
 				<div className='notfound__contents'>
-
 					<div className='notfound__contents__text'>
 						<div className='notfound__contents__text__child'>
 							<h1 className='notfound__contents__text__child__h1'>{state.heading}</h1>

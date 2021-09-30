@@ -24,7 +24,6 @@ export default function ProductEditScreen(props) {
     } = productUpdate;
     const [loadingUpload, setLoadingUpload] = useState(false);
     const [errorUpload, setErrorUpload] = useState('');
-
     const userSignin = useSelector((state) => state.userSignin);
     const { userInfo } = userSignin;
     const uploadFileHandler = async (e) => {
@@ -46,7 +45,6 @@ export default function ProductEditScreen(props) {
             setLoadingUpload(false);
         }
     };
-
     const dispatch = useDispatch();
     useEffect(() => {
         if (successUpdate) {
