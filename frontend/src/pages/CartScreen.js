@@ -18,7 +18,7 @@ export default function CartScreen(props) {
         const newQty = parseInt(document.getElementById(`qty-input-${index}`).value) + number;
         if (newQty > 0) {
             document.getElementById(`qty-input-${index}`).value = newQty;
-            dispatch(addToCart(id, newQty, size, 'yes'))
+            dispatch(addToCart(id, newQty, size, 'no'))
         }
     }
     const removeFromCartHandler = (id, size) => {
@@ -60,8 +60,8 @@ export default function CartScreen(props) {
                                         cartItems.map((item, index) => (
                                             <div className="row" key={index}>
                                                 <div className="col-2 m-2 s-3 xs-12 cart__infomation">
-                                                    <div className="cart__infomation__image" onClick={() => console.log(item.size)}>
-                                                        <LazyLoadImage src={item.image} />
+                                                    <div className="cart__infomation__image">
+                                                       <Link to={`/product/${item.product}`}> <LazyLoadImage src={item.image} /></Link>
                                                     </div>
                                                 </div>
                                                 <div className="col-4 m-4 s-6 xs-12 cart__infomation__name__size">
