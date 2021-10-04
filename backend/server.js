@@ -11,7 +11,7 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors)
+app.use(cors());   
 var url = "mongodb+srv://amazona:8365598a@cluster0.fdtaq.mongodb.net/fshop?authSource=admin&replicaSet=atlas-55bbid-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true";
 mongoose.connect(url, function (err) {
   if (err) throw err;
