@@ -16,7 +16,7 @@ import MessageBox from "../components/Message/MessageBox";
 const HomePage = () => {
     const [imageBitis] = useState({
         image1: 'https://cdn.shopify.com/s/files/1/0565/9931/4585/files/z2584381159043_cf151161ee8677aae2f15686c3a75531_c00ba712-f330-47d9-8554-f2b3e6fe9673.jpg?v=1625049290',
-        image2: 'https://fshop-app.s3.us-east-2.amazonaws.com/bitis2.PNG',
+        image2: 'https://cdn.shopify.com/s/files/1/0565/9931/4585/files/BANNER_KV_RONG_880X300_b7ae2a0a-e2c1-474a-a7e5-8660d481f23c.jpg?v=1628136613',
     })
     const dispatch = useDispatch();
     const productList = useSelector((state) => state.productListHome);
